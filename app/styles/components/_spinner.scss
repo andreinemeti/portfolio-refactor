@@ -1,0 +1,28 @@
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.spinner__indicator {
+    transform-origin: 50% 50%;
+    animation: spin 1s linear infinite;
+}
+
+.spinner__track {
+    opacity: .2;
+}
+
+/* Loading layout */
+.loading {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}

@@ -1,0 +1,40 @@
+.nf {
+    min-height: 70vh;
+    display: grid;
+    place-items: center;
+    padding: 2rem 1rem;
+}
+
+.nf__card {
+    width: min(720px, 100%);
+    text-align: center;
+    background: rgba(255, 255, 255, .03);
+    border: 1px solid rgba(255, 255, 255, .06);
+    border-radius: 18px;
+    padding: 2rem;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .25);
+}
+
+.nf__art {
+    width: 160px;
+    height: 80px;
+    margin: 0 auto 1rem;
+    border-radius: 12px;
+}
+
+.nf__title {
+    margin: .25rem 0 .5rem;
+}
+
+.nf__subtitle {
+    opacity: .8;
+    margin: 0 auto 1rem;
+    max-width: 52ch;
+}
+
+.nf__actions {
+    display: flex;
+    gap: .75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}

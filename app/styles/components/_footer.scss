@@ -1,0 +1,39 @@
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 2rem;
+    background: #262626;
+    margin-top: 3rem;
+
+    &__left {
+        flex: 1 1 420px;
+    }
+
+    &__right {
+        flex: 1 1 280px;
+        text-align: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: .75rem;
+    }
+
+    input,
+    textarea {
+        background: transparent;
+        color: #fff;
+        border: 1px solid #8abdff;
+        padding: .75rem;
+    }
+
+    button {
+        background: #EC2424;
+        border: 1px solid #EC2424;
+        padding: .75rem 1rem;
+        cursor: pointer;
+    }
+}

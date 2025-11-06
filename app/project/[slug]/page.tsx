@@ -1,5 +1,5 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from '@/utils/hooks';
 import { fetchProjectBySlug, fetchProjects } from '@/store/projectsSlice';
@@ -10,17 +10,31 @@ import { yearFromISO } from '@/utils/common';
 import LinkIcon from '@/components/icons/LinkIcon';
 import Loading from '@/components/Loading';
 import GridPreviews from '@/components/GridPreviews';
+import NotFoundClient from '@/components/NotFoundClient';
 
 export default function ProjectPage() {
   const params = useParams();
   const slug = String(params.slug);
   const dispatch = useAppDispatch();
   const { current, list } = useAppSelector(s => s.projects);
+  const [notFound, setNotFound] = useState(false);
 
-  useEffect(() => { dispatch(fetchProjectBySlug(slug)); }, [dispatch, slug]);
-  useEffect(() => { if (list.length === 0) dispatch(fetchProjects()); }, [dispatch, list.length]);
+  useEffect(() => {
+  let cancelled = false;
+  (async () => {
+    try {
+      await dispatch(fetchProjectBySlug(slug) as any);
+    } catch {
+      if (!cancelled) setNotFound(true);
+    }
+  })();
+  return () => { cancelled = true; };
+}, [dispatch, slug]);
 
-  if (!current) return <Loading />;
+if (notFound) return <NotFoundClient />;
+if (!current) return <Loading />;
+
+ 
 
   const hasList = list.length > 0;
   const idx = hasList ? list.findIndex(p => p.slug === slug) : -1;
@@ -96,7 +110,7 @@ export default function ProjectPage() {
       <div className="container live-url-content">
         <h2 className="h2">Live URL</h2>
        <a className="link" href={current.externalUrl} target="_blank" rel="noopener noreferrer">
-        <LinkIcon className="icon"size={20}/>
+        <LinkIcon className="icon" size={20}/>
         {current.externalUrl}</a>
       </div>
       )}

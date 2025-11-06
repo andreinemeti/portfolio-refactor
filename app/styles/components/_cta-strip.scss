@@ -1,0 +1,22 @@
+.cta-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem;
+    margin: 2.5rem auto 1rem;
+    border-radius: 18px;
+    background: linear-gradient(90deg, #ffb546 0%, #f0a83c 50%, #f0a32f 100%);
+    color: #041016;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .25);
+    flex-wrap: wrap;
+}
+
+.cta-strip__text {
+    min-width: 260px;
+}
+
+.cta-strip .h2 {
+    margin: 0 0 .25rem;
+    font-size: 1.8em;
+}

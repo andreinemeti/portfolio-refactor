@@ -1,4 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { AppDispatch } from '.';
 // If you have AppDispatch/RootState types, import them and use instead of `any` below.
 // import type { AppDispatch, RootState } from '@/store';
 
@@ -18,7 +19,7 @@ type Project = {
 type State = {
   list: Project[];
   tags: string[];
-  current?: Project;
+  current?: Project | null;
   status: 'idle' | 'loading' | 'error';
   error?: string;
 };
@@ -72,16 +73,16 @@ export const fetchProjects = () => async (dispatch: any /* AppDispatch */) => {
 };
 
 // Fetch a single project by slug
-export const fetchProjectBySlug = (slug: string) => async (dispatch: any /* AppDispatch */) => {
-  try {
-    dispatch(setLoading());
-    const res = await fetch(`/api/project?slug=${encodeURIComponent(slug)}`, { cache: 'no-store' });
-    if (!res.ok) throw new Error('Project not found');
-    const project = (await res.json()) as Project;
-    dispatch(setCurrent(project));
-    // Optionally return to idle after individual fetches:
-    dispatch(clearError());
-  } catch (e) {
-    dispatch(setError((e as Error).message || 'Request failed'));
+export const fetchProjectBySlug = (slug: string) => async (dispatch: AppDispatch) => {
+  dispatch(setLoading());
+  const res = await fetch(`/api/project?slug=${encodeURIComponent(slug)}`, { cache: 'no-store' });
+  if (!res.ok) {
+    dispatch(setCurrent(undefined));
+    dispatch(setError('Project not found'));
+    throw new Error('Project not found'); 
   }
+  const project = (await res.json()) as Project;
+  dispatch(setCurrent(project));
+  dispatch(clearError());
+  return project;
 };

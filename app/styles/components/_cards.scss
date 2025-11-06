@@ -1,0 +1,60 @@
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    position: relative;
+    background: #161616;
+    width: 350px;
+    box-shadow: 0 1px 11px #6dcdff33;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: $cardRadius;
+    border: 2px solid $cardBorderColor;
+    margin: 15px;
+
+    &__relative-parent {
+        position: relative;
+        display: flex;
+        
+    }
+
+    &__media {
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    &__body {
+        padding: 1rem;
+    }
+
+    &__title {
+        font-size: 1.25rem;
+        margin: 0 0 .5rem;
+        color:$colouredTitle;
+    }
+
+    &__link {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        z-index: 999;
+        background: rgba(0, 0, 0, .9);
+        opacity: 0;
+        transition: .2s all;
+        margin: 0;
+        font-weight: 600;
+        
+    }
+
+    &:hover &__link {
+        opacity: 1;
+    }
+}

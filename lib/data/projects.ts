@@ -39,7 +39,7 @@ export const projects: Project[] = [
   {
     slug: 'weather-app',
     name: 'Weather App',
-    type: "Landing page",
+    type: "Small Web Application",
     responsiveness: "100%",
     description: 'Small jQuery based weather application.',
     tags: ['HTML5', 'CSS3', 'jQuery', 'JavaScript'],
