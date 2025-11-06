@@ -7,6 +7,7 @@ import Slider from '@/components/Slider';
 import Link from 'next/link';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { yearFromISO } from '@/utils/common';
+import LinkIcon from '@/components/icons/LinkIcon';
 import Loading from '@/components/Loading';
 import GridPreviews from '@/components/GridPreviews';
 
@@ -25,11 +26,11 @@ export default function ProjectPage() {
   const idx = hasList ? list.findIndex(p => p.slug === slug) : -1;
   const next = hasList ? list[(idx + 1 + list.length) % list.length] : null;
 
-  // Optional meta cards (render only if present in data)
   const meta = [
     { label: 'Project Type', value: (current as any).type },
     { label: 'Responsiveness', value: (current as any).responsiveness },
   ].filter(m => !!m.value) as {label:string; value:string}[];
+
 
   return (
     <main>
@@ -94,7 +95,9 @@ export default function ProjectPage() {
       {current.externalUrl && (
       <div className="container live-url-content">
         <h2 className="h2">Live URL</h2>
-       <a className="link" href={current.externalUrl} target="_blank" rel="noopener noreferrer">{current.externalUrl}</a>
+       <a className="link" href={current.externalUrl} target="_blank" rel="noopener noreferrer">
+        <LinkIcon className="icon"size={20}/>
+        {current.externalUrl}</a>
       </div>
       )}
 
