@@ -1,0 +1,36 @@
+@use './variables' as *;
+
+
+
+@media all and (max-width:1200px) {
+    .container {
+        max-width:calc(100vw - 100px);
+    }
+}
+
+@media all and (max-width:768px) {
+    .container {
+        max-width:calc(100vw - 50px);
+        padding-block: 1rem;
+    }
+
+    .card__media {
+        height:150px;
+    }
+
+    .hero--home, .hero--project, .hero--contact {
+        background-attachment:scroll;
+        min-height:45vh;
+    }
+
+    .hero--home .hero__header, .hero--project .hero__header, .hero--contact .hero__header {
+        max-width:65%;
+    }
+    .hero--home .hero__title, .hero--project .hero__title, .hero--contact .hero__title {
+        font-size:2rem;
+    }
+
+    .hero--home .hero__subtitle, .hero--project .hero__subtitle, .hero--contact .hero__subtitle {
+        font-size:1.5rem;
+    }
+}

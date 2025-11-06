@@ -16,8 +16,8 @@ export default function ProjectCard({ project }: { project: Project }) {
       <div className="card__body">
         <h3 className="card__title">{project.name}</h3>
         <p>{project.description}</p>
-        <div className="tags">
-          {project.tags.map(t => <span key={t} className="tags__tag">{t}</span>)}
+        <div className="pill-list smaller">
+          {project.tags.map(t => <span key={t} className="pill">{t}</span>)}
         </div>
        
       </div>

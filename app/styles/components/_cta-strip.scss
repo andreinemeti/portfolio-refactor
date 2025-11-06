@@ -1,4 +1,5 @@
 .cta-strip {
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -8,7 +9,6 @@
     border-radius: 18px;
     background: linear-gradient(90deg, #ffb546 0%, #f0a83c 50%, #f0a32f 100%);
     color: #041016;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, .25);
     flex-wrap: wrap;
 }
 

@@ -7,6 +7,24 @@ body {
     background: #0A0A0B;
 }
 
+main {
+    position:relative; 
+}
+// main:before {
+//      content: '';
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+//     display: block;
+//     background: url('/images/textura.png');
+//     z-index:0;
+//     background-position: bottom;
+//     background-size: cover;
+//     opacity: 0.3;
+//     background-size: 150px;
+// }
 a {
     color: inherit;
     text-decoration: none;
@@ -14,6 +32,7 @@ a {
 
 h2 {
     color: $colouredTitle;
+    font-size: 2em;
 }
 
 .link {
@@ -34,3 +53,4 @@ h2 {
     max-width: 1200px;
     margin: 0 auto;
 }
+
