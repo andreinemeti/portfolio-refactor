@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Project } from '@/lib/data/projects';
-
+import NextIcon from '@/components/icons/NextIcon';
 export default function ProjectCard({ project }: { project: Project }) {
   const cover = project.images?.[0] ?? '/images/placeholder-landscape.svg';
   return (
@@ -10,7 +10,8 @@ export default function ProjectCard({ project }: { project: Project }) {
       <div className="card__relative-parent">
         <Image className="card__media" src={cover} alt={project.name} width={800} height={250} />
          <p className="card__link">
-          View project →
+          <span className="card__link__text">View project </span>
+          <NextIcon className="icon" size={20}/>
         </p>
       </div>
       <div className="card__body">

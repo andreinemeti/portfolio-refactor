@@ -11,6 +11,7 @@ import LinkIcon from '@/components/icons/LinkIcon';
 import Loading from '@/components/Loading';
 import GridPreviews from '@/components/GridPreviews';
 import NotFoundClient from '@/components/NotFoundClient';
+import NextIcon from '@/components/icons/NextIcon';
 
 export default function ProjectPage() {
   const params = useParams();
@@ -19,31 +20,42 @@ export default function ProjectPage() {
   const { current, list } = useAppSelector(s => s.projects);
   const [notFound, setNotFound] = useState(false);
 
-  useEffect(() => {
+useEffect(() => {
   let cancelled = false;
-  (async () => {
-    try {
-      await dispatch(fetchProjectBySlug(slug) as any);
-    } catch {
+
+  dispatch(fetchProjectBySlug(slug) as any)
+    .catch(() => {
       if (!cancelled) setNotFound(true);
-    }
-  })();
+    });
+
   return () => { cancelled = true; };
 }, [dispatch, slug]);
 
-if (notFound) return <NotFoundClient />;
-if (!current) return <Loading />;
+  useEffect(() => {
+    if (list.length === 0) {
+      dispatch(fetchProjects() as any);
+    }
+  }, [dispatch, list.length]);
 
- 
+  if (notFound) {
+    return <NotFoundClient />;
+  }
+  if (!current) {
+    return <Loading />;
+  }
 
-  const hasList = list.length > 0;
-  const idx = hasList ? list.findIndex(p => p.slug === slug) : -1;
-  const next = hasList ? list[(idx + 1 + list.length) % list.length] : null;
+
+  const next = (() => {
+    if (!list.length || !current) return null;
+    const i = list.findIndex(p => p.slug === current.slug);
+    if (i === -1 || list.length < 2) return null;
+    return list[(i + 1) % list.length];
+  })();
 
   const meta = [
     { label: 'Project Type', value: (current as any).type },
     { label: 'Responsiveness', value: (current as any).responsiveness },
-  ].filter(m => !!m.value) as {label:string; value:string}[];
+  ].filter(m => !!m.value) as { label: string; value: string }[];
 
 
   return (
@@ -61,12 +73,12 @@ if (!current) return <Loading />;
         <div className="hero__overlay">
           <div className="hero__header">
             <h1 className="hero__title">{current.name}</h1>
-          
+
           </div>
         </div>
       </section>
 
-      <Breadcrumbs items={[{label:'Home', href:'/'}, {label:'Project'}, {label: current.name}]} />
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Project' }, { label: current.name }]} />
 
       {/* CONTENT GRID */}
       <section className="container project-content">
@@ -76,7 +88,7 @@ if (!current) return <Loading />;
           <p className="muted"><strong>Built in:</strong> {yearFromISO(current.createdAt)}</p>
 
           {/* Pills */}
-          
+
           {current.tags?.length > 0 && (
             <div className="pill-list" aria-label="Technologies used">
               {current.tags.map(t => (
@@ -100,19 +112,19 @@ if (!current) return <Loading />;
       </section>
 
       {current.images?.length > 0 && (
-      <div className="container previews-content">
-        <h2 className="h2">Previews</h2>
-       <GridPreviews images={current.images} />
-      </div>
+        <div className="container previews-content">
+          <h2 className="h2">Previews</h2>
+          <GridPreviews images={current.images} />
+        </div>
       )}
 
       {current.externalUrl && (
-      <div className="container live-url-content">
-        <h2 className="h2">Live URL</h2>
-       <a className="link" href={current.externalUrl} target="_blank" rel="noopener noreferrer">
-        <LinkIcon className="icon" size={20}/>
-        {current.externalUrl}</a>
-      </div>
+        <div className="container live-url-content">
+          <h2 className="h2">Live URL</h2>
+          <a className="link" href={current.externalUrl} target="_blank" rel="noopener noreferrer">
+            <LinkIcon className="icon" size={20} />
+            {current.externalUrl}</a>
+        </div>
       )}
 
       {/* CTA strip */}
@@ -123,7 +135,7 @@ if (!current) return <Loading />;
         </div>
         {next && (
           <Link className="btn btn--primary" href={`/project/${next.slug}`}>
-            View next project →
+            <span className="btn__text">View next project</span><NextIcon className="icon" size={20} />
           </Link>
         )}
       </section>
