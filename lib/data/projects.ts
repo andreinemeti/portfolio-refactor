@@ -43,7 +43,7 @@ export const projects: Project[] = [
     responsiveness: "100%",
     description: 'Small jQuery based weather application.',
     tags: ['HTML5', 'CSS3', 'jQuery', 'JavaScript'],
-    images: null,
+    images: ['/images/weather/1.jpg', '/images/weather/2.jpg', '/images/weather/3.jpg'],
     externalUrl: 'https://andreinemeti.github.io/Weather-app/',
     createdAt: '2018-09-15T00:00:00.000Z',
     lastMod: '2018-09-15T00:00:00.000Z'
@@ -55,7 +55,7 @@ export const projects: Project[] = [
     type: "Landing page",
     responsiveness: "100%",
     tags: ['HTML5', 'CSS3'],
-    images: null,
+      images: ['/images/architecture/1.jpg', '/images/architecture/2.jpg', '/images/architecture/3.jpg', '/images/architecture/4.jpg'],
     externalUrl: 'https://andreinemeti.github.io/architecture/',
     createdAt: '2018-09-15T00:00:00.000Z',
     lastMod: '2018-09-15T00:00:00.000Z'
