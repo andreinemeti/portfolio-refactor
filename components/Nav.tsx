@@ -3,13 +3,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
-const links = [
-  { label: 'Home', href: '/' },
-  { label: 'Services', href: '/services' },
-  { label: 'Projects', href: '/projects' },
-  { label: 'Contact', href: '/contact' },
-];
+import { NAV_LINKS } from './navLinks';
 
 export default function Nav() {
   const pathname = usePathname();
@@ -17,7 +11,7 @@ export default function Nav() {
   return (
     <nav className="nav">
       <ul className="nav__list" role="menubar" aria-label="Primary">
-        {links.map(({ label, href }) => {
+        {NAV_LINKS.map(({ label, href }) => {
           const active =
             href === '/'
               ? pathname === '/'
