@@ -1,4 +1,5 @@
 export type Project = {
+  id: number;
   slug: string;
   name: string;
   description: string;
@@ -16,6 +17,7 @@ export const projects: Project[] = [
 
 
   {
+    id:  1,
     slug: 'sosito',
     featured: false,
     name: 'Sosito',
@@ -29,6 +31,7 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 2,
     slug: 'crossa-app',
     featured: false,
     name: 'Crossa',
@@ -42,6 +45,20 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 3,
+  slug: 'crossa-cms',
+  featured: false,
+  name: 'Crossa CMS',
+  description: 'Back-office CMS/admin for Crossa.',
+  type: 'CMS',
+  responsiveness: '100%',
+  tags: ['React', 'Web App'],
+  images: null,
+  createdAt: '2018-09-15T00:00:00.000Z',
+  lastMod: '2018-09-15T00:00:00.000Z'
+},
+  {
+    id: 4,
     slug: 'zoniz-restaurant',
     featured: false,
     name: 'Zoniz Restaurant',
@@ -55,6 +72,7 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 5,
     slug: 'zoniz-tourism',
     featured: false,
     name: 'Zoniz Tourism',
@@ -68,9 +86,10 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
-    slug: 'zoniz-se',
+    id: 6,
     featured: false,
     name: 'Zoniz Sweden',
+    slug: 'zoniz-sweden',
     description: 'Regional site for Zoniz (Sweden).',
     type: 'Company website',
     responsiveness: '100%',
@@ -81,6 +100,7 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 7,
     slug: 'jobbamera',
     featured: false,
     name: 'Jobbamera',
@@ -94,6 +114,7 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 8,
     slug: 'devpc',
     featured: false,
     name: 'DevPC',
@@ -107,6 +128,7 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 9,
     slug: 'sculejonnesway',
     featured: false,
     name: 'Scule Jonnesway',
@@ -120,6 +142,7 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 10,
     slug: 'big1auto',
     featured: false,
     name: 'Big1 Auto',
@@ -133,6 +156,46 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+  id: 11,
+  slug: 'tasteat',
+  featured: false,
+  name: 'Tasteat',
+  description: 'Restaurant website / online ordering presence.',
+  type: 'Company website',
+  responsiveness: '100%',
+  tags: ['Website'],
+  images: null,
+  createdAt: '2018-09-15T00:00:00.000Z',
+  lastMod: '2018-09-15T00:00:00.000Z'
+},
+{
+  id: 12,
+  slug: 'file-explorer',
+  featured: false,
+  name: 'File Explorer',
+  description: 'Desktop-style file explorer with a Node.js API and a React + Vite TypeScript frontend.',
+  type: 'Web App / Tool',
+  responsiveness: '100%',
+  tags: ['Node.js', 'TypeScript', 'React', 'Vite'],
+  images: null,
+  createdAt: '2018-09-15T00:00:00.000Z',
+  lastMod: '2018-09-15T00:00:00.000Z'
+},
+{
+  id: 13,
+  slug: 'free-website-template',
+  featured: false,
+  name: 'Free Website Template',
+  description: 'Clean, responsive starter template you can reuse for small business or portfolio sites.',
+  type: 'Template',
+  responsiveness: '100%',
+  tags: ['HTML5', 'CSS3', 'JavaScript'],
+  images: null,
+  createdAt: '2018-09-15T00:00:00.000Z',
+  lastMod: '2018-09-15T00:00:00.000Z'
+},
+  {
+    id: 14,
     slug: 'gebs',
     featured: false,
     name: 'GEBS',
@@ -146,6 +209,85 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+  id: 15,
+  slug: 'vama-veche',
+  featured: false,
+  name: 'Vama Veche',
+  description: 'Tourism/city website presence for Vama Veche.',
+  type: 'Company / City website',
+  responsiveness: '100%',
+  tags: ['Website'],
+  images: null,
+  createdAt: '2018-09-15T00:00:00.000Z',
+  lastMod: '2018-09-15T00:00:00.000Z'
+},
+{
+  id: 16,
+  slug: 'vatra-dornei',
+  featured: false,
+  name: 'Vatra Dornei',
+  description: 'Tourism/city website presence for Vatra Dornei.',
+  type: 'Company / City website',
+  responsiveness: '100%',
+  tags: ['Website'],
+  images: null,
+  createdAt: '2018-09-15T00:00:00.000Z',
+  lastMod: '2018-09-15T00:00:00.000Z'
+},
+{
+  id: 17,
+  slug: 'pulsrasweb',
+  featured: false,
+  name: 'Pulsrasweb',
+  description: 'Football streaming platform frontend built with React.',
+  type: 'Web App',
+  responsiveness: '100%',
+  tags: ['React', 'JavaScript'],
+  images: null,
+  createdAt: '2018-09-15T00:00:00.000Z',
+  lastMod: '2018-09-15T00:00:00.000Z'
+},
+{
+  id: 18,
+  slug: 'zoniz-engagement-templates',
+  featured: false,
+  name: 'Zoniz Engagement Templates',
+  description: 'Reusable templates for campaigns, gamification, and engagement flows.',
+  type: 'Template Pack',
+  responsiveness: '100%',
+  tags: ['Templates', 'Design Systems'],
+  images: null,
+  createdAt: '2018-09-15T00:00:00.000Z',
+  lastMod: '2018-09-15T00:00:00.000Z'
+},
+{
+  id: 19,
+  slug: 'zoniz-market',
+  featured: false,
+  name: 'Zoniz Market',
+  description: 'Marketplace module for listings, offers, and ordering within Zoniz.',
+  type: 'Web App / Module',
+  responsiveness: '100%',
+  tags: ['Web App'],
+  images: null,
+  createdAt: '2018-09-15T00:00:00.000Z',
+  lastMod: '2018-09-15T00:00:00.000Z'
+},
+{
+  id: 20,
+  slug: 'zoniz-restbarwaiter',
+  featured: false,
+  name: 'Zoniz RestBarWaiter',
+  description: 'Waiter-facing app for orders and table service within the Zoniz ecosystem.',
+  type: 'Web App',
+  responsiveness: '100%',
+  tags: ['React', 'Web App'],
+  images: null,
+  createdAt: '2018-09-15T00:00:00.000Z',
+  lastMod: '2018-09-15T00:00:00.000Z'
+},
+  {
+    id: 21,
     slug: 'innenu',
     featured: false,
     name: 'Innenu',
@@ -159,6 +301,7 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 22,
     slug: 'medcall-se',
     featured: false,
     name: 'Medcall (SE)',
@@ -172,6 +315,7 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 23,
     slug: 'medcall-ro',
     featured: false,
     name: 'Medcall (RO)',
@@ -185,6 +329,7 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 24,
     slug: 'zoniz-retail',
     featured: false,
     name: 'Zoniz Retail',
@@ -198,6 +343,7 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 25,
     slug: 'zoniz-hotel',
     featured: false,
     name: 'Zoniz Hotel',
@@ -211,6 +357,7 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 26,
     slug: 'zoniz-citizens',
     featured: false,
     name: 'Zoniz Citizens',
@@ -224,6 +371,7 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 27,
     slug: 'koko-phuket',
     featured: false,
     name: 'Koko Phuket',
@@ -237,6 +385,7 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 28,
     slug: 'zoniz-cities',
     featured: false,
     name: 'Zoniz Cities Directory',
@@ -250,6 +399,7 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 29,
     slug: 'zoniz-cms',
     featured: false,
     name: 'Zoniz CMS',
@@ -263,6 +413,7 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 30,
     slug: 'sosito-cms',
     featured: false,
     name: 'Sosito CMS',
@@ -276,6 +427,7 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 31,
     slug: 'brombler',
     featured: false,
     name: 'Brombler',
@@ -289,6 +441,7 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 32,
     slug: 'zoniz-web-ordering-demo',
     featured: false,
     name: 'Zoniz Web Ordering',
@@ -302,6 +455,7 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 33,
     slug: 'sosito-blog',
     featured: false,
     name: 'Sosito Blog',
@@ -315,6 +469,7 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 34,
     slug: 'zoniz-restaurant-blog',
     featured: false,
     name: 'Zoniz Restaurant Blog',
@@ -329,6 +484,7 @@ export const projects: Project[] = [
 
   },
   {
+    id: 35,
     slug: 'travel-website',
     featured: true,
     name: 'Travel Website',
@@ -342,6 +498,7 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 36,
     slug: 'watch-store',
     featured: false,
     name: 'Watch Store',
@@ -355,6 +512,7 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 37,
     slug: 'weather-app',
     featured: false,
     name: 'Weather App',
@@ -368,6 +526,7 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 38,
     slug: 'architecture-portfolio',
     featured: true,
     name: 'Architecture Portfolio',
@@ -381,19 +540,21 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
+    id: 39,
     slug: 'zoniz-website',
     featured: true,
     name: 'Zoniz Website',
     description: 'Marketing site for the Zoniz platform.',
     type: 'Company website',
     responsiveness: '100%',
-    tags: ['WordPress'],
-    images: null,
+    tags: ['HTML5', 'CSS3', 'JavaScript', 'CSS3 Animations'],
+    images: ['/images/zoniz-site/1.jpg', '/images/zoniz-site/2.jpg', '/images/zoniz-site/3.jpg', '/images/zoniz-site/4.jpg'],
      createdAt: '2018-09-15T00:00:00.000Z',
     lastMod: '2018-09-15T00:00:00.000Z',
-    externalUrl: 'https://www.zoniz.com/',
+    externalUrl: 'https://www.zoniz.com',
   },
   {
+    id: 40,
     slug: 'law-firm-landing',
     featured: false,
     name: 'Law Firm',
@@ -407,6 +568,7 @@ export const projects: Project[] = [
     externalUrl: 'https://andreinemeti.github.io/LAW-FIRM/',
   },
   {
+    id: 41,
     slug: 'hipsters-website',
     featured: false,
     name: 'Hipsters.com Website',
@@ -420,6 +582,7 @@ export const projects: Project[] = [
     externalUrl: 'https://andreinemeti.github.io/Hipsters.com-Website/',
   },
   {
+    id: 42,
     slug: 'finding-my-way',
     featured: false,
     name: 'Finding My Way',
@@ -433,6 +596,7 @@ export const projects: Project[] = [
     externalUrl: 'http://findingmyway.ro/',
   },
   {
+    id: 43,
     slug: 'sticky-notes',
     featured: false,
     name: 'Sticky Notes',
@@ -446,6 +610,7 @@ export const projects: Project[] = [
     externalUrl: 'https://andreinemeti.github.io/Sticky-notes/',
   },
   {
+    id: 44,
     slug: 'cnp-validator',
     featured: false,
     name: 'CNP Validator',
@@ -459,6 +624,7 @@ export const projects: Project[] = [
     externalUrl: 'https://andreinemeti.github.io/CNP-VALIDATOR/',
   },
   {
+    id: 45,
     slug: 'simple-product-manager',
     featured: false,
     name: 'Simple Product Manager',
@@ -472,6 +638,7 @@ export const projects: Project[] = [
     externalUrl: 'https://andreinemeti.github.io/Simple-product-manager/',
   },
   {
+    id: 46,
     slug: 'trading123',
     featured: false,
     name: 'Trading123',
@@ -485,6 +652,7 @@ export const projects: Project[] = [
     externalUrl: 'https://trading123.net/',
   },
   {
+    id: 47,
     slug: 'medical-center',
     featured: false,
     name: 'Medical Center',
@@ -498,6 +666,7 @@ export const projects: Project[] = [
     externalUrl: 'https://andreinemeti.github.io/medical-center/',
   },
   {
+    id: 48,
     slug: 'random-quote-generator',
     featured: false,
     name: 'Random Quote Generator',
@@ -511,6 +680,7 @@ export const projects: Project[] = [
     externalUrl: 'https://andreinemeti.github.io/Random-Quote-Generator/',
   },
   {
+    id: 49,
     slug: 'myexams-sit',
     featured: false,
     name: 'MyExams (SIT)',
@@ -524,6 +694,7 @@ export const projects: Project[] = [
     externalUrl: 'https://github.com/andreinemeti/MyExams---SIT',
   },
   {
+    id: 50,
     slug: 'wright-gallery-services',
     featured: false,
     name: 'Wright Gallery Services',
@@ -537,6 +708,7 @@ export const projects: Project[] = [
     externalUrl: 'https://www.wrightgalleryservices.co.uk/',
   },
   {
+    id: 51,
     slug: 'old-portfolio',
     featured: false,
     name: 'Portfolio (Legacy)',
@@ -550,6 +722,7 @@ export const projects: Project[] = [
     externalUrl: 'https://andreinemeti.github.io/Portofolio/',
   },
   {
+    id: 52,
     slug: 'ai-no-js-landing',
     featured: false,
     name: 'Artificial Intelligence — No JS',

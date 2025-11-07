@@ -1,0 +1,67 @@
+/* --- Home intro --- */
+.home-intro {
+    padding-block: 2rem 1rem;
+}
+
+.home-intro__inner {
+    max-width: 620px;
+   
+}
+
+.home-intro__title {
+    margin: 0 0 .5rem;
+}
+
+.home-intro__lead {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    opacity: .9;
+}
+
+/* --- Tech stack --- */
+.tech {
+    padding-block: 1.5rem 0;
+    
+}
+
+.tech__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.tech__title {
+    margin: 0;
+}
+
+.tech__subtitle {
+    margin: 0;
+}
+
+.tech__list {
+    grid-gap: 0.6rem 0.75rem;
+    margin-top: 1rem;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 720px;
+}
+
+.tech__item {
+    display: flex;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem .75rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: .85rem;
+    background: rgba(255, 255, 255, .06);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1);
+}
