@@ -12,6 +12,7 @@ import Loading from '@/components/Loading';
 import GridPreviews from '@/components/GridPreviews';
 import NotFoundClient from '@/components/NotFoundClient';
 import NextIcon from '@/components/icons/NextIcon';
+import CtaStrip from '@/components/CtaStrip';
 
 export default function ProjectPage() {
   const params = useParams();
@@ -20,16 +21,16 @@ export default function ProjectPage() {
   const { current, list } = useAppSelector(s => s.projects);
   const [notFound, setNotFound] = useState(false);
 
-useEffect(() => {
-  let cancelled = false;
+  useEffect(() => {
+    let cancelled = false;
 
-  dispatch(fetchProjectBySlug(slug) as any)
-    .catch(() => {
-      if (!cancelled) setNotFound(true);
-    });
+    dispatch(fetchProjectBySlug(slug) as any)
+      .catch(() => {
+        if (!cancelled) setNotFound(true);
+      });
 
-  return () => { cancelled = true; };
-}, [dispatch, slug]);
+    return () => { cancelled = true; };
+  }, [dispatch, slug]);
 
   useEffect(() => {
     if (list.length === 0) {
@@ -62,7 +63,7 @@ useEffect(() => {
     <main>
       {/* HERO with slider */}
       <section className="hero hero--project">
-          {/* Big featured ribbon */}
+        {/* Big featured ribbon */}
         {current.featured && (
           <span className="hero__ribbon" aria-label="Featured">Featured</span>
         )}
@@ -72,7 +73,7 @@ useEffect(() => {
             showArrows={true}
             showDots={true}
             className="hero__slider"
-         
+
           />
         </div>
         <div className="hero__overlay">
@@ -132,18 +133,16 @@ useEffect(() => {
         </div>
       )}
 
-      {/* CTA strip */}
-      <section className="container cta-strip">
-        <div className="cta-strip__text">
-          <h3 className="h3">Ready to explore more?</h3>
-          <p className="muted">Check out my next featured project and discover more amazing work.</p>
-        </div>
-        {next && (
+      <CtaStrip
+        title="Ready to explore more?"
+        subtitle="Check out my next featured project and discover more amazing work."
+        rightSlot={next ? (
           <Link className="btn btn--primary" href={`/project/${next.slug}`}>
-            <span className="btn__text">View next project</span><NextIcon className="icon" size={20} />
+            <span className="btn__text">View next project</span>
+            <NextIcon className="icon" size={20} />
           </Link>
-        )}
-      </section>
+        ) : null}
+      />
     </main>
   );
 }

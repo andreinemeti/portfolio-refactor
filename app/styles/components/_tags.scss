@@ -46,7 +46,7 @@
 }
 
 .pill--active {
-  background: $colouredTitle;                 /* darker bg when active */
+  background: $accentColor;                 /* darker bg when active */
   box-shadow: inset 0 0 0 2px rgba(255,255,255,.12);
   color:#000;
 }

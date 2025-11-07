@@ -17,12 +17,13 @@
         .hero__header {
             text-align: center;
             position: relative;
-            max-width: 85%;
+            max-width: 500px;
+            width: 85%;
             margin: 0 auto;
             background: rgba(0, 0, 0, 0.84);
             border-radius: 18.5px;
             padding: 20px;
-            border: 2px solid $cardBorderColor;
+            border: 2px solid $accentColor;
         }
 
         .hero__title {
@@ -43,6 +44,9 @@
 
     &--project_all {
         background: url('/images/hero-projects.jpg') center/cover no-repeat, #1B2030;
+    }
+     &--services {
+        background: url('/images/hero-services.jpg') center/cover no-repeat, #1B2030;
     }
 }
 
