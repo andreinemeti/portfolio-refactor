@@ -68,6 +68,7 @@ useEffect(() => {
             showArrows={true}
             showDots={true}
             className="hero__slider"
+         
           />
         </div>
         <div className="hero__overlay">

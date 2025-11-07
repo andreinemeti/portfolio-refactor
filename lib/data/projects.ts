@@ -31,7 +31,7 @@ export const projects: Project[] = [
     responsiveness: "100%",
     description: 'E‑commerce storefront concept focused on clean UI.',
     tags: ['HTML5', 'CSS3', 'Bootstrap'],
-    images: ['/images/watch/1.jpg', '/images/watch/2.jpg', '/images/watch/3.jpg', '/images/watch/4.jpg'],
+    images: ['/images/watch/1.jpg', '/images/watch/2.jpg', '/images/watch/3.jpg'],
     externalUrl: 'https://andreinemeti.github.io/watch-store/',
     createdAt: '2018-09-15T00:00:00.000Z',
     lastMod: '2018-09-15T00:00:00.000Z'

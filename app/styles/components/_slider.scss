@@ -1,6 +1,9 @@
 .slider {
     position: relative;
     overflow: hidden;
+    touch-action: pan-y;     /* important for mobile */
+    user-select: none;       /* avoid selecting text/images while dragging */
+    cursor:grab;
 }
 
 .slider__track {
@@ -18,6 +21,7 @@
     width: 100%;
     height: 420px;
     object-fit: cover;
+    pointer-events: none;    /* avoid grabbing the image element itself */
 }
 
 /* Dots */
@@ -50,13 +54,14 @@
 /* Arrows (hidden until hover/focus) */
 .slider__arrow {
     position: absolute;
+    z-index:999;
     top: 50%;
     transform: translateY(-50%);
     display: grid;
     place-items: center;
     width: 40px;
     height: 40px;
-    border-radius: 999px;
+    border-radius: 50px;
     border: none;
     cursor: pointer;
     background: rgba(0, 0, 0, .9);
