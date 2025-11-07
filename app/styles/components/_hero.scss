@@ -40,6 +40,10 @@
     &--project {
         background: url('/images/placeholder-landscape.svg') center/cover no-repeat, #1B2030;
     }
+
+    &--project_all {
+        background: url('/images/hero-projects.jpg') center/cover no-repeat, #1B2030;
+    }
 }
 
 /* Project hero with slider as background */
@@ -53,6 +57,8 @@
     position: absolute;
     inset: 0;
 }
+
+
 
 /* Make slider fill the hero area */
 .hero--project .slider,
@@ -92,4 +98,44 @@
 .hero__subtitle {
     margin-top: .25rem;
     opacity: .9;
+}
+
+
+.hero__ribbon {
+  position: absolute;
+  top: 18px;
+  right: -60px;              /* push out so the diagonal looks centered */
+  transform: rotate(45deg);
+  z-index: 3;
+
+  display: inline-block;
+  width: 260px;              /* width of the diagonal sash */
+  text-align: center;
+
+  padding: .65rem 0;
+  font-weight: 900;
+  font-size: .95rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+
+  color: #0A0A0B;
+  background: linear-gradient(90deg, #ffb546 0%, #f0a83c 50%, #f0a32f 100%);
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.45),
+    inset 0 0 0 1px rgba(0,0,0,.18);
+  border: 1px solid rgba(255,255,255,.18);
+
+  /* Optional subtle shine */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(255,255,255,.14) 0%,
+      rgba(255,255,255,0) 60%
+    );
+    pointer-events: none;
+    border-radius: 2px;
+  }
 }

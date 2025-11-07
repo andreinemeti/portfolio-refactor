@@ -21,6 +21,27 @@
         
     }
 
+    &__ribbon {
+    position: absolute;
+    top: 12px;
+    right: -42px;             
+    transform: rotate(45deg);
+    z-index: 2;
+
+    display: inline-block;
+    width: 160px;
+    text-align: center;
+    padding: .4rem 0;
+    font-weight: 800;
+    font-size: .55rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #000;
+    background: linear-gradient(90deg, #ffb546 0%, #f0a83c 50%, #f0a32f 100%);
+    box-shadow: 0 6px 18px rgba(0,0,0,.35), inset 0 0 0 1px rgba(0,0,0,.15);
+    border: 1px solid rgba(255,255,255,.15);
+    }
+
     &__media {
         aspect-ratio: 16 / 10;
         object-fit: cover;

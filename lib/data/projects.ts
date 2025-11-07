@@ -4,6 +4,7 @@ export type Project = {
   description: string;
   type: string;
   tags: string[];
+  featured: boolean;
   responsiveness: string | null;
   images: string[] | null;
   externalUrl?: string;
@@ -14,6 +15,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: 'travel-website',
+    featured: true,
     name: 'Travel Website',
     description: 'A responsive travel landing page built with Bootstrap.',
     type: "Landing page",
@@ -26,6 +28,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'watch-store',
+    featured: true,
     name: 'Watch Store',
     type: "Landing page",
     responsiveness: "100%",
@@ -38,6 +41,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'weather-app',
+    featured: true,
     name: 'Weather App',
     type: "Small Web Application",
     responsiveness: "100%",
@@ -50,6 +54,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'architecture-portfolio',
+    featured: true,
     name: 'Architecture Portfolio',
     description: 'Minimal portfolio template for an architecture studio.',
     type: "Landing page",

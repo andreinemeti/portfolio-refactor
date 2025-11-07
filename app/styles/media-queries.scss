@@ -14,7 +14,18 @@
         padding: 0.5rem;
     }
 
+    .cta-strip {
+        padding:1.5rem;
+    }
 
+
+    .section-header {
+        flex-direction:column;
+    }
+
+    .section-title {
+        margin-bottom:0;
+    }
    
 
     .slider__arrow {
@@ -46,4 +57,11 @@
     .card {
             margin: 15px 0;
     }
+
+     .hero__ribbon {
+    right: -70px;
+    width: 220px;
+    padding: .55rem 0;
+    font-size: .85rem;
+  }
 }

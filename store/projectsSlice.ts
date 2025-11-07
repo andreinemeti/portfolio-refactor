@@ -6,6 +6,7 @@ import { AppDispatch } from '.';
 type Project = {
   slug: string;
   name: string;
+  featured:boolean;
   description: string;
   responsiveness: string | null;
   type: string;

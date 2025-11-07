@@ -6,8 +6,14 @@ export default function ProjectCard({ project }: { project: Project }) {
   const cover = project.images?.[0] ?? '/images/placeholder-landscape.svg';
   return (
     <article className="card">
+      
       <Link href={`/project/${project.slug}`}>
+
       <div className="card__relative-parent">
+         {/* Ribbon */}
+      {project.featured && (
+        <span className="card__ribbon" aria-label="Featured">Featured</span>
+      )}
         <Image className="card__media" src={cover} alt={project.name} width={800} height={250} />
          <p className="card__link">
           <span className="card__link__text">View project </span>

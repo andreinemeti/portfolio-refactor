@@ -62,6 +62,10 @@ useEffect(() => {
     <main>
       {/* HERO with slider */}
       <section className="hero hero--project">
+          {/* Big featured ribbon */}
+        {current.featured && (
+          <span className="hero__ribbon" aria-label="Featured">Featured</span>
+        )}
         <div className="hero__media">
           <Slider
             images={current.images}
