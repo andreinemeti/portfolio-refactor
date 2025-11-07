@@ -23,6 +23,7 @@ export default function HomePage() {
       <section className="hero hero--home">
         <div className="hero__header">
           <h1 className="hero__title">Hi, I&apos;m Andrei</h1>
+          {/* <svg className="nf__art" viewBox="0 0 120 60" aria-hidden="true"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#ffb546"></stop><stop offset="1" stop-color="#f73614ff"></stop></linearGradient></defs><text x="50%" y="50%" dy="0.35em" text-anchor="middle" font-size="22" fill="url(#g)" font-weight="800">Front-end Developer</text></svg> */}
           <p className="hero__subtitle">Front-end Developer</p>
         </div>
       </section>

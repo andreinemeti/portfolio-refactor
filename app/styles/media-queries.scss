@@ -59,9 +59,35 @@
     }
 
      .hero__ribbon {
-    right: -70px;
-    width: 220px;
-    padding: .55rem 0;
-    font-size: .85rem;
+        width: 220px;
+        padding: 0.55rem 0;
+        font-size: 0.85rem;
+        right: unset;
+        left: -70px;
+        bottom: 18px;
+        top: unset;
+  }
+
+    .nav {
+        left: 0;
+        right: 0;
+        margin: auto;
+        transform: none;
+        width: 79vw;
+       
+        max-width: unset;
+  }
+  .nav__list {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;        /* Firefox */
+  }
+  .nav__list::-webkit-scrollbar { /* WebKit */
+    display: none;
+  }
+  .nav__link {
+    padding: 9px 9px;
+    font-size: 12px;
+    
   }
 }

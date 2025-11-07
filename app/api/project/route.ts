@@ -19,7 +19,7 @@ export async function GET(req: NextRequest) {
   }
 
   const tags = tagsParam!.split(',').map(t => t.trim().toLowerCase());
-  const match = projects.find(p => tags.every(t => p.tags.map(x=>x.toLowerCase()).includes(t)));
+  const match = projects.find(p => tags.every(t => p.tags.map(x => x.toLowerCase()).includes(t)));
   if (!match) {
     return NextResponse.json({ error: 'No project with the given tags.' }, { status: 404 });
   }
