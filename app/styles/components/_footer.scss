@@ -1,39 +1,69 @@
-.footer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 2rem;
-    background: #262626;
-    margin-top: 3rem;
+/* === Glass / Apple-style footer === */
+.footer-glass {
+    border-top: 1px solid rgba(255, 255, 255, 0.78);
+    position: relative;
+    z-index: 10;
+    margin: 3rem auto 1.5rem;
+    padding: 10px 14px;
+    background: var(--glass-bg);
+    backdrop-filter: saturate(180%) blur(16px);
+    -webkit-backdrop-filter: saturate(180%) blur(16px);
+    max-width: min(92vw, 980px);
+    color: #fff;
+    border-radius: 0;
+    padding-top:20px;
+}
 
-    &__left {
-        flex: 1 1 420px;
-    }
+/* Links row */
+.footer-glass__links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 6px;
+}
 
-    &__right {
-        flex: 1 1 280px;
-        text-align: center;
-    }
+.footer-glass__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-    form {
-        display: flex;
-        flex-direction: column;
-        gap: .75rem;
-    }
+  padding: 8px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #fff;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
 
-    input,
-    textarea {
-        background: transparent;
-        color: #fff;
-        border: 1px solid #8abdff;
-        padding: .75rem;
-    }
+.footer-glass__link:hover {
+  background: rgba(255, 255, 255, 0.85);
+  color:#000;
+}
 
-    button {
-        background: #EC2424;
-        border: 1px solid #EC2424;
-        padding: .75rem 1rem;
-        cursor: pointer;
-    }
+.footer-glass__link.is-active {
+    background: #ffffff;
+    color: #000000;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Copy line */
+.footer-glass__copy {
+  text-align: center;
+  font-size: .9rem;
+  opacity: .85;
+}
+
+/* mobile tweaks */
+@media (max-width: 420px) {
+  .footer-glass {
+    padding: 8px 10px;
+  }
+  .footer-glass__link {
+    padding: 7px 12px;
+  }
 }
