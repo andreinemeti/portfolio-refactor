@@ -1,3 +1,4 @@
+// components/GridPreviews.tsx
 'use client';
 import { useEffect, useState, useCallback } from 'react';
 import Image from 'next/image';
@@ -20,6 +21,45 @@ export default function GridPreviews({ images = [], className }: GridPreviewsPro
   const next = useCallback(() => setIndex(i => (i + 1) % images.length), [images.length]);
   const prev = useCallback(() => setIndex(i => (i - 1 + images.length) % images.length), [images.length]);
 
+  // Robust scroll lock (desktop + iOS)
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const { documentElement: html, body } = document;
+    const scrollY = window.scrollY || window.pageYOffset;
+
+   
+    html.classList.add('no-scroll');
+    body.classList.add('no-scroll');
+
+    // freeze body in place to prevent iOS scroll-through
+    body.style.position = 'fixed';
+    body.style.top = `-${scrollY}px`;
+    body.style.left = '0';
+    body.style.right = '0';
+    body.style.width = '100%';
+
+    // also prevent overscroll rubber-banding inside
+    body.style.overscrollBehavior = 'none';
+    html.style.overscrollBehavior = 'none';
+
+    return () => {
+      html.classList.remove('no-scroll');
+      body.classList.remove('no-scroll');
+
+      body.style.position = '';
+      body.style.top = '';
+      body.style.left = '';
+      body.style.right = '';
+      body.style.width = '';
+      body.style.overscrollBehavior = '';
+      html.style.overscrollBehavior = '';
+
+      // restore scroll position
+      window.scrollTo(0, scrollY);
+    };
+  }, [isOpen]);
+
   // Keyboard support when lightbox is open
   useEffect(() => {
     if (!isOpen) return;
@@ -29,13 +69,7 @@ export default function GridPreviews({ images = [], className }: GridPreviewsPro
       if (e.key === 'ArrowLeft') prev();
     };
     window.addEventListener('keydown', onKey);
-    // Prevent body scroll
-    const original = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    return () => {
-      window.removeEventListener('keydown', onKey);
-      document.body.style.overflow = original;
-    };
+    return () => window.removeEventListener('keydown', onKey);
   }, [isOpen, close, next, prev]);
 
   if (!images?.length) return null;
@@ -70,14 +104,11 @@ export default function GridPreviews({ images = [], className }: GridPreviewsPro
           role="dialog"
           aria-modal="true"
           aria-label="Image viewer"
-          onClick={(e) => {
-            // Close when clicking the dark backdrop only
-            if (e.target === e.currentTarget) close();
-          }}
+          onClick={(e) => { if (e.target === e.currentTarget) close(); }}
         >
           <div className="lightbox__stage">
             <Image
-              key={images[index]} // force fade re-run when src changes
+              key={images[index]}
               src={images[index]}
               alt={`Image ${index + 1} of ${images.length}`}
               fill
@@ -86,10 +117,7 @@ export default function GridPreviews({ images = [], className }: GridPreviewsPro
               priority
             />
 
-            {/* Controls */}
-            <button className="lightbox__btn lightbox__btn--close" onClick={close} aria-label="Close viewer">
-              ×
-            </button>
+            <button className="lightbox__btn lightbox__btn--close" onClick={close} aria-label="Close viewer">×</button>
             {images.length > 1 && (
               <>
                 <button className="lightbox__btn lightbox__btn--prev" onClick={prev} aria-label="Previous image">

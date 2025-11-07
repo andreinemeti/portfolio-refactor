@@ -71,6 +71,10 @@
     transition: opacity .2s ease;
 }
 
+.slider__arrow:hover {
+    background: rgba(0, 0, 0, .7);
+}
+
 .slider__arrow--prev {
     left: 8px;
 }

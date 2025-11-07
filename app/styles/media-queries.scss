@@ -11,8 +11,11 @@
 @media all and (max-width:768px) {
     .container {
         max-width:calc(100vw - 50px);
-        padding-block: 1rem;
+        padding: 0.5rem;
     }
+
+
+   
 
     .slider__arrow {
         display:none;
@@ -30,11 +33,17 @@
     .hero--home .hero__header, .hero--project .hero__header, .hero--contact .hero__header {
         max-width:60%;
     }
-    .hero--home .hero__title, .hero--project .hero__title, .hero--contact .hero__title {
+    .hero--home .hero__title, .hero--project .hero__title, .hero--contact .hero__title, h2 {
         font-size:1.8rem;
     }
 
     .hero--home .hero__subtitle, .hero--project .hero__subtitle, .hero--contact .hero__subtitle {
         font-size:1.5rem;
+    }
+}
+
+@media all and (max-width:480px){
+    .card {
+            margin: 15px 0;
     }
 }

@@ -131,7 +131,7 @@ useEffect(() => {
       {/* CTA strip */}
       <section className="container cta-strip">
         <div className="cta-strip__text">
-          <h3 className="h2">Ready to explore more?</h3>
+          <h3 className="h3">Ready to explore more?</h3>
           <p className="muted">Check out my next featured project and discover more amazing work.</p>
         </div>
         {next && (

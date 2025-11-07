@@ -5,15 +5,15 @@
     display: grid;
     place-items: center;
     z-index: 60;
-    padding: 1rem;
+  
 }
 
 .lightbox__stage {
     position: relative;
-    width: min(96vw, 1200px);
-    height: min(86vh, 760px);
+    width: min(100vw, 1200px);
+    height: min(70vh, 760px);
     border-radius: 14px;
-    overflow: hidden;
+   
     background: #000;
     box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
 }
@@ -58,7 +58,7 @@
 
 .lightbox__btn--close {
     background: #181818;
-    top: 10px;
+    top: 25px;
     right: 10px;
     font-size: 30px;
 }
