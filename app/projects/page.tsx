@@ -64,7 +64,7 @@ export default function ProjectsPage() {
 
         {/* Filter pills (clickable, multi-select) */}
         {allTags.length > 0 && (
-          <div className="pill-list" role="listbox" aria-label="Filter by tags" style={{ marginBottom: '.5rem' }}>
+          <div className="pill-list filter-pill-list" role="listbox" aria-label="Filter by tags" style={{ marginBottom: '.5rem' }}>Filter by tags: 
             {allTags.map(tag => {
               const active = selected.includes(tag);
               return (
