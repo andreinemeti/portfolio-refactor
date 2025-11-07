@@ -27,7 +27,7 @@ export default function ServicesPage() {
             <section className="hero hero--project hero--services services__hero">
                 <div className="hero__header">
                     <h1 className="hero__title">Services</h1>
-                    <p className="hero__subtitle">Designing & building fast, elegant, accessible web experiences</p>
+                    <p className="hero__subtitle">Fast, elegant, accessible web experiences</p>
                 </div>
             </section>
 
