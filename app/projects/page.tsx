@@ -10,7 +10,7 @@ import { Breadcrumbs } from '@/components/Breadcrumbs';
 export default function ProjectsPage() {
   const dispatch = useAppDispatch();
   const { list, status, tags } = useAppSelector(s => s.projects);
-
+  const [showFilters, setShowFilters] = useState(false); // ⬅️ add
   // multi-select filter state
   const [selected, setSelected] = useState<string[]>([]);
 
@@ -85,46 +85,70 @@ export default function ProjectsPage() {
           )}
         </div>
 
-        <div className="section-subtitle">Click to filter by tags:{' '}</div>
+        
         {/* Filter pills (clickable, multi-select) */}
+          {/* Filters toggle */}
+        {allTags.length > 0 && (
+          <div className="filters-toggle-row" style={{ marginBottom: '.5rem' }}>
+            <button
+              type="button"
+              className="btn btn--ghost"
+              onClick={() => setShowFilters(v => !v)}
+              aria-expanded={showFilters}
+              aria-controls="project-filters"
+              title={showFilters ? 'Hide filters' : 'Show filters'}
+            >
+              {/* Optional: add an icon/chevron via CSS */}
+              Filters{selected.length > 0 ? ` (${selected.length} selected)` : ''}
+            </button>
+          </div>
+        )}
+
+        {/* Collapsible filters area */}
         {allTags.length > 0 && (
           <div
-            className="pill-list filter-pill-list"
-            role="listbox"
-            aria-label="Filter by tags"
-            style={{ marginBottom: '.5rem' }}
+            id="project-filters"
+            hidden={!showFilters}
+            aria-hidden={!showFilters}
           >
-            
-     {allTags.map(tag => {
-              const active = selected.includes(tag);
-              const count =
-                visibleTagCounts[tag] ??
-                (selected.length === 0 ? tagCounts[tag] ?? 0 : 0);
+            <div className="section-subtitle">Select one or more tags:{' '}</div>
 
-              // Gray-out when this tag (if added) would yield zero results.
-              // Only gray out for NON-selected tags.
-              const isDisabled = !active && selected.length > 0 && count === 0;
+            <div
+              className="pill-list filter-pill-list"
+              role="listbox"
+              aria-label="Filter by tags"
+              style={{ marginBottom: '.5rem' }}
+            >
+              {allTags.map(tag => {
+                const active = selected.includes(tag);
+                const count =
+                  visibleTagCounts[tag] ??
+                  (selected.length === 0 ? tagCounts[tag] ?? 0 : 0);
 
-              const onClick = () => {
-                if (isDisabled) return;            // prevent toggling dead-ends
-                toggleTag(tag);
-              };
+                // Gray out non-selected tags that would yield zero results
+                const isDisabled = !active && selected.length > 0 && count === 0;
 
-              return (
-                <button
-                  key={tag}
-                  type="button"
-                  onClick={onClick}
-                  className={`pill pill--button ${active ? 'pill--active' : ''} ${isDisabled ? 'pill--disabled' : ''}`}
-                  aria-pressed={active}
-                  aria-disabled={isDisabled}
-                  disabled={isDisabled}
-                  title={`${tag} (${count} projects)`}
-                >
-                  {tag}&nbsp;<span className="pill__count">({count})</span>
-                </button>
-              );
-            })}
+                const onClick = () => {
+                  if (isDisabled) return;
+                  toggleTag(tag);
+                };
+
+                return (
+                  <button
+                    key={tag}
+                    type="button"
+                    onClick={onClick}
+                    className={`pill pill--button ${active ? 'pill--active' : ''} ${isDisabled ? 'pill--disabled' : ''}`}
+                    aria-pressed={active}
+                    aria-disabled={isDisabled}
+                    disabled={isDisabled}
+                    title={`${tag} (${count} projects)`}
+                  >
+                    {tag}&nbsp;<span className="pill__count">({count})</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         )}
 
