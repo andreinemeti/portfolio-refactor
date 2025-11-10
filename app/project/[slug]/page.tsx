@@ -19,6 +19,7 @@ export default function ProjectPage() {
   const slug = String(params.slug);
   const dispatch = useAppDispatch();
   const { current, list } = useAppSelector(s => s.projects);
+  
   const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {

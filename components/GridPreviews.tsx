@@ -74,11 +74,12 @@ export default function GridPreviews({ images = [], className }: GridPreviewsPro
 
   if (!images?.length) return null;
 
+
   return (
     <>
       {/* PREVIEW GRID */}
       <div className={`grid-previews ${className ?? ''}`}>
-        {images.slice(0, 4).map((src, i) => (
+        {images.map((src, i) => (
           <button
             key={src + i}
             className="grid-previews__item"
@@ -89,6 +90,7 @@ export default function GridPreviews({ images = [], className }: GridPreviewsPro
               src={src}
               alt={`Preview ${i + 1}`}
               fill
+              quality={95} 
               sizes="(max-width: 768px) 50vw, 33vw"
               className="grid-previews__img"
               priority={i === 0}
