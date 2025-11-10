@@ -92,7 +92,7 @@ export default function ProjectPage() {
         <div className="project-content__main">
           <h2 className="h2">Project description</h2>
           <p className="lead">{current.description}</p>
-          <p className="muted"><strong>Built in:</strong> {yearFromISO(current.createdAt)}</p>
+          <p className="lead">Built in: {yearFromISO(current.createdAt)}</p>
 
           {/* Pills */}
 
