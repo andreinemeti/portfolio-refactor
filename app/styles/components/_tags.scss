@@ -33,6 +33,11 @@
     transition:.2s all;
 }
 
+.pill--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: auto; 
+}
 
 .pill-list.smaller .pill {
     font-size: .65rem;

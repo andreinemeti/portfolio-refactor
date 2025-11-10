@@ -32,10 +32,34 @@ export default function ProjectsPage() {
     return list.filter(p => selected.every(tag => p.tags.includes(tag)));
   }, [list, selected]);
 
-  // Optionally compute unique tags from projects (if store.tags isn’t strict)
-  // const allTags = useMemo(() => Array.from(new Set(list.flatMap(p => p.tags))).sort(), [list]);
   // Using store tags:
   const allTags = tags ?? [];
+
+  // 1) Base counts per tag (from the full list)
+  const tagCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const p of list) {
+      for (const t of p.tags ?? []) counts[t] = (counts[t] ?? 0) + 1;
+    }
+    return counts;
+  }, [list]);
+
+  // 2) Visible counts per tag given current selection (simulate adding that tag)
+   const visibleTagCounts = useMemo(() => {
+    if (selected.length === 0) return tagCounts;
+    const counts: Record<string, number> = {};
+    for (const t of allTags) {
+      if (selected.includes(t)) {
+        counts[t] = filtered.length;
+      } else {
+        const hypothetical = list.filter(p =>
+          [...selected, t].every(tag => p.tags.includes(tag))
+        );
+        counts[t] = hypothetical.length;
+      }
+    }
+    return counts;
+  }, [allTags, filtered.length, list, selected, tagCounts]);
 
   return (
     <main>
@@ -54,7 +78,6 @@ export default function ProjectsPage() {
             All projects <span className="count">({filtered.length})</span>
           </h2>
 
-          {/* Clear filters (only when any selected) */}
           {selected.length > 0 && (
             <button className="btn btn--ghost" onClick={clearFilters}>
               Clear filters ({selected.length})
@@ -62,20 +85,43 @@ export default function ProjectsPage() {
           )}
         </div>
 
+        <div className="section-subtitle">Click to filter by tags:{' '}</div>
         {/* Filter pills (clickable, multi-select) */}
         {allTags.length > 0 && (
-          <div className="pill-list filter-pill-list" role="listbox" aria-label="Filter by tags" style={{ marginBottom: '.5rem' }}>Filter by tags: 
-            {allTags.map(tag => {
+          <div
+            className="pill-list filter-pill-list"
+            role="listbox"
+            aria-label="Filter by tags"
+            style={{ marginBottom: '.5rem' }}
+          >
+            
+     {allTags.map(tag => {
               const active = selected.includes(tag);
+              const count =
+                visibleTagCounts[tag] ??
+                (selected.length === 0 ? tagCounts[tag] ?? 0 : 0);
+
+              // Gray-out when this tag (if added) would yield zero results.
+              // Only gray out for NON-selected tags.
+              const isDisabled = !active && selected.length > 0 && count === 0;
+
+              const onClick = () => {
+                if (isDisabled) return;            // prevent toggling dead-ends
+                toggleTag(tag);
+              };
+
               return (
                 <button
                   key={tag}
                   type="button"
-                  onClick={() => toggleTag(tag)}
-                  className={`pill pill--button ${active ? 'pill--active' : ''}`}
+                  onClick={onClick}
+                  className={`pill pill--button ${active ? 'pill--active' : ''} ${isDisabled ? 'pill--disabled' : ''}`}
                   aria-pressed={active}
+                  aria-disabled={isDisabled}
+                  disabled={isDisabled}
+                  title={`${tag} (${count} projects)`}
                 >
-                  {tag}
+                  {tag}&nbsp;<span className="pill__count">({count})</span>
                 </button>
               );
             })}

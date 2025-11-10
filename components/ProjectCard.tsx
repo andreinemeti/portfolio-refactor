@@ -3,7 +3,9 @@ import Image from 'next/image';
 import type { Project } from '@/lib/data/projects';
 import NextIcon from '@/components/icons/NextIcon';
 export default function ProjectCard({ project }: { project: Project }) {
+
   const cover = project.images?.[0] ?? '/images/placeholder-landscape.svg';
+  const uniqueTags = Array.from(new Set(project.tags ?? []));
   return (
     <article className="card">
       
@@ -14,7 +16,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       {project.featured && (
         <span className="card__ribbon" aria-label="Featured">Featured</span>
       )}
-        <Image className="card__media" src={cover} alt={project.name} width={800} height={250} />
+        <Image className="card__media" src={cover} alt={project.name} width={800} height={200} />
          <p className="card__link">
           <span className="card__link__text">View project </span>
           <NextIcon className="icon" size={20}/>
@@ -24,7 +26,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         <h3 className="card__title">{project.name}</h3>
         <p>{project.description}</p>
         <div className="pill-list smaller">
-          {project.tags.map(t => <span key={t} className="pill">{t}</span>)}
+          {uniqueTags.map(t => <span key={t} className="pill">{t}</span>)}
         </div>
        
       </div>

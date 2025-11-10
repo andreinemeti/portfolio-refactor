@@ -4,6 +4,7 @@ import { AppDispatch } from '.';
 // import type { AppDispatch, RootState } from '@/store';
 
 type Project = {
+  id: number;
   slug: string;
   name: string;
   featured:boolean;
