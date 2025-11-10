@@ -111,7 +111,7 @@ export default function ProjectsPage() {
             hidden={!showFilters}
             aria-hidden={!showFilters}
           >
-            <div className="section-subtitle">Select one or more tags:{' '}</div>
+            <div className="section-subtitle">Select one or more technologies:{' '}</div>
 
             <div
               className="pill-list filter-pill-list"
