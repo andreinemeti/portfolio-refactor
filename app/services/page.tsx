@@ -12,10 +12,11 @@ import UiIcon from '@/components/icons/UiIcon';
 import DevIcon from '@/components/icons/DevIcon';
 import PerfIcon from '@/components/icons/PerfIcon';
 import MagneticItem from '@/components/MagneticItem';
+import HeroFX from '@/components/HeroFX';
 
 
 export default function ServicesPage() {
-   
+
     const Icons = {
         dev: DevIcon,
         ui: UiIcon,
@@ -26,6 +27,7 @@ export default function ServicesPage() {
         <main className="services">
             {/* Hero */}
             <section className="hero hero--project hero--services services__hero">
+                <HeroFX />
                 <div className="hero__header">
                     <h1 className="hero__title">Services</h1>
                     <p className="hero__subtitle">Fast, elegant, accessible</p>
@@ -35,40 +37,40 @@ export default function ServicesPage() {
             <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Services' }]} />
 
             <section className="services__section container">
-        <header className="services__section-header">
-          <h2 className="services__section-title h2">What I do</h2>
-        </header>
+                <header className="services__section-header">
+                    <h2 className="services__section-title h2">What I do</h2>
+                </header>
 
-        <div className="services__grid">
-          <ServiceCard
-            icon={<DevIcon />}
-            title="Frontend Development"
-            desc="Modern UI with Next.js/React, TypeScript, and scalable architectures."
-            features={['Next.js (App Router)', 'TypeScript + clean patterns', 'Responsive & a11y-first']}
-            ctaHref="/contact"
-            ctaLabel="Discuss your build"
-            className="service-card--accent"
-          />
+                <div className="services__grid">
+                    <ServiceCard
+                        icon={<DevIcon />}
+                        title="Frontend Development"
+                        desc="Modern UI with Next.js/React, TypeScript, and scalable architectures."
+                        features={['Next.js (App Router)', 'TypeScript + clean patterns', 'Responsive & a11y-first']}
+                        ctaHref="/contact"
+                        ctaLabel="Discuss your build"
+                        className="service-card--accent"
+                    />
 
-          <ServiceCard
-            icon={<UiIcon />}
-            title="UI/UX Implementation"
-            desc="High-fidelity, component-driven builds from Figma/Sketch with thoughtful motion."
-            features={['Design-to-code fidelity', 'Micro-interactions & motion', 'Design systems & tokens']}
-            ctaHref="/projects"
-            ctaLabel="See examples"
-          />
+                    <ServiceCard
+                        icon={<UiIcon />}
+                        title="UI/UX Implementation"
+                        desc="High-fidelity, component-driven builds from Figma/Sketch with thoughtful motion."
+                        features={['Design-to-code fidelity', 'Micro-interactions & motion', 'Design systems & tokens']}
+                        ctaHref="/projects"
+                        ctaLabel="See examples"
+                    />
 
-          <ServiceCard
-            icon={<PerfIcon />}
-            title="Performance & SEO"
-            desc="Lighthouse-focused setups with strong CWV, semantic HTML & metadata."
-            features={['Image & code optimization', 'Core Web Vitals tuning', 'Structured metadata']}
-            ctaHref="/contact"
-            ctaLabel="Improve your scores"
-          />
-        </div>
-      </section>
+                    <ServiceCard
+                        icon={<PerfIcon />}
+                        title="Performance & SEO"
+                        desc="Lighthouse-focused setups with strong CWV, semantic HTML & metadata."
+                        features={['Image & code optimization', 'Core Web Vitals tuning', 'Structured metadata']}
+                        ctaHref="/contact"
+                        ctaLabel="Improve your scores"
+                    />
+                </div>
+            </section>
 
             {/* Process */}
             {/* Process */}
@@ -79,38 +81,38 @@ export default function ServicesPage() {
 
                 <ol className="process" role="list">
 
-                    <MagneticItem className="card-container"  radius={90} strength={0.22} tilt={3}>
-                    <li className="process__item">
-                        <div className="process__content">
-                            <h3 className="process__title">Discovery</h3>
-                            <p className="process__desc">
-                                Goals, constraints, audience, success metrics.
-                            </p>
-                        </div>
-                    </li>
+                    <MagneticItem className="card-container" radius={90} strength={0.22} tilt={3}>
+                        <li className="process__item">
+                            <div className="process__content">
+                                <h3 className="process__title">Discovery</h3>
+                                <p className="process__desc">
+                                    Goals, constraints, audience, success metrics.
+                                </p>
+                            </div>
+                        </li>
                     </MagneticItem>
 
-                    <MagneticItem className="card-container"  radius={90} strength={0.22} tilt={3}>
-                    <li className="process__item">
-                        <div className="process__content">
-                            <h3 className="process__title">Design handoff</h3>
-                            <p className="process__desc">
-                                Systems, components, and motion specs.
-                            </p>
-                        </div>
-                    </li>
-</MagneticItem>
+                    <MagneticItem className="card-container" radius={90} strength={0.22} tilt={3}>
+                        <li className="process__item">
+                            <div className="process__content">
+                                <h3 className="process__title">Design handoff</h3>
+                                <p className="process__desc">
+                                    Systems, components, and motion specs.
+                                </p>
+                            </div>
+                        </li>
+                    </MagneticItem>
 
 
-<MagneticItem className="card-container"  radius={90} strength={0.22} tilt={3}>
-                    <li className="process__item">
-                        <div className="process__content">
-                            <h3 className="process__title">Implementation</h3>
-                            <p className="process__desc">
-                                Iterative, accessible, tested UI.
-                            </p>
-                        </div>
-                    </li>
+                    <MagneticItem className="card-container" radius={90} strength={0.22} tilt={3}>
+                        <li className="process__item">
+                            <div className="process__content">
+                                <h3 className="process__title">Implementation</h3>
+                                <p className="process__desc">
+                                    Iterative, accessible, tested UI.
+                                </p>
+                            </div>
+                        </li>
                     </MagneticItem>
 
 
@@ -123,12 +125,12 @@ export default function ServicesPage() {
                 title="Let’s build something great"
                 subtitle="Tell me about your project and timeline."
                 href="/contact"
-                 rightSlot={
-          <Link className="btn btn--primary" href={`/contact`}>
-            <span className="btn__text">Contact me</span>
-            <NextIcon className="icon" size={20} />
-          </Link>
-        }
+                rightSlot={
+                    <Link className="btn btn--primary" href={`/contact`}>
+                        <span className="btn__text">Contact me</span>
+                        <NextIcon className="icon" size={20} />
+                    </Link>
+                }
             />
         </main>
     );

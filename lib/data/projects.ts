@@ -45,9 +45,9 @@ export const projects: Project[] = [
     lastMod: '2018-09-15T00:00:00.000Z'
   },
   {
-    id: 3,
+  id: 3,
   slug: 'crossa-cms',
-  featured: false,
+  featured: true,
   name: 'Crossa CMS',
   description: 'Back-office CMS/admin for Crossa.',
   type: 'CMS',
@@ -60,7 +60,7 @@ export const projects: Project[] = [
   {
     id: 4,
     slug: 'zoniz-restaurant',
-    featured: false,
+    featured: true,
     name: 'Zoniz Restaurant',
     description: 'Product website for Zoniz Restaurant.',
     type: 'Product site',
@@ -420,7 +420,7 @@ export const projects: Project[] = [
   {
     id: 30,
     slug: 'sosito-cms',
-    featured: false,
+    featured: true,
     name: 'Sosito CMS',
     description: 'Sosito content management system (React).',
     type: 'CMS',
@@ -450,7 +450,7 @@ export const projects: Project[] = [
   {
     id: 32,
     slug: 'zoniz-web-ordering',
-    featured: false,
+    featured: true,
     name: 'Zoniz Web Ordering',
     description: 'React-based web ordering live flow (demo).',
     type: 'Web App',
@@ -537,7 +537,7 @@ export const projects: Project[] = [
   {
     id: 38,
     slug: 'architecture-portfolio',
-    featured: true,
+    featured: false,
     name: 'Architecture Portfolio',
     description: 'Minimal portfolio template for an architecture studio.',
     type: "Landing page",

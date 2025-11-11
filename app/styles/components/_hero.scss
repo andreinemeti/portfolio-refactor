@@ -34,6 +34,7 @@
         .hero__subtitle {
             font-size: 1.7rem;
             margin-top: 1rem;
+            margin-bottom:0;
            
         }
     }
@@ -142,4 +143,72 @@
     pointer-events: none;
     border-radius: 2px;
   }
+}
+
+
+
+
+/* --- HERO FX --- */
+.hero--home {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-fx {
+  position: absolute;
+  inset: 0;
+  z-index: 0;             /* under your .hero__header */
+  pointer-events: none;
+  isolation: isolate;     /* keep blend modes contained */
+}
+
+/* Blurred radial “aurora” blobs */
+.hero-fx__blob {
+  position: absolute;
+  width: 60vmax; height: 60vmax;
+  border-radius: 50%;
+  filter: blur(36px);
+  mix-blend-mode: screen;
+  animation: hero-float 9s ease-in-out infinite alternate;
+}
+.hero-fx__blob--a {
+  top: -12vmax; left: -10vmax;
+  background: radial-gradient(closest-side, rgba(255,181,70,0.44), rgba(0,0,0,0) 70%);
+}
+.hero-fx__blob--b {
+  bottom: -14vmax; right: -8vmax;
+  background: radial-gradient(closest-side, rgba(109,205,255,0.35), rgba(0,0,0,0) 70%);
+  animation-delay: .6s;
+}
+@keyframes hero-float {
+  from { transform: translate3d(0,0,0) scale(1); }
+  to   { transform: translate3d(2%, -3%, 0) scale(1.05); }
+}
+
+/* Cursor-following spotlight */
+.hero-fx__spot {
+  position: fixed;        /* follow cursor across viewport */
+  width: 28vmin; height: 28vmin;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255,255,255,0.18), rgba(255,255,255,0) 75%);
+  mix-blend-mode: soft-light;
+  filter: blur(10px);
+}
+
+/* Optional: glassy header card upgrade */
+.hero--home .hero__header {
+  backdrop-filter: blur(10px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow:
+    0 8px 40px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.hero--home .hero__title {
+  background: linear-gradient(92deg, #fff 0%, #ffe9c6 30%, #ffb546 65%, #ffd7a6 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  text-shadow: none;
+      color: #ffffff;
 }
