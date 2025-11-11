@@ -341,8 +341,8 @@ export const projects: Project[] = [
     tags: ['HTML5', 'CSS3', 'JavaScript'],
     images: ['/images/zoniz-retail-website/1.jpg', '/images/zoniz-retail-website/2.jpg', '/images/zoniz-retail-website/3.jpg', '/images/zoniz-retail-website/4.jpg'],
     externalUrl: 'https://zoniz-retail.com/',
-     createdAt: '2018-09-15T00:00:00.000Z',
-    lastMod: '2018-09-15T00:00:00.000Z'
+     createdAt: '2022-09-15T00:00:00.000Z',
+    lastMod: '2022-09-15T00:00:00.000Z'
   },
   {
     id: 25,
@@ -353,10 +353,10 @@ export const projects: Project[] = [
     type: 'Product site',
     responsiveness: '100%',
     tags: ['HTML5', 'CSS3', 'JavaScript'],
-    images: null,
+    images: ['/images/zoniz-hotel-website/1.jpg', '/images/zoniz-hotel-website/2.jpg', '/images/zoniz-hotel-website/3.jpg', '/images/zoniz-hotel-website/4.jpg'],
     externalUrl: 'https://zoniz-hotel.com/',
-     createdAt: '2018-09-15T00:00:00.000Z',
-    lastMod: '2018-09-15T00:00:00.000Z'
+     createdAt: '2022-09-15T00:00:00.000Z',
+    lastMod: '2022-09-15T00:00:00.000Z'
   },
   {
     id: 26,
@@ -369,8 +369,8 @@ export const projects: Project[] = [
     tags: ['HTML5', 'CSS3', 'JavaScript'],
     images: null,
     externalUrl: 'https://zoniz-citizens.com/',
-     createdAt: '2018-09-15T00:00:00.000Z',
-    lastMod: '2018-09-15T00:00:00.000Z'
+     createdAt: '2022-09-15T00:00:00.000Z',
+    lastMod: '2022-09-15T00:00:00.000Z'
   },
   {
     id: 27,
@@ -384,8 +384,8 @@ export const projects: Project[] = [
        images: ['/images/kokophucket.com-website/1.jpg', '/images/kokophucket.com-website/2.jpg', 
       '/images/kokophucket.com-website/3.jpg', '/images/kokophucket.com-website/4.jpg'],
     externalUrl: 'https://www.kokophuket.com/',
-     createdAt: '2018-09-15T00:00:00.000Z',
-    lastMod: '2018-09-15T00:00:00.000Z'
+     createdAt: '2023-09-15T00:00:00.000Z',
+    lastMod: '2023-09-15T00:00:00.000Z'
   },
   {
     id: 28,
@@ -398,15 +398,15 @@ export const projects: Project[] = [
     tags: ['ReactJS', 'PHP', 'HTML5', 'CSS3', 'SEO'],
     images: null,
     externalUrl: 'https://www.zoniz.com/cities/',
-     createdAt: '2018-09-15T00:00:00.000Z',
-    lastMod: '2018-09-15T00:00:00.000Z'
+     createdAt: '2022-09-15T00:00:00.000Z',
+    lastMod: '2022-09-15T00:00:00.000Z'
   },
   {
     id: 29,
     slug: 'zoniz-cms',
     featured: false,
     name: 'Zoniz CMS',
-    description: 'Back-office proximity CMS (React).',
+    description: 'Zoniz Content Management System.',
     type: 'CMS',
     responsiveness: '100%',
     tags: ['Google Web Toolkit', 'Less', 'CSS3', 'Email templates'],
@@ -420,14 +420,14 @@ export const projects: Project[] = [
     slug: 'sosito-cms',
     featured: false,
     name: 'Sosito CMS',
-    description: 'Sosito management console (React).',
+    description: 'Sosito content management system (React).',
     type: 'CMS',
     responsiveness: '100%',
     tags: ['ReactJS'],
     images: null,
     externalUrl: 'https://app.sosito.ro/',
-     createdAt: '2018-09-15T00:00:00.000Z',
-    lastMod: '2018-09-15T00:00:00.000Z'
+     createdAt: '2022-09-15T00:00:00.000Z',
+    lastMod: '2022-09-15T00:00:00.000Z'
   },
   {
     id: 31,
@@ -441,22 +441,22 @@ export const projects: Project[] = [
     images: ['/images/brombler.com-website/1.jpg', '/images/brombler.com-website/2.jpg', 
       '/images/brombler.com-website/3.jpg', '/images/brombler.com-website/4.jpg'],
     externalUrl: 'https://brombler.com/',
-     createdAt: '2018-09-15T00:00:00.000Z',
-    lastMod: '2018-09-15T00:00:00.000Z'
+     createdAt: '2023-09-15T00:00:00.000Z',
+    lastMod: '2023-09-15T00:00:00.000Z'
   },
   {
     id: 32,
-    slug: 'zoniz-web-ordering-demo',
+    slug: 'zoniz-web-ordering',
     featured: false,
     name: 'Zoniz Web Ordering',
-    description: 'React-based web ordering flow (demo).',
+    description: 'React-based web ordering live flow (demo).',
     type: 'Web App',
     responsiveness: '100%',
-    tags: ['ReactJS'],
+    tags: ['ReactJS', 'Sass', 'Rest APIs'],
     images: null,
     externalUrl: 'https://demo.zoniz.com/anonorder/#/links/tables/demo_micro/B1',
-    createdAt: '2018-09-15T00:00:00.000Z',
-    lastMod: '2018-09-15T00:00:00.000Z'
+    createdAt: '2021-09-15T00:00:00.000Z',
+    lastMod: '2021-09-15T00:00:00.000Z'
   },
   {
     id: 33,
