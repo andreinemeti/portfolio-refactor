@@ -6,7 +6,8 @@ import { fetchProjects } from '@/store/projectsSlice';
 import ProjectCard from '@/components/ProjectCard';
 import Loading from '@/components/Loading';
 import NextIcon from '@/components/icons/NextIcon';
-
+import FloatingTargetCursor from '@/components/FloatingTargetCursor';
+import MagneticItem from '@/components/MagneticItem';
 export default function HomePage() {
   const dispatch = useAppDispatch();
   const { list, status } = useAppSelector(s => s.projects);
@@ -32,7 +33,7 @@ export default function HomePage() {
         </div>
       </section>
 
-
+<FloatingTargetCursor within=".flex-container"  activeSize={140} />
       {/* TECH STACK */}
       {/* <section className="container tech" aria-labelledby="tech-title">
         <div className="tech__header">
@@ -59,14 +60,26 @@ export default function HomePage() {
         {status === 'loading' && <Loading />}
 
         <div className="flex-container" style={{ marginTop: '1rem' }}>
-          {featured.map(p => <ProjectCard key={p.slug} project={p} />)}
+          {featured.map(p => 
+          <MagneticItem className="card-container" key={p.slug } radius={90} strength={0.22} tilt={3}>
+          <div
+      key={p.slug}
+      className="card-target"
+      data-cursor="target"
+      data-cursor-images={p.images?.slice(0,4).join(',') ?? ''}
+    >
+          <ProjectCard key={p.slug} project={p} />
+          </div>
+          </MagneticItem>
+          )}
         </div>
-
-        <Link href="/projects" className="btn btn--ghost">
+       
+        <Link href="/projects" className="btn btn--primary">
           <span className="btn__text">See all projects</span>
           <span className="count">({list.length})</span>
           <NextIcon className="icon" size={20} />
         </Link>
+      
       </section>
     </main>
   );

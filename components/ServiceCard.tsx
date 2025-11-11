@@ -4,6 +4,7 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
 import NextIcon from './icons/NextIcon';
+import MagneticItem from './MagneticItem';
 
 type ServiceCardProps = {
   icon: ReactNode;
@@ -25,6 +26,7 @@ export default function ServiceCard({
   className,
 }: ServiceCardProps) {
   return (
+    <MagneticItem className="card-container"  radius={90} strength={0.22} tilt={3}>
     <article className={`service-card ${className ?? ''}`}>
       <div className="service-card__icon" aria-hidden="true">
         {icon}
@@ -49,5 +51,6 @@ export default function ServiceCard({
         </div>
       )}
     </article>
+    </MagneticItem>
   );
 }

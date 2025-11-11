@@ -13,7 +13,8 @@ import GridPreviews from '@/components/GridPreviews';
 import NotFoundClient from '@/components/NotFoundClient';
 import NextIcon from '@/components/icons/NextIcon';
 import CtaStrip from '@/components/CtaStrip';
-
+import FloatingTargetCursor from '@/components/FloatingTargetCursor';
+import MagneticItem from '@/components/MagneticItem';
 export default function ProjectPage() {
   const params = useParams();
   const slug = String(params.slug);
@@ -62,6 +63,7 @@ export default function ProjectPage() {
 
   return (
     <main>
+       <FloatingTargetCursor within=".previews-grid" activeSize={180} minWidth={768} ringText="OPEN • "  />
       {/* HERO with slider */}
       <section className="hero hero--project">
         {/* Big featured ribbon */}
@@ -99,7 +101,9 @@ export default function ProjectPage() {
           {current.tags?.length > 0 && (
             <div className="pill-list" aria-label="Technologies used">
               {current.tags.map(t => (
+                 <MagneticItem key={t } radius={90} strength={0.22} tilt={3}>
                 <span key={t} className="pill">{t}</span>
+                </MagneticItem>
               ))}
             </div>
           )}

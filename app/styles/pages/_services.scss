@@ -30,17 +30,9 @@
 
 /* Responsive grid of service cards (element of services) */
 .services__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-
-    @media (min-width: 760px) {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    @media (min-width: 1100px) {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
+    display: flex;
+    flex-wrap:wrap;
+  
 }
 
 /* ===== Service card (BLOCK) ===== */
@@ -52,6 +44,7 @@
     display: grid;
     gap: .5rem;
     min-height: 240px;
+    height:100%;
 }
 
 .service-card__icon {
@@ -85,9 +78,9 @@
 /* Process (BLOCK) */
 .process {
     counter-reset: step;
-    display: grid;
-    gap: 2.25rem 4rem;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-wrap: wrap;
+
     margin: 1.25rem 0 0;
     padding-left: 0;
 
@@ -109,6 +102,7 @@
     background: rgba(255, 255, 255, .04);
     box-shadow: 0 1px 0 rgba(255, 255, 255, .06) inset, 0 0 0 1px rgba(255, 255, 255, .06);
     padding: 1rem 1rem 1.1rem;
+    height:100%;
 }
 
 /* Number badge via counter */

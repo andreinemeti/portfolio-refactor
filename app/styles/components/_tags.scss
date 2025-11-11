@@ -31,6 +31,21 @@
     font-size: .85rem;
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06);
     transition:.2s all;
+      background: #0f0f0f;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 999px;
+  color: #d7e2ee;
+  padding: 6px 10px;
+  position: relative;
+  transform: translateZ(18px);
+}
+
+.pill::after{
+  content:"";
+  position:absolute; inset:0; border-radius:inherit;
+  background:
+    linear-gradient(120deg, rgba(255,255,255,.18), transparent 40% 60%, rgba(255,255,255,.1));
+  opacity:.35;
 }
 
 .pill--disabled {

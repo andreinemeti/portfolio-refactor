@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import MagneticItem from './MagneticItem';
 
 type Props = {
   title?: string;
@@ -30,7 +31,9 @@ export default function NotFoundClient({
       <p className="nf__subtitle">{message}</p>
 
       <div className="nf__actions">
+        <MagneticItem className=""  radius={90} strength={0.22} tilt={3}>
         <Link href="/" className="btn btn--primary">Go Home</Link>
+        </MagneticItem>
       </div>
     </div>
     </main>

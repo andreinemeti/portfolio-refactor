@@ -11,6 +11,7 @@ import CtaStrip from '@/components/CtaStrip';
 import UiIcon from '@/components/icons/UiIcon';
 import DevIcon from '@/components/icons/DevIcon';
 import PerfIcon from '@/components/icons/PerfIcon';
+import MagneticItem from '@/components/MagneticItem';
 
 
 export default function ServicesPage() {
@@ -77,6 +78,8 @@ export default function ServicesPage() {
                 </header>
 
                 <ol className="process" role="list">
+
+                    <MagneticItem className="card-container"  radius={90} strength={0.22} tilt={3}>
                     <li className="process__item">
                         <div className="process__content">
                             <h3 className="process__title">Discovery</h3>
@@ -85,7 +88,9 @@ export default function ServicesPage() {
                             </p>
                         </div>
                     </li>
+                    </MagneticItem>
 
+                    <MagneticItem className="card-container"  radius={90} strength={0.22} tilt={3}>
                     <li className="process__item">
                         <div className="process__content">
                             <h3 className="process__title">Design handoff</h3>
@@ -94,7 +99,10 @@ export default function ServicesPage() {
                             </p>
                         </div>
                     </li>
+</MagneticItem>
 
+
+<MagneticItem className="card-container"  radius={90} strength={0.22} tilt={3}>
                     <li className="process__item">
                         <div className="process__content">
                             <h3 className="process__title">Implementation</h3>
@@ -103,15 +111,10 @@ export default function ServicesPage() {
                             </p>
                         </div>
                     </li>
+                    </MagneticItem>
 
-                    <li className="process__item">
-                        <div className="process__content">
-                            <h3 className="process__title">Polish &amp; launch</h3>
-                            <p className="process__desc">
-                                Performance tuning, QA, deploy.
-                            </p>
-                        </div>
-                    </li>
+
+
                 </ol>
             </section>
 
@@ -120,8 +123,12 @@ export default function ServicesPage() {
                 title="Let’s build something great"
                 subtitle="Tell me about your project and timeline."
                 href="/contact"
-                actionLabel="Contact me"
-                icon={<NextIcon className="icon" size={20} />}
+                 rightSlot={
+          <Link className="btn btn--primary" href={`/contact`}>
+            <span className="btn__text">Contact me</span>
+            <NextIcon className="icon" size={20} />
+          </Link>
+        }
             />
         </main>
     );

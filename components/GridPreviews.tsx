@@ -2,6 +2,7 @@
 'use client';
 import { useEffect, useState, useCallback } from 'react';
 import Image from 'next/image';
+import MagneticItem from './MagneticItem';
 
 type GridPreviewsProps = {
   images: string[];
@@ -28,7 +29,7 @@ export default function GridPreviews({ images = [], className }: GridPreviewsPro
     const { documentElement: html, body } = document;
     const scrollY = window.scrollY || window.pageYOffset;
 
-   
+
     html.classList.add('no-scroll');
     body.classList.add('no-scroll');
 
@@ -80,22 +81,30 @@ export default function GridPreviews({ images = [], className }: GridPreviewsPro
       {/* PREVIEW GRID */}
       <div className={`grid-previews ${className ?? ''}`}>
         {images.map((src, i) => (
+          <MagneticItem className="card-container" key={i } radius={90} strength={0.22} tilt={3}>
           <button
             key={src + i}
             className="grid-previews__item"
             onClick={() => openAt(i)}
             aria-label={`Open image ${i + 1}`}
+            data-cursor="target"
+            data-cursor-images={src}             
           >
+            
             <Image
               src={src}
               alt={`Preview ${i + 1}`}
               fill
-              quality={95} 
+              quality={95}
               sizes="(max-width: 768px) 50vw, 33vw"
               className="grid-previews__img"
               priority={i === 0}
             />
+           
           </button>
+          </MagneticItem>
+          
+        
         ))}
       </div>
 
