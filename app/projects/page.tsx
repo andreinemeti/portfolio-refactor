@@ -8,7 +8,6 @@ import Loading from '@/components/Loading';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import FloatingTargetCursor from '@/components/FloatingTargetCursor';
 import MagneticItem from '@/components/MagneticItem';
-
 export default function ProjectsPage() {
   const dispatch = useAppDispatch();
   const { list, status, tags } = useAppSelector(s => s.projects);
