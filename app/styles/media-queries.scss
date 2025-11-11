@@ -8,6 +8,13 @@
     }
 }
 
+@media all and (max-width:991px) {
+    .card-container {
+        width:unset;
+        margin:15px 0;
+    }
+}
+
 @media all and (max-width:768px) {
     .container {
         max-width:calc(100vw - 50px);
@@ -90,4 +97,11 @@
     font-size: 13px;
     
   }
+}
+
+@media all and (max-width:380px){ 
+        .nav__link {
+            padding: 10px 10px;
+        font-size: 12px;
+    }
 }

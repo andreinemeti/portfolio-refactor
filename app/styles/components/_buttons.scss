@@ -8,7 +8,8 @@
     font-weight: 700;
     border: 1px solid transparent;
     cursor:pointer;
-    &__text {
+    &__text,
+    & .count {
         margin-right:5px;
     }
 }

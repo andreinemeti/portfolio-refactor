@@ -102,7 +102,7 @@
 /* vars */
 :root{
   --accent: #ffb546;
-  --card-r: 18px;
+
   --glass: rgba(255,255,255,.06);
 }
 
@@ -114,11 +114,11 @@
 /* card */
 .card-container{
   position: relative;
-  border-radius: var(--card-r);
+ 
   overflow: hidden;
   transform-style: preserve-3d;       /* children can sit in Z */
   background: #161616;
-  border: 2px solid var(--accent);
+  border: 2px solid #ffb546;
   box-shadow:
     0 1px 2px rgba(0,0,0,.6),
     0 10px 30px rgba(0,0,0,.45),

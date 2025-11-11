@@ -33,6 +33,22 @@
     display: flex;
     gap: 8px;
     justify-content: center;
+        position: absolute;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    background: #080808;
+    width: 97px;
+    margin: 0 auto;
+    height: 30px;
+    border-radius: 18.5px;
+    display: flex;
+    align-items: center;
+    cursor: default;
+    z-index:9;
 }
 
 .slider__dot {
