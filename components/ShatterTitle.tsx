@@ -5,19 +5,14 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { motion, useReducedMotion, useSpring } from 'framer-motion';
 
 type Props = {
-  children: string;                 // your title text
-  as?: keyof JSX.IntrinsicElements; // h1 | h2 | span...
+  children: string;
+  as?: keyof JSX.IntrinsicElements; // 'h1' | 'h2' | 'span' ...
   className?: string;
-  /** maximum explode radius in px where effect is active */
-  radius?: number;                  // default 140
-  /** how far a letter can travel at the center hit (px) */
-  maxOffset?: number;               // default 18
-  /** max rotation (deg) at center hit */
-  maxRotate?: number;               // default 10
-  /** z-pop (via text-shadow scale) feel */
-  popScale?: number;                // default 1.06
-  /** disable on coarse pointers (mobile/tablet) */
-  disableOnCoarsePointer?: boolean; // default true
+  radius?: number;
+  maxOffset?: number;
+  maxRotate?: number;
+  popScale?: number;
+  disableOnCoarsePointer?: boolean;
 };
 
 export default function ShatterTitle({
@@ -31,7 +26,6 @@ export default function ShatterTitle({
   disableOnCoarsePointer = true,
 }: Props) {
   const reduce = useReducedMotion();
-  const containerRef = useRef<HTMLDivElement | null>(null);
   const charRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const [enabled, setEnabled] = useState(true);
 
@@ -41,31 +35,20 @@ export default function ShatterTitle({
     setEnabled(fine);
   }, [disableOnCoarsePointer]);
 
-  const tokens = useMemo(
-    () => children.split(''), // per-char, preserve spaces too
-    [children]
-  );
-
-  // per-letter target transforms managed in parent; springs live in child
+  const tokens = useMemo(() => children.split(''), [children]);
   const [targets, setTargets] = useState(
     () => tokens.map(() => ({ x: 0, y: 0, r: 0, s: 1 }))
   );
 
-  // helper: compute effect falloff (0..1)
   const falloff = (d: number) => {
     if (d >= radius) return 0;
     const t = 1 - d / radius;
-    // smoother curve
     return t * t;
   };
 
   const updateFromPointer = useCallback(
     (clientX: number, clientY: number) => {
-      if (!containerRef.current) return;
-
-      // compute once, then reuse
       const next = targets.slice();
-
       for (let i = 0; i < charRefs.current.length; i++) {
         const el = charRefs.current[i];
         if (!el) continue;
@@ -76,22 +59,18 @@ export default function ShatterTitle({
         const dx = cx - clientX;
         const dy = cy - clientY;
         const d = Math.hypot(dx, dy);
-        const f = falloff(d); // 0..1
+        const f = falloff(d);
 
         if (f === 0) {
           next[i] = { x: 0, y: 0, r: 0, s: 1 };
         } else {
-          // push away from cursor, scaled by falloff
           const nx = (dx / (d || 1)) * maxOffset * f;
           const ny = (dy / (d || 1)) * maxOffset * f;
-          // rotate slightly depending on vector (gives nice swirl)
           const rot = ((dx - dy) / (radius || 1)) * maxRotate * f;
           const sc = 1 + (popScale - 1) * f;
-
           next[i] = { x: nx, y: ny, r: rot, s: sc };
         }
       }
-
       setTargets(next);
     },
     [maxOffset, maxRotate, popScale, radius, targets]
@@ -106,24 +85,22 @@ export default function ShatterTitle({
   );
 
   const onPointerLeave = useCallback(() => {
-    // spring everything back to zero
     setTargets(tokens.map(() => ({ x: 0, y: 0, r: 0, s: 1 })));
   }, [tokens]);
 
   return (
     <Tag className={className} style={{ position: 'relative' }}>
-      <div
-        ref={containerRef}
+      {/* INLINE container (span), not div, so it’s valid inside <h1>/<h3>/<p> */}
+      <span
         onPointerMove={onPointerMove}
         onPointerLeave={onPointerLeave}
         style={{
           display: 'inline-flex',
-          flexWrap: 'wrap',
+          flexWrap: 'nowrap',
           cursor: enabled ? 'default' : 'auto',
           userSelect: 'none',
           willChange: 'transform',
           perspective: 800,
-          // a touch of letter spacing helps readability when moving
           letterSpacing: '0.01em',
         }}
       >
@@ -136,7 +113,7 @@ export default function ShatterTitle({
             reduce={reduce}
           />
         ))}
-      </div>
+      </span>
     </Tag>
   );
 }
@@ -152,7 +129,6 @@ function Char({
   reduce: boolean;
   refCb: (el: HTMLSpanElement | null) => void;
 }) {
-  // springs per letter (safe: each Char is its own component)
   const sx = useSpring(0, { stiffness: 500, damping: 40, mass: 0.6 });
   const sy = useSpring(0, { stiffness: 500, damping: 40, mass: 0.6 });
   const sr = useSpring(0, { stiffness: 300, damping: 30, mass: 0.7 });
@@ -175,12 +151,7 @@ function Char({
     <span
       ref={refCb}
       aria-hidden={isSpace ? true : undefined}
-      style={{
-        display: 'inline-block',
-        whiteSpace: isSpace ? 'pre' : 'normal',
-        // keeping separate wrapper to allow overflow-hidden masking
-        overflow: 'visible',
-      }}
+      style={{ display: 'inline-block', whiteSpace: isSpace ? 'pre' : 'normal' }}
     >
       <motion.span
         style={{
@@ -188,11 +159,9 @@ function Char({
           translateX: sx,
           translateY: sy,
           rotate: sr,
-          // faux 3D “pop” via scale + fancy shadow
           scale: ss,
           willChange: 'transform, filter',
-          textShadow:
-            '0 0.5px 0 rgba(0,0,0,0.15), 0 10px 30px rgba(0,0,0,0.25)',
+          textShadow: '0 0.5px 0 rgba(0,0,0,0.15), 0 10px 30px rgba(0,0,0,0.25)',
         }}
         transition={{ type: 'spring' }}
       >

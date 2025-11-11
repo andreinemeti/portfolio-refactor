@@ -1,6 +1,6 @@
 // components/Nav.tsx
 'use client';
-
+// TODO: FIX NAV ANIMATIONS - THEY SUCK
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { NAV_LINKS } from '../utils/constants';

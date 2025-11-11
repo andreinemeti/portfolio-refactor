@@ -4,6 +4,7 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
 import MagneticItem from './MagneticItem';
+import ShatterTitle from './ShatterTitle';
 
 type CtaStripProps = {
   title: string;              // main heading text
@@ -25,18 +26,46 @@ export default function CtaStrip({
   rightSlot,
 }: CtaStripProps) {
   return (
-    
+
     <section className={`cta-strip container ${className ?? ''}`}>
       <div className="cta-strip__text">
-        <h3 className="cta-strip__title h2">{title}</h3>
-        {subtitle && <p className="cta-strip__subtitle muted">{subtitle}</p>}
+        <h3 className="cta-strip__title h2">
+          <ShatterTitle
+            as="p"
+            className="hero__title"
+            radius={150}
+            maxOffset={20}
+            maxRotate={12}
+            popScale={1.07}
+          >
+            {title}
+          </ShatterTitle>
+        </h3>
+        {subtitle && 
+        
+         <ShatterTitle
+            as="p"
+            className="strip__subtitle muted"
+            radius={150}
+            maxOffset={20}
+            maxRotate={12}
+            popScale={1.07}
+          >
+            {subtitle}
+          </ShatterTitle>
+       
+       
+
+
+
+        }
       </div>
 
       {rightSlot ? (
-        <MagneticItem className=""  radius={90} strength={0.22} tilt={3}>
-        <div className="cta-strip__actions">
-          {rightSlot}
-        </div>
+        <MagneticItem className="" radius={90} strength={0.22} tilt={3}>
+          <div className="cta-strip__actions">
+            {rightSlot}
+          </div>
         </MagneticItem>
       ) : (
         href && actionLabel && (

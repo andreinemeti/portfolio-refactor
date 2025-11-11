@@ -50,6 +50,7 @@
 
     .hero--home .hero__header, .hero--project .hero__header, .hero--contact .hero__header {
         max-width:60%;
+      
     }
     .hero--home .hero__title, .hero--project .hero__title, .hero--contact .hero__title, h2 {
         font-size:1.8rem;
@@ -103,5 +104,10 @@
         .nav__link {
             padding: 10px 10px;
         font-size: 12px;
+    }
+
+        .hero--home .hero__header, .hero--project .hero__header, .hero--contact .hero__header {
+        max-width:80%;
+      
     }
 }

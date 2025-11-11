@@ -71,7 +71,7 @@ export default function HomePage() {
             Featured projects 
           </ShatterTitle>
 
-            <span className="count">({featured.length})</span>
+          
           </h2>
         </div>
 
@@ -102,7 +102,7 @@ export default function HomePage() {
 
         <CtaStrip
                 title="Let’s build something great"
-                subtitle="Tell me about your project and timeline."
+               
                 href="/contact"
                 rightSlot={
                     <Link className="btn btn--primary" href={`/contact`}>
