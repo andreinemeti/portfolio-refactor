@@ -132,9 +132,11 @@ export default function ProjectPage() {
       {current.externalUrl && (
         <div className="container live-url-content">
           <h2 className="h2">Live URL</h2>
-          <a className="link" href={current.externalUrl} target="_blank" rel="noopener noreferrer">
+          <span className="pill">
+             <a className="link" href={current.externalUrl} target="_blank" rel="noopener noreferrer">
             <LinkIcon className="icon" size={20} />
             {current.externalUrl}</a>
+          </span>
         </div>
       )}
 
