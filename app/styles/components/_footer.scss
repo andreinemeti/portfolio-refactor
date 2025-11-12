@@ -59,11 +59,16 @@
 }
 
 /* mobile tweaks */
-@media (max-width: 420px) {
+@media (max-width: 480px) {
   .footer-glass {
     padding: 8px 10px;
   }
   .footer-glass__link {
     padding: 7px 12px;
+    font-size: 0.7rem;
+  }
+
+  .footer-glass__copy {
+    font-size: 0.7rem;
   }
 }

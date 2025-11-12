@@ -13,7 +13,9 @@
     border-radius: $cardRadius;
     border: 2px solid $accentColor;
     margin: 15px;
+    
 }
+
 
 
 .card {
@@ -33,6 +35,7 @@
     &__relative-parent {
         position: relative;
         display: flex;
+        
         
     }
 
@@ -126,10 +129,7 @@
   transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s;
 }
 
-/* subtle 3D lift on hover */
 
-
-/* glowing rim + vignette using pseudo layers */
 .card-container::before,
 .card-container::after{
   content:"";
@@ -143,7 +143,7 @@
     radial-gradient(140% 100% at 110% 0%, rgba(255,181,70,.18), transparent 60%),
     radial-gradient(140% 100% at -10% 100%, rgba(109,205,255,.16), transparent 60%);
   mix-blend-mode: screen;
-  transform: translateZ(40px);     /* floats above */
+  
 }
 
 /* vignette and inner highlight */

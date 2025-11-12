@@ -4,31 +4,37 @@
 
 @media all and (max-width:1200px) {
     .container {
-        max-width:calc(100vw - 100px);
+        max-width: calc(100vw - 100px);
     }
 }
 
 @media all and (max-width:991px) {
     .card-container {
-        width:45%;
-        margin:15px;
+        width: 45%;
+        margin: 15px;
     }
 }
 
 @media all and (max-width:768px) {
-        .card-container {
-        width:100%;
-        margin:15px 0;
-        
+    .card-container {
+        width: 100%;
+        margin: 15px 0;
+
     }
 
+
+    .grid-previews .card-container {
+        margin: 0;
+    }
+
+
     .container {
-        max-width:calc(100vw - 50px);
+        max-width: calc(100vw - 50px);
         padding: 0.5rem;
     }
 
     .cta-strip {
-        padding:1.5rem;
+        padding: 1.5rem;
     }
 
     .cta-strip .h2 {
@@ -37,49 +43,55 @@
 
 
     .section-header {
-        flex-direction:column;
+        flex-direction: column;
     }
 
     .section-title {
-        margin-bottom:0;
+        margin-bottom: 0;
     }
-   
+
 
     .slider__arrow {
-        display:none;
+        display: none;
     }
 
     .card__media {
-        height:150px;
+        height: 150px;
     }
 
-    .hero--home, .hero--project, .hero--contact {
-        background-attachment:scroll;
-        min-height:45vh;
+    .hero--home,
+    .hero--project,
+    .hero--contact {
+        background-attachment: scroll;
+        min-height: 45vh;
     }
 
-    .hero--home .hero__header, .hero--project .hero__header, .hero--contact .hero__header {
-        max-width:60%;
-      
-    }
-    .hero--home .hero__title, .hero--project .hero__title, .hero--contact .hero__title, h2 {
-        font-size:1.8rem;
+    .hero--home .hero__header,
+    .hero--project .hero__header,
+    .hero--contact .hero__header {
+        max-width: 60%;
+
     }
 
-    .hero--home .hero__subtitle, .hero--project .hero__subtitle, .hero--contact .hero__subtitle {
-        font-size:1.5rem;
+    .hero--home .hero__title,
+    .hero--project .hero__title,
+    .hero--contact .hero__title,
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero--home .hero__subtitle,
+    .hero--project .hero__subtitle,
+    .hero--contact .hero__subtitle {
+        font-size: 1.2rem;
     }
 }
 
-@media all and (max-width:480px){
+@media all and (max-width:480px) {
 
-   
 
-    .card {
-            margin: 15px 0;
-    }
 
-     .hero__ribbon {
+    .hero__ribbon {
         width: 220px;
         padding: 0.55rem 0;
         font-size: 0.85rem;
@@ -87,7 +99,7 @@
         left: -70px;
         bottom: 18px;
         top: unset;
-  }
+    }
 
     .nav {
         left: 0;
@@ -95,36 +107,43 @@
         margin: auto;
         transform: none;
         width: fit-content;
-       
+
         max-width: unset;
-  }
-  .nav__list {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;        /* Firefox */
-  }
-  .nav__list::-webkit-scrollbar { /* WebKit */
-    display: none;
-  }
-  .nav__link {
-    
-    font-size: 13px;
-    
-  }
+    }
+
+    .nav__list {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        /* Firefox */
+    }
+
+    .nav__list::-webkit-scrollbar {
+        /* WebKit */
+        display: none;
+    }
+
+    .nav__link {
+
+        font-size: 13px;
+
+    }
 }
 
-@media all and (max-width:380px){ 
-        .nav__link {
-            padding: 10px 10px;
+@media all and (max-width:380px) {
+    .nav__link {
+        padding: 10px 10px;
         font-size: 12px;
     }
 
-        .hero--home .hero__header, .hero--project .hero__header, .hero--contact .hero__header {
-        max-width:80%;
-      
+    .hero--home .hero__header,
+    .hero--project .hero__header,
+    .hero--contact .hero__header {
+        max-width: 80%;
+
     }
 
-      .cta-strip .h2 {
+    .cta-strip .h2 {
         font-size: 1rem;
     }
 }

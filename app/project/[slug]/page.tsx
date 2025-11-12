@@ -142,7 +142,7 @@ export default function ProjectPage() {
 
       <CtaStrip
         title="Ready to explore more?"
-        subtitle="Check out my next featured project and discover more amazing work."
+        subtitle="Check out my next featured project and discover more."
         rightSlot={next ? (
           <Link className="btn btn--primary" href={`/project/${next.slug}`}>
             <span className="btn__text">View next project</span>
