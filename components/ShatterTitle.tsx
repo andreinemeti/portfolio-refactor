@@ -13,6 +13,7 @@ type Props = {
   maxRotate?: number;
   popScale?: number;
   disableOnCoarsePointer?: boolean;
+  minWidth?: number;
 };
 
 // Flatten ReactNode -> string (recursively)
@@ -33,15 +34,24 @@ export default function ShatterTitle({
   maxRotate = 10,
   popScale = 1.06,
   disableOnCoarsePointer = true,
+   minWidth = 1024,
 }: Props) {
   const reduce = useReducedMotion();
   const [enabled, setEnabled] = useState(true);
+  const [isNarrow, setIsNarrow] = useState(false);
 
   useEffect(() => {
     if (!disableOnCoarsePointer) return;
     const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     setEnabled(fine);
   }, [disableOnCoarsePointer]);
+
+  useEffect(() => {
+  const compute = () => setIsNarrow(window.innerWidth < (minWidth ?? 1024));
+  compute();
+  window.addEventListener('resize', compute);
+  return () => window.removeEventListener('resize', compute);
+}, [minWidth]);
 
   // Convert any ReactNode children into plain text for per-char animation
   const text = useMemo(() => nodeToText(children), [children]);
@@ -128,15 +138,24 @@ useEffect(() => {
           letterSpacing: '0.01em',
         }}
       >
-      {tokens.map((ch, i) => (
-  <Char
-    key={`${ch}-${i}`}
-    refCb={(el) => (charRefs.current[i] = el)}
-    ch={ch}
-    target={targets[i] ?? ZERO}   // <— safe fallback
-    reduce={reduce}
-  />
-))}
+      {tokens.map((ch, i) => {
+  // 2) If width is below minWidth, return raw text node (no spans / no animation)
+  if (isNarrow) {
+    // keep spaces as real spaces so wrapping works naturally
+    return <React.Fragment key={`raw-${i}`}>{ch === ' ' ? ' ' : ch}</React.Fragment>;
+  }
+
+  // otherwise keep your current animated char component
+  return (
+    <Char
+      key={`${ch}-${i}`}
+      refCb={(el) => (charRefs.current[i] = el)}
+      ch={ch}
+      target={targets[i] ?? ZERO}
+      reduce={reduce}
+    />
+  );
+})}
       </span>
     </Tag>
   );

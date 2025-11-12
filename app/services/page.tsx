@@ -50,7 +50,7 @@ export default function ServicesPage() {
                         maxRotate={12}
                         popScale={1.07}
                     >
-                        Fast, elegant, accessible
+                        Frontend, UI/UX, SEO
                     </ShatterTitle>
 
 

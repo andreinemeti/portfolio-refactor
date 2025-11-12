@@ -2,11 +2,11 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useAppSelector } from '@/utils/hooks';
 
-const DURATION = 1100; // ~1.1s for a slightly richer feel
+const DURATION = 1100;
 const GAGS = [
   'Assembling pixels...',
   'Deleting unused semicolons…',
@@ -66,12 +66,55 @@ export default function PageLoader() {
     return segs.map(titleize).join(' / ');
   }, [pathname, list, current]);
 
+  // Pick message + show loader on route change
   useEffect(() => {
     setMsg(routeMessage || GAGS[Math.floor(Math.random() * GAGS.length)]);
     setShow(true);
+
+    // Re-enable the auto-hide if you want ~1.1s overlays
     const t = setTimeout(() => setShow(false), DURATION);
     return () => clearTimeout(t);
   }, [routeKey, routeMessage]);
+
+  //  Scroll lock while the loader is visible
+  const scrollRef = useRef(0);
+  useEffect(() => {
+    if (!show) return;
+    const { documentElement: html, body } = document;
+
+    // remember current scroll
+    scrollRef.current = window.scrollY || window.pageYOffset;
+
+    // lock
+    html.classList.add('no-scroll');
+    body.classList.add('no-scroll');
+
+    // iOS-safe body freeze
+    body.style.position = 'fixed';
+    body.style.top = `-${scrollRef.current}px`;
+    body.style.left = '0';
+    body.style.right = '0';
+    body.style.width = '100%';
+    body.style.overscrollBehavior = 'none';
+    html.style.overscrollBehavior = 'none';
+
+    return () => {
+      // unlock
+      html.classList.remove('no-scroll');
+      body.classList.remove('no-scroll');
+
+      body.style.position = '';
+      body.style.top = '';
+      body.style.left = '';
+      body.style.right = '';
+      body.style.width = '';
+      body.style.overscrollBehavior = '';
+      html.style.overscrollBehavior = '';
+
+      // restore scroll
+      window.scrollTo(0, scrollRef.current);
+    };
+  }, [show]);
 
   if (prefersReduce) return null;
 
@@ -97,10 +140,8 @@ export default function PageLoader() {
           aria-live="polite"
           aria-busy="true"
         >
-          {/* Soft “aurora” blobs */}
           <Aurora />
 
-          {/* Big kinetic title */}
           <div
             style={{
               position: 'relative',
@@ -117,7 +158,7 @@ export default function PageLoader() {
                 margin: 0,
                 lineHeight: 1.05,
                 fontWeight: 900,
-                fontSize: 'clamp(36px, 6.2vw, 88px)', // BIG
+                fontSize: 'clamp(36px, 6.2vw, 88px)',
                 letterSpacing: '-0.02em',
                 background:
                   'linear-gradient(92deg, #ffffff 0%, #ffe9c6 40%, #ffb546 65%, #ffd59a 100%)',
@@ -130,7 +171,6 @@ export default function PageLoader() {
               {msg}
             </motion.h1>
 
-            {/* Underline sweep */}
             <motion.div
               initial={{ width: 0, opacity: 0, x: '-50%' }}
               animate={{ width: '60vw', opacity: 1, x: '-50%' }}
@@ -148,7 +188,6 @@ export default function PageLoader() {
               }}
             />
 
-            {/* Tiny sparkle pulse */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: [0.8, 1.1, 1], opacity: [0, 1, 0] }}
@@ -173,7 +212,6 @@ export default function PageLoader() {
   );
 }
 
-/** Blurred gradient blobs for a modern background vibe */
 function Aurora() {
   return (
     <>

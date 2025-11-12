@@ -10,12 +10,18 @@
 
 @media all and (max-width:991px) {
     .card-container {
-        width:unset;
-        margin:15px 0;
+        width:45%;
+        margin:15px;
     }
 }
 
 @media all and (max-width:768px) {
+        .card-container {
+        width:100%;
+        margin:15px 0;
+        
+    }
+
     .container {
         max-width:calc(100vw - 50px);
         padding: 0.5rem;
@@ -23,6 +29,10 @@
 
     .cta-strip {
         padding:1.5rem;
+    }
+
+    .cta-strip .h2 {
+        font-size: 1.2rem;
     }
 
 
@@ -62,6 +72,9 @@
 }
 
 @media all and (max-width:480px){
+
+   
+
     .card {
             margin: 15px 0;
     }
@@ -109,5 +122,9 @@
         .hero--home .hero__header, .hero--project .hero__header, .hero--contact .hero__header {
         max-width:80%;
       
+    }
+
+      .cta-strip .h2 {
+        font-size: 1rem;
     }
 }
