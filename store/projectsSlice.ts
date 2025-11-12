@@ -22,7 +22,7 @@ type State = {
   list: Project[];
   tags: string[];
   current?: Project | null;
-  status: 'idle' | 'loading' | 'error';
+  status: 'idle' | 'loading' | 'succeeded' | 'error';
   error?: string;
 };
 
@@ -37,10 +37,10 @@ const projectsSlice = createSlice({
       state.error = undefined;
     },
     setProjects(state, action: PayloadAction<{ projects: Project[]; tags: string[] }>) {
-      state.status = 'idle';
-      state.list = action.payload.projects;
-      state.tags = action.payload.tags;
-    },
+    state.status = 'succeeded';         
+    state.list = action.payload.projects;
+    state.tags = action.payload.tags;
+  },
     setCurrent(state, action: PayloadAction<Project | undefined>) {
       
       state.current = action.payload;

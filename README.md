@@ -20,7 +20,6 @@ Refactor of the classic 2018 portfolio, keeping the original vibe while modernis
 
 ```bash
 pnpm i  # or npm i / yarn
-cp .env.example .env.local  # fill SMTP_* and CONTACT_TO
 npm run dev
 ```
 
@@ -28,4 +27,17 @@ npm run dev
 - Layout and colouring borrow heavily from the legacy site (dark, neon orange borders, card glow).
 - BEM naming: `.hero--home__title`, `.card__tag`, `.breadcrumbs__item`, etc.
 - Image slider is dependency free.
+
+
+## Build
+
+`npm run build`
+
+## Deploy (cPanel)
+
+- Copy `server.cjs` to your root folder
+- copy `.next` folder to your root folder
+- copy `public` folder to your root folder
+- cPanel - Application startup file: `server.cjs`
+- cPanel - Restart app
 

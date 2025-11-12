@@ -1,49 +1,57 @@
 .flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
+
 .card-container {
-    position: relative;
-    background: #161616;
-    width: 350px;
-    box-shadow: 0 1px 11px #6dcdff33;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    border-radius: $cardRadius;
-    border: 2px solid $accentColor;
-    margin: 15px;
-    
+  position: relative;
+  background: #161616;
+  width: 350px;
+  box-shadow: 0 1px 11px #6dcdff33;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: $cardRadius;
+  border: 2px solid $accentColor;
+  transition: .2s all;
+  margin: 15px;
+  flex-grow: 1;
+
+  &:hover {
+    transform: translateY(-10px);
+    transition: .2s all;
+
+  }
 }
 
 
 
 .card {
-    // position: relative;
-    // background: #161616;
-    // width: 350px;
-    // box-shadow: 0 1px 11px #6dcdff33;
-    // display: flex;
-    // flex-direction: column;
-    // overflow: hidden;
-    // border-radius: $cardRadius;
-    // border: 2px solid $accentColor;
-    // margin: 15px;
+  // position: relative;
+  // background: #161616;
+  // width: 350px;
+  // box-shadow: 0 1px 11px #6dcdff33;
+  // display: flex;
+  // flex-direction: column;
+  // overflow: hidden;
+  // border-radius: $cardRadius;
+  // border: 2px solid $accentColor;
+  // margin: 15px;
 
-   
 
-    &__relative-parent {
-        position: relative;
-        display: flex;
-        
-        
-    }
 
-    &__ribbon {
+  &__relative-parent {
+    position: relative;
+    display: flex;
+
+
+  }
+
+  &__ribbon {
     position: absolute;
     top: 12px;
-    right: -42px;             
+    right: -42px;
     transform: rotate(45deg);
     z-index: 2;
 
@@ -57,120 +65,146 @@
     text-transform: uppercase;
     color: #000;
     background: linear-gradient(90deg, #ffb546 0%, #f0a83c 50%, #f0a32f 100%);
-    box-shadow: 0 6px 18px rgba(0,0,0,.35), inset 0 0 0 1px rgba(0,0,0,.15);
-    border: 1px solid rgba(255,255,255,.15);
-    }
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .35), inset 0 0 0 1px rgba(0, 0, 0, .15);
+    border: 1px solid rgba(255, 255, 255, .15);
+  }
 
-    &__media {
-        aspect-ratio: 16 / 10;
-        object-fit: cover;
-        width: 100%;
-    }
+  &__media {
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    width: 100%;
+  }
 
-    &__body {
-        padding: 1rem;
-    }
+  &__body {
+    padding: 1rem;
+  }
 
-    &__title {
-        font-size: 1.25rem;
-        margin: 0 0 .5rem;
-        color:$accentColor;
-    }
+  &__title {
+    font-size: 1.25rem;
+    margin: 0 0 .5rem;
+    color: $accentColor;
+  }
 
-    &__link {
-        position: absolute;
-        inset: 0;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-        z-index: 999;
-        background: rgba(0, 0, 0, .9);
-        opacity: 0;
-        transition: .2s all;
-        margin: 0;
-        font-weight: 600;
+  &__link {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    z-index: 999;
+    background: rgba(0, 0, 0, .9);
+    opacity: 0;
+    transition: .2s all;
+    margin: 0;
+    font-weight: 600;
 
-        &__text {
-            margin-right:5px;
-        }
+    &__text {
+      margin-right: 5px;
     }
+  }
 
-    &:hover &__link {
-        opacity: 1;
-    }
+  &:hover &__link {
+    opacity: 1;
+  }
 }
 
 
 /* vars */
-:root{
+:root {
   --accent: #ffb546;
 
-  --glass: rgba(255,255,255,.06);
+  --glass: rgba(255, 255, 255, .06);
 }
 
 /* outer cell – keep your grid as-is */
-.card-cell{
-  perspective: 900px;                 /* gives 3D depth */
+.card-cell {
+  perspective: 900px;
+  /* gives 3D depth */
 }
 
 /* card */
-.card-container{
+.card-container {
   position: relative;
- 
+
   overflow: hidden;
-  transform-style: preserve-3d;       /* children can sit in Z */
+  transform-style: preserve-3d;
+  /* children can sit in Z */
   background: #161616;
   border: 2px solid #ffb546;
   box-shadow:
-    0 1px 2px rgba(0,0,0,.6),
-    0 10px 30px rgba(0,0,0,.45),
-    0 0 0 1px rgba(255,255,255,.04) inset; /* inner edge */
-  transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s;
+    0 1px 2px rgba(0, 0, 0, .6),
+    0 10px 30px rgba(0, 0, 0, .45),
+    0 0 0 1px rgba(255, 255, 255, .04) inset;
+  /* inner edge */
+  transition: transform .35s cubic-bezier(.2, .8, .2, 1), box-shadow .35s;
 }
 
 
 .card-container::before,
-.card-container::after{
-  content:"";
-  position:absolute; inset:0;
-  pointer-events:none; border-radius:inherit;
+.card-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
 }
 
 /* soft outer glow that reacts to angle */
-.card-container::before{
+.card-container::before {
   background:
-    radial-gradient(140% 100% at 110% 0%, rgba(255,181,70,.18), transparent 60%),
-    radial-gradient(140% 100% at -10% 100%, rgba(109,205,255,.16), transparent 60%);
+    radial-gradient(140% 100% at 110% 0%, rgba(255, 181, 70, .18), transparent 60%),
+    radial-gradient(140% 100% at -10% 100%, rgba(109, 205, 255, .16), transparent 60%);
   mix-blend-mode: screen;
-  
+
 }
 
 /* vignette and inner highlight */
-.card::after{
+.card::after {
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.08),
-    inset 0 -60px 80px rgba(0,0,0,.35);
+    inset 0 1px 0 rgba(255, 255, 255, .08),
+    inset 0 -60px 80px rgba(0, 0, 0, .35);
   transform: translateZ(1px);
 }
 
 /* media layer pops forward slightly */
-.card__media{
+.card__media {
   position: relative;
   aspect-ratio: 16/9;
   overflow: hidden;
-  transform: translateZ(30px);      /* parallax */
+  transform: translateZ(30px);
+  /* parallax */
 }
-.card__media img{
-  width:100%; height:100%; object-fit:cover;
+
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transform: translateZ(10px) scale(1.03);
 }
 
 /* content layer sits below media but above base */
-.card__body{
+.card__body {
   padding: 18px;
   transform: translateZ(12px);
-  background: linear-gradient(180deg, rgba(0,0,0,.0), rgba(0,0,0,.06));
+  background: linear-gradient(180deg, rgba(0, 0, 0, .0), rgba(0, 0, 0, .06));
+}
+
+
+/* Skeleton styles */
+.skeleton.card {
+  width: 100%;
+  aspect-ratio: 4/3;
+  /* same ratio as your ProjectCard preview */
+  border-radius: 12px;
+  background: url('/images/placeholder-landscape.svg') center/cover no-repeat;
+  background-size: cover;
+  animation: skeleton 1.2s ease-in-out infinite;
+  color:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
 }
 

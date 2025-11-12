@@ -4,7 +4,10 @@ import type { Metadata } from 'next';
 import { Providers } from '@/store/Providers';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+
 import PageLoader from '@/components/PageLoader';
+import { Suspense } from 'react';
+import Loading from '@/components/Loading';
 
 export const metadata: Metadata = {
   title: 'Andrei Nemeti – Portfolio',
@@ -26,7 +29,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Providers>
          
           <Nav />
-           <PageLoader />
           {children}
            <Footer />
         </Providers>

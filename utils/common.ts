@@ -15,3 +15,4 @@ export function yearFromISO(
 
   return formatter.format(d);
 }
+

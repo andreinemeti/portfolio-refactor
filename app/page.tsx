@@ -10,12 +10,19 @@ import FloatingTargetCursor from '@/components/FloatingTargetCursor';
 import MagneticItem from '@/components/MagneticItem';
 import ShatterTitle from '@/components/ShatterTitle';
 import HeroFX from '@/components/HeroFX';
+import ProjectsSkeleton from "@/components/ProjectsSkeleton";
 import CtaStrip from '@/components/CtaStrip';
+
 export default function HomePage() {
   const dispatch = useAppDispatch();
   const { list, status } = useAppSelector(s => s.projects);
+  const isLoading = status !== 'succeeded' && list.length === 0;
 
-  useEffect(() => { dispatch(fetchProjects()); }, [dispatch]);
+
+
+  useEffect(() => {
+    dispatch(fetchProjects());
+  }, [dispatch]);
 
   const featured = useMemo(() => list.filter(p => p.featured), [list]);
 
@@ -29,7 +36,7 @@ export default function HomePage() {
     webmSrc="/videos/hero.webm"
     mp4Src="/videos/hero.mp4"
     poster="/images/hero-poster.jpg"
-    className="hero__video" // optional if you want to style further
+    className="hero__video" 
   /> */}
 
       <section className="hero hero--home">
@@ -83,22 +90,30 @@ export default function HomePage() {
           </h2>
         </div>
 
-        {status === 'loading' && <Loading />}
+
 
         <div className="flex-container">
-          {featured.map(p =>
-            <MagneticItem className="card-container" key={p.slug} radius={90} strength={0.22} tilt={3}>
-              <div
-                key={p.slug}
-                className="card-target"
-                data-cursor="target"
-                data-cursor-images={p.images?.slice(0, 4).join(',') ?? ''}
-              >
-                <ProjectCard key={p.slug} project={p} />
-              </div>
-            </MagneticItem>
+          {isLoading ? (
+            <ProjectsSkeleton count={6} />
+          ) : (
+            <>
+              {featured.map((p) => (
+                <MagneticItem className="card-container" key={p.slug} radius={90} strength={0.22} tilt={3}>
+                  <div
+                    className="card-target"
+                    data-cursor="target"
+                    data-cursor-images={p.images?.slice(0, 4).join(",") ?? ""}
+                  >
+                    <ProjectCard project={p} />
+                  </div>
+                </MagneticItem>
+              ))}
+            </>
+
+
           )}
         </div>
+
 
         <div className="flex-container">
           <Link href="/projects" className="btn btn--primary see-all">

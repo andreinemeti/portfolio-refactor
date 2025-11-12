@@ -36,7 +36,8 @@ export default function ShatterTitle({
   disableOnCoarsePointer = true,
    minWidth = 1024,
 }: Props) {
-  const reduce = useReducedMotion();
+  const rm = useReducedMotion();
+const reduce = rm ?? false; // coerce null -> false
   const [enabled, setEnabled] = useState(true);
   const [isNarrow, setIsNarrow] = useState(false);
 

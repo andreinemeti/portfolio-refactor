@@ -6,7 +6,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useAppSelector } from '@/utils/hooks';
 
-const DURATION = 1100;
+const DURATION = 555;
 const GAGS = [
   'Assembling pixels...',
   'Deleting unused semicolons…',
@@ -71,7 +71,7 @@ export default function PageLoader() {
     setMsg(routeMessage || GAGS[Math.floor(Math.random() * GAGS.length)]);
     setShow(true);
 
-    // Re-enable the auto-hide if you want ~1.1s overlays
+   
     const t = setTimeout(() => setShow(false), DURATION);
     return () => clearTimeout(t);
   }, [routeKey, routeMessage]);
