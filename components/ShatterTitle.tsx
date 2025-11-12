@@ -5,8 +5,8 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { motion, useReducedMotion, useSpring } from 'framer-motion';
 
 type Props = {
-  children: string;
-  as?: keyof JSX.IntrinsicElements; // 'h1' | 'h2' | 'span' ...
+  children: React.ReactNode;          // <— accept ReactNode, not just string
+  as?: keyof JSX.IntrinsicElements;
   className?: string;
   radius?: number;
   maxOffset?: number;
@@ -14,6 +14,15 @@ type Props = {
   popScale?: number;
   disableOnCoarsePointer?: boolean;
 };
+
+// Flatten ReactNode -> string (recursively)
+function nodeToText(node: React.ReactNode): string {
+  if (node == null || node === false) return '';
+  if (typeof node === 'string' || typeof node === 'number') return String(node);
+  if (Array.isArray(node)) return node.map(n => nodeToText(n)).join('');
+  if (React.isValidElement(node)) return nodeToText(node.props?.children);
+  return '';
+}
 
 export default function ShatterTitle({
   children,
@@ -26,7 +35,6 @@ export default function ShatterTitle({
   disableOnCoarsePointer = true,
 }: Props) {
   const reduce = useReducedMotion();
-  const charRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const [enabled, setEnabled] = useState(true);
 
   useEffect(() => {
@@ -35,7 +43,21 @@ export default function ShatterTitle({
     setEnabled(fine);
   }, [disableOnCoarsePointer]);
 
-  const tokens = useMemo(() => children.split(''), [children]);
+  // Convert any ReactNode children into plain text for per-char animation
+  const text = useMemo(() => nodeToText(children), [children]);
+
+  // If we can’t get text, just render the children as-is (no effect)
+  if (!text) {
+    return <Tag className={className}>{children}</Tag>;
+  }
+
+  const ZERO = { x: 0, y: 0, r: 0, s: 1 };
+
+
+  // Use Array.from() so emojis/graphemes don’t split incorrectly
+  const tokens = useMemo(() => Array.from(text), [text]);
+
+  const charRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const [targets, setTargets] = useState(
     () => tokens.map(() => ({ x: 0, y: 0, r: 0, s: 1 }))
   );
@@ -46,51 +68,53 @@ export default function ShatterTitle({
     return t * t;
   };
 
-  const updateFromPointer = useCallback(
-    (clientX: number, clientY: number) => {
-      const next = targets.slice();
-      for (let i = 0; i < charRefs.current.length; i++) {
-        const el = charRefs.current[i];
-        if (!el) continue;
-        const rect = el.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
+  const updateFromPointer = useCallback((clientX: number, clientY: number) => {
+    const next = targets.slice();
+    for (let i = 0; i < charRefs.current.length; i++) {
+      const el = charRefs.current[i];
+      if (!el) continue;
+      const rect = el.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
 
-        const dx = cx - clientX;
-        const dy = cy - clientY;
-        const d = Math.hypot(dx, dy);
-        const f = falloff(d);
+      const dx = cx - clientX;
+      const dy = cy - clientY;
+      const d = Math.hypot(dx, dy);
+      const f = falloff(d);
 
-        if (f === 0) {
-          next[i] = { x: 0, y: 0, r: 0, s: 1 };
-        } else {
-          const nx = (dx / (d || 1)) * maxOffset * f;
-          const ny = (dy / (d || 1)) * maxOffset * f;
-          const rot = ((dx - dy) / (radius || 1)) * maxRotate * f;
-          const sc = 1 + (popScale - 1) * f;
-          next[i] = { x: nx, y: ny, r: rot, s: sc };
-        }
+      if (f === 0) next[i] = { x: 0, y: 0, r: 0, s: 1 };
+      else {
+        const nx = (dx / (d || 1)) * maxOffset * f;
+        const ny = (dy / (d || 1)) * maxOffset * f;
+        const rot = ((dx - dy) / (radius || 1)) * maxRotate * f;
+        const sc = 1 + (popScale - 1) * f;
+        next[i] = { x: nx, y: ny, r: rot, s: sc };
       }
-      setTargets(next);
-    },
-    [maxOffset, maxRotate, popScale, radius, targets]
-  );
+    }
+    setTargets(next);
+  }, [maxOffset, maxRotate, popScale, radius, targets]);
 
-  const onPointerMove = useCallback(
-    (e: React.PointerEvent) => {
-      if (!enabled) return;
-      updateFromPointer(e.clientX, e.clientY);
-    },
-    [enabled, updateFromPointer]
-  );
+  const onPointerMove = useCallback((e: React.PointerEvent) => {
+    if (!enabled) return;
+    updateFromPointer(e.clientX, e.clientY);
+  }, [enabled, updateFromPointer]);
 
   const onPointerLeave = useCallback(() => {
     setTargets(tokens.map(() => ({ x: 0, y: 0, r: 0, s: 1 })));
   }, [tokens]);
 
+
+  // Keep targets array length in sync with tokens
+useEffect(() => {
+  setTargets(prev => {
+    if (prev.length === tokens.length) return prev;
+    const next = new Array(tokens.length).fill(0).map((_, i) => prev[i] ?? ZERO);
+    return next;
+  });
+}, [tokens.length]);
+
   return (
     <Tag className={className} style={{ position: 'relative' }}>
-      {/* INLINE container (span), not div, so it’s valid inside <h1>/<h3>/<p> */}
       <span
         onPointerMove={onPointerMove}
         onPointerLeave={onPointerLeave}
@@ -104,15 +128,15 @@ export default function ShatterTitle({
           letterSpacing: '0.01em',
         }}
       >
-        {tokens.map((ch, i) => (
-          <Char
-            key={`${ch}-${i}`}
-            refCb={(el) => (charRefs.current[i] = el)}
-            ch={ch}
-            target={targets[i]}
-            reduce={reduce}
-          />
-        ))}
+      {tokens.map((ch, i) => (
+  <Char
+    key={`${ch}-${i}`}
+    refCb={(el) => (charRefs.current[i] = el)}
+    ch={ch}
+    target={targets[i] ?? ZERO}   // <— safe fallback
+    reduce={reduce}
+  />
+))}
       </span>
     </Tag>
   );

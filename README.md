@@ -25,7 +25,7 @@ npm run dev
 ```
 
 ## Design notes
-- Layout and colouring borrow heavily from the legacy site (dark, neon blue borders, card glow).
+- Layout and colouring borrow heavily from the legacy site (dark, neon orange borders, card glow).
 - BEM naming: `.hero--home__title`, `.card__tag`, `.breadcrumbs__item`, etc.
 - Image slider is dependency free.
 

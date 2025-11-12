@@ -4,6 +4,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { NAV_LINKS } from '../utils/constants';
+import ShatterTitle from './ShatterTitle';
 
 export default function Footer() {
   const pathname = usePathname();
@@ -28,7 +29,15 @@ export default function Footer() {
       </nav>
 
       <div className="footer-glass__copy">
-        © {year} Andrei Nemeti. All rights reserved.
+        <ShatterTitle
+          as="p"
+          radius={150}
+          maxOffset={20}
+          maxRotate={12}
+          popScale={1.07}
+        >
+          © {year} Andrei Nemeti. All rights reserved.
+        </ShatterTitle>
       </div>
     </footer>
   );

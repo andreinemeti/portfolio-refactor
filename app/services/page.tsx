@@ -13,6 +13,7 @@ import DevIcon from '@/components/icons/DevIcon';
 import PerfIcon from '@/components/icons/PerfIcon';
 import MagneticItem from '@/components/MagneticItem';
 import HeroFX from '@/components/HeroFX';
+import ShatterTitle from '@/components/ShatterTitle';
 
 
 export default function ServicesPage() {
@@ -29,8 +30,31 @@ export default function ServicesPage() {
             <section className="hero hero--project hero--services services__hero">
                 <HeroFX />
                 <div className="hero__header">
-                    <h1 className="hero__title">Services</h1>
-                    <p className="hero__subtitle">Fast, elegant, accessible</p>
+
+                    <ShatterTitle
+                        as="h1"
+                        className="hero__title"
+                        radius={150}
+                        maxOffset={20}
+                        maxRotate={12}
+                        popScale={1.07}
+                    >
+                        Services
+                    </ShatterTitle>
+
+                    <ShatterTitle
+                        as="div"
+                        className="hero__subtitle"
+                        radius={150}
+                        maxOffset={20}
+                        maxRotate={12}
+                        popScale={1.07}
+                    >
+                        Fast, elegant, accessible
+                    </ShatterTitle>
+
+
+
                 </div>
             </section>
 
@@ -38,7 +62,20 @@ export default function ServicesPage() {
 
             <section className="services__section container">
                 <header className="services__section-header">
-                    <h2 className="services__section-title h2">What I do</h2>
+                    <h2 className="services__section-title h2">
+
+                        <ShatterTitle
+                            as="div"
+                            className="hero__subtitle"
+                            radius={150}
+                            maxOffset={20}
+                            maxRotate={12}
+                            popScale={1.07}
+                        >
+                            What I do
+                        </ShatterTitle>
+
+                    </h2>
                 </header>
 
                 <div className="services__grid">
@@ -76,7 +113,21 @@ export default function ServicesPage() {
             {/* Process */}
             <section className="services__section container">
                 <header className="services__section-header">
-                    <h2 className="services__section-title h2">Process</h2>
+                    <h2 className="services__section-title h2">
+
+                        <ShatterTitle
+                            as="div"
+                            className="hero__subtitle"
+                            radius={150}
+                            maxOffset={20}
+                            maxRotate={12}
+                            popScale={1.07}
+                        >
+                            Process
+                        </ShatterTitle>
+
+
+                    </h2>
                 </header>
 
                 <ol className="process" role="list">
@@ -114,12 +165,8 @@ export default function ServicesPage() {
                             </div>
                         </li>
                     </MagneticItem>
-
-
-
                 </ol>
             </section>
-
 
             <CtaStrip
                 title="Let’s build something great"

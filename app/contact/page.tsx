@@ -1,6 +1,7 @@
 'use client';
 
 import { Breadcrumbs } from '@/components/Breadcrumbs';
+import ShatterTitle from '@/components/ShatterTitle';
 import LinkIcon from '@/components/icons/LinkIcon';
 import LinkedInIcon from '@/components/icons/LinkedInIcon';
 
@@ -9,8 +10,29 @@ export default function ContactPage() {
     <main>
       <section className="hero hero--contact">
         <div className="hero__header">
-          <h1 className="hero__title">Contact</h1>
-          <p className="hero__subtitle">Let’s talk about your project</p>
+          <ShatterTitle
+            as="h1"
+            className="hero__title"
+            radius={150}
+            maxOffset={20}
+            maxRotate={12}
+            popScale={1.07}
+          >
+            Contact
+          </ShatterTitle>
+
+          <ShatterTitle
+            as="div"
+            className="hero__subtitle"
+            radius={150}
+            maxOffset={20}
+            maxRotate={12}
+            popScale={1.07}
+          >
+            Let’s talk about your project
+          </ShatterTitle>
+
+
         </div>
       </section>
 
@@ -18,9 +40,35 @@ export default function ContactPage() {
 
       <section className="container contact">
         <div className="contact__card">
-          <h2 className="h2 contact__title">Get in touch</h2>
+          <h2 className="h2 contact__title">
+
+            <ShatterTitle
+              as="span"
+              className=""
+              radius={150}
+              maxOffset={20}
+              maxRotate={12}
+              popScale={1.07}
+            >
+              Get in touch
+            </ShatterTitle>
+            
+            
+            </h2>
           <p className="contact__text">
-            I’m always happy to hear about new projects, ideas, and collaborations.
+
+            <ShatterTitle
+              as="span"
+              className=""
+              radius={150}
+              maxOffset={20}
+              maxRotate={12}
+              popScale={1.07}
+            >
+              I’m always happy to hear about new projects, ideas, and collaborations.
+            </ShatterTitle>
+
+
           </p>
 
           <div className="contact__methods">
@@ -29,7 +77,7 @@ export default function ContactPage() {
               href="mailto:andrein.webdesign@gmail.com"
               aria-label="Email Andrei"
             >
-             
+
               andrein.webdesign@gmail.com
             </a>
 
@@ -40,7 +88,7 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               aria-label="LinkedIn profile"
             >
-             
+
               LinkedIn
             </a>
           </div>

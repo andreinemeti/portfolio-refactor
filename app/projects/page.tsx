@@ -8,6 +8,7 @@ import Loading from '@/components/Loading';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import FloatingTargetCursor from '@/components/FloatingTargetCursor';
 import MagneticItem from '@/components/MagneticItem';
+import ShatterTitle from '@/components/ShatterTitle';
 export default function ProjectsPage() {
   const dispatch = useAppDispatch();
   const { list, status, tags } = useAppSelector(s => s.projects);
@@ -44,15 +45,37 @@ export default function ProjectsPage() {
     return counts;
   }, [allTags, filtered.length, list, selected, tagCounts]);
 
+
   return (
     <main>
       {/* mount cursor once (optionally limit to the grid with within=".flex-container") */}
-      <FloatingTargetCursor within=".flex-container"  activeSize={140} />
+      <FloatingTargetCursor within=".flex-container" activeSize={140} />
 
       <section className="hero hero--project hero--project_all">
         <div className="hero__header">
-          <h1 className="hero__title">All Projects</h1>
-          <p className="hero__subtitle">A collection of my work</p>
+          <ShatterTitle
+            as="h1"
+            className="hero__title"
+            radius={150}
+            maxOffset={20}
+            maxRotate={12}
+            popScale={1.07}
+          >
+            All Projects
+          </ShatterTitle>
+
+          <ShatterTitle
+            as="div"
+            className="hero__subtitle"
+            radius={150}
+            maxOffset={20}
+            maxRotate={12}
+            popScale={1.07}
+          >
+            A collection of my work
+          </ShatterTitle>
+
+
         </div>
       </section>
 
@@ -61,7 +84,18 @@ export default function ProjectsPage() {
       <section className="container">
         <div className="section-header">
           <h2 className="h2 section-title">
-            All projects <span className="count">({filtered.length})</span>
+            <ShatterTitle
+              as="div"
+              className="hero__subtitle"
+              radius={150}
+              maxOffset={20}
+              maxRotate={12}
+              popScale={1.07}
+            >
+              All projects ({filtered.length})
+            </ShatterTitle>
+
+            {/* All projects <span className="count">({filtered.length})</span> */}
           </h2>
 
           {selected.length > 0 && (
@@ -98,18 +132,18 @@ export default function ProjectsPage() {
 
                 return (
                   <MagneticItem key={tag} radius={90} strength={0.22} tilt={3}>
-                  <button
-                    key={tag}
-                    type="button"
-                    onClick={onClick}
-                    className={`pill pill--button ${active ? 'pill--active' : ''} ${isDisabled ? 'pill--disabled' : ''}`}
-                    aria-pressed={active}
-                    aria-disabled={isDisabled}
-                    disabled={isDisabled}
-                    title={`${tag} (${count} projects)`}
-                  >
-                    {tag}&nbsp;<span className="pill__count">({count})</span>
-                  </button>
+                    <button
+                      key={tag}
+                      type="button"
+                      onClick={onClick}
+                      className={`pill pill--button ${active ? 'pill--active' : ''} ${isDisabled ? 'pill--disabled' : ''}`}
+                      aria-pressed={active}
+                      aria-disabled={isDisabled}
+                      disabled={isDisabled}
+                      title={`${tag} (${count} projects)`}
+                    >
+                      {tag}&nbsp;<span className="pill__count">({count})</span>
+                    </button>
                   </MagneticItem>
                 );
               })}
@@ -118,24 +152,24 @@ export default function ProjectsPage() {
         )}
 
         {status === 'loading' && <Loading />}
-      <div className="flex-container" style={{ marginTop: '1rem' }}>
-  {filtered.map(p => (
-    <MagneticItem className="card-container" key={p.slug } radius={90} strength={0.22} tilt={3}>
-    <div
-      key={p.slug}
-      className="card-target"
-      data-cursor="target"
-      data-cursor-images={p.images?.slice(0,4).join(',') ?? ''}
-    >
-      
-      <ProjectCard 
-     
-      project={p} />
-      
-    </div>
-     </MagneticItem>
-  ))}
-</div>
+        <div className="flex-container" style={{ marginTop: '1rem' }}>
+          {filtered.map(p => (
+            <MagneticItem className="card-container" key={p.slug} radius={90} strength={0.22} tilt={3}>
+              <div
+                key={p.slug}
+                className="card-target"
+                data-cursor="target"
+                data-cursor-images={p.images?.slice(0, 4).join(',') ?? ''}
+              >
+
+                <ProjectCard
+
+                  project={p} />
+
+              </div>
+            </MagneticItem>
+          ))}
+        </div>
 
 
 

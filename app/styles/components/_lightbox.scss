@@ -21,6 +21,8 @@
 .lightbox__img {
     object-fit: contain;
     animation: lb-fade .25s ease;
+    background:#fff;
+    border-radius:18.5px;
 }
 
 @keyframes lb-fade {
