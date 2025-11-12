@@ -23,6 +23,14 @@ export default function HomePage() {
 
   return (
     <main>
+      {/* <section className="hero hero--home" style={{ position: 'relative', minHeight: '60vh', overflow: 'hidden' }}>
+
+  <HeroVideo
+    webmSrc="/videos/hero.webm"
+    mp4Src="/videos/hero.mp4"
+    poster="/images/hero-poster.jpg"
+    className="hero__video" // optional if you want to style further
+  /> */}
 
       <section className="hero hero--home">
         <HeroFX />
@@ -60,24 +68,24 @@ export default function HomePage() {
       <section className="container">
         <div className="section-header">
           <h2 className="h2 section-title">
-             <ShatterTitle
-            as="div"
-            className="hero__subtitle"
-            radius={150}
-            maxOffset={20}
-            maxRotate={12}
-            popScale={1.07}
-          >
-            Featured projects 
-          </ShatterTitle>
+            <ShatterTitle
+              as="div"
+              className="hero__subtitle"
+              radius={150}
+              maxOffset={20}
+              maxRotate={12}
+              popScale={1.07}
+            >
+              Featured projects
+            </ShatterTitle>
 
-          
+
           </h2>
         </div>
 
         {status === 'loading' && <Loading />}
 
-        <div className="flex-container" style={{ marginTop: '1rem' }}>
+        <div className="flex-container">
           {featured.map(p =>
             <MagneticItem className="card-container" key={p.slug} radius={90} strength={0.22} tilt={3}>
               <div
@@ -92,26 +100,28 @@ export default function HomePage() {
           )}
         </div>
 
-        <Link href="/projects" className="btn btn--primary">
-          <span className="btn__text">See all projects</span>
-          <span className="count">({list.length})</span>
-          <NextIcon className="icon" size={20} />
-        </Link>
+        <div className="flex-container">
+          <Link href="/projects" className="btn btn--primary see-all">
+            <span className="btn__text">See all projects</span>
+            <span className="count">({list.length})</span>
+            <NextIcon className="icon" size={20} />
+          </Link>
+        </div>
 
       </section>
 
-        <CtaStrip
-                title="Let’s build something great"
-               
-                href="/contact"
-                rightSlot={
-                    <Link className="btn btn--primary" href={`/contact`}>
-                        <span className="btn__text">Contact me</span>
-                        <NextIcon className="icon" size={20} />
-                    </Link>
-                }
-            />
-            
+      <CtaStrip
+        title="Let’s build something great"
+
+        href="/contact"
+        rightSlot={
+          <Link className="btn btn--primary" href={`/contact`}>
+            <span className="btn__text">Contact me</span>
+            <NextIcon className="icon" size={20} />
+          </Link>
+        }
+      />
+
     </main>
   );
 }

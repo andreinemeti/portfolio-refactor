@@ -29,6 +29,12 @@ export default function ProjectsPage() {
   }, [list, selected]);
 
   const allTags = tags ?? [];
+
+  const sortedTags = useMemo(
+  () => [...allTags].sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' })),
+  [allTags]
+);
+
   const tagCounts = useMemo(() => {
     const counts: Record<string, number> = {};
     for (const p of list) for (const t of p.tags ?? []) counts[t] = (counts[t] ?? 0) + 1;
@@ -44,6 +50,8 @@ export default function ProjectsPage() {
     }
     return counts;
   }, [allTags, filtered.length, list, selected, tagCounts]);
+
+
 
 
   return (
@@ -98,15 +106,11 @@ export default function ProjectsPage() {
             {/* All projects <span className="count">({filtered.length})</span> */}
           </h2>
 
-          {selected.length > 0 && (
-            <button className="btn btn--ghost" onClick={clearFilters}>
-              Clear filters ({selected.length})
-            </button>
-          )}
+          
         </div>
 
         {allTags.length > 0 && (
-          <div className="filters-toggle-row" style={{ marginBottom: '.5rem' }}>
+          <div className="filters-toggle-row">
             <button
               type="button"
               className="btn btn--ghost"
@@ -116,6 +120,11 @@ export default function ProjectsPage() {
             >
               Filters{selected.length > 0 ? ` (${selected.length} selected)` : ''}
             </button>
+            {selected.length > 0 && (
+            <button className="btn btn--ghost" onClick={clearFilters}>
+              Clear filters ({selected.length})
+            </button>
+          )}
           </div>
         )}
 
@@ -123,7 +132,7 @@ export default function ProjectsPage() {
           <div id="project-filters" hidden={!showFilters} aria-hidden={!showFilters}>
             <div className="section-subtitle">Select one or more technologies:{' '}</div>
             <div className="pill-list filter-pill-list" role="listbox" aria-label="Filter by tags" style={{ marginBottom: '.5rem' }}>
-              {allTags.map(tag => {
+              {sortedTags.map(tag => {
                 const active = selected.includes(tag);
                 const count =
                   visibleTagCounts[tag] ?? (selected.length === 0 ? tagCounts[tag] ?? 0 : 0);

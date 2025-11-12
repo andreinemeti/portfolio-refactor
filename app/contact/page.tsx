@@ -52,9 +52,9 @@ export default function ContactPage() {
             >
               Get in touch
             </ShatterTitle>
-            
-            
-            </h2>
+
+
+          </h2>
           <p className="contact__text">
 
             <ShatterTitle

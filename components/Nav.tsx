@@ -11,6 +11,7 @@ export default function Nav() {
   return (
     <nav className="nav">
       <ul className="nav__list" role="menubar" aria-label="Primary">
+        
         {NAV_LINKS.map(({ label, href }) => {
           const active =
             href === '/'
