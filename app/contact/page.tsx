@@ -1,6 +1,7 @@
 'use client';
 
 import { Breadcrumbs } from '@/components/Breadcrumbs';
+import HeroFX from '@/components/HeroFX';
 import ShatterTitle from '@/components/ShatterTitle';
 import LinkIcon from '@/components/icons/LinkIcon';
 import LinkedInIcon from '@/components/icons/LinkedInIcon';
@@ -9,6 +10,7 @@ export default function ContactPage() {
   return (
     <main>
       <section className="hero hero--contact">
+        <HeroFX />
         <div className="hero__header">
           <ShatterTitle
             as="h1"
