@@ -15,33 +15,34 @@ export type Project = {
 
 export const projects: Project[] = [
 
-
   {
-    id:  1,
-    slug: 'sosito-website',
-    featured: false,
-    name: 'Sosito',
-    description: 'Multilingual product website for Sosito, a smartphone-based timekeeping and digital attendance system. The site presents how employees clock in with NFC on their own phones, how managers monitor attendance in real time, and how HR generates automated reports for payroll across multiple locations and industries.',
-    type: 'Product website',
+    id: 30,
+    slug: 'sosito-cms',
+    featured: true,
+    name: 'Sosito CMS',
+    description: 'Sosito is a workforce management CMS built for companies with distributed teams. It includes time tracking in real time, shift scheduling, employee management, NFC-based attendance, detailed reports, vacation planning, and multi-location oversight — all wrapped in a modern React interface with custom designed UI.',
+    type: 'CMS',
     responsiveness: '100%',
-    tags: ['HTML5', 'CSS3', 'PHP', 'SEO', 'Multilanguage (i18n)','Custom design'],
-     images: ['/images/sosito-website/1.jpg', '/images/sosito-website/2.jpg', '/images/sosito-website/3.jpg', '/images/sosito-website/4.jpg', '/images/sosito-website/5.jpg'],
-    externalUrl: 'https://sosito.ro/',
+    tags: ['ReactJS', 'Figma', 'Swagger (Open API)', 'REST APIs', 'Sass', 'Custom design',],
+    images: ['/images/sosito-cms/2.PNG', '/images/sosito-cms/1.PNG', 
+      '/images/sosito-cms/3.PNG', '/images/sosito-cms/4.PNG','/images/sosito-cms/5.PNG','/images/sosito-cms/6.PNG'], 
+    externalUrl: 'https://app.sosito.ro/',
      createdAt: '2022-09-15T00:00:00.000Z',
-    lastMod: '2023-09-15T00:00:00.000Z'
+    lastMod: '2022-09-15T00:00:00.000Z'
   },
+  
   {
-    id: 2,
-    slug: 'crossa-website',
-    featured: false,
-    name: 'Crossa',
-    description: 'Responsive presentation website for CrossA, an administrative and collaboration platform designed for organizations with complex hierarchies. The website showcases modules such as membership management, communication, workflows, forms, payments, and statistics, while highlighting use cases across clusters, sports, volunteer organizations, research centers, and social associations.',
-    type: 'Product website',
+    id: 32,
+    slug: 'zoniz-web-ordering',
+    featured: true,
+    name: 'Zoniz Web Ordering',
+    description: 'A high-traffic React-based web ordering system that has processed over 250,000 orders to date. It replicates the full Zoniz native app experience, offering dynamic menus, product customization, extras, allergens, real-time availability, cart management, and delivery/pickup checkout. Built with custom UI components in React + Sass and fully integrated with Zoniz REST APIs (Swagger/OpenAPI).',
+    type: 'Web App',
     responsiveness: '100%',
-    tags: ['CSS3', 'Less'],
-    images: ['/images/crossa-website/1.jpg', '/images/crossa-website/2.jpg', '/images/crossa-website/3.jpg', '/images/crossa-website/4.jpg'],
-    externalUrl: 'https://www.crossa.app/',
-     createdAt: '2021-09-15T00:00:00.000Z',
+    tags: ['ReactJS', 'Sass', 'REST APIs', 'Swagger (Open API)', 'Custom design'],
+     images: ['/images/zoniz-web-ordering-app/1.jpg', '/images/zoniz-web-ordering-app/2.jpg'],
+    externalUrl: 'https://demo.zoniz.com/anonorder/#/links/tables/demo_micro/B1',
+    createdAt: '2021-09-15T00:00:00.000Z',
     lastMod: '2021-09-15T00:00:00.000Z'
   },
   {
@@ -73,6 +74,66 @@ export const projects: Project[] = [
     lastMod: '2023-09-15T00:00:00.000Z'
   },
   {
+    id: 28,
+    slug: 'zoniz-cities',
+    featured: false,
+    name: 'Zoniz Cities',
+    description: 'A multi-city tourism directory powering official city portals such as Šibenik, Cluj-Napoca, and Turda. The platform helps visitors discover restaurants, events, attractions, and local information through a clean, mobile-optimized interface. Built with ReactJS, PHP, and SEO-friendly routing, it delivers fast navigation, AI automated multilingual support, dynamic content rendering, and dedicated detail pages enhanced with maps, galleries, and accessibility features, such as text to speech.',
+    type: 'Directory',
+    responsiveness: '100%',
+    tags: ['ReactJS', 'PHP', 'HTML5', 'Sass', 'SEO'],
+    images: ['/images/zoniz-cities-website/1.jpg', '/images/zoniz-cities-website/2.jpg', 
+      '/images/zoniz-cities-website/3.jpg', '/images/zoniz-cities-website/4.jpg'],
+    externalUrl: 'https://www.zoniz.com/cities/',
+     createdAt: '2025-09-15T00:00:00.000Z',
+    lastMod: '2025-09-15T00:00:00.000Z'
+  },
+  {
+    id: 29,
+    slug: 'zoniz-cms',
+    featured: false,
+    name: 'Zoniz CMS',
+    description: 'The core CMS behind the Zoniz ecosystem. Redesigned from scratch to manage campaigns, venues, content, audiences, multilingual data, and analytics with a modern UI/UX and fully custom component design.',
+    type: 'CMS',
+    responsiveness: '100%',
+    tags: ['Google Web Toolkit', 'Less', 'CSS3', 'Email templates', 'Photoshop', 'Figma', 'Custom design'],
+    images: ['/images/zoniz-cms/1.jpg', '/images/zoniz-cms/2.jpg', 
+      '/images/zoniz-cms/3.jpg'],
+    externalUrl: 'https://app.zoniz.com/proximity/#login',
+     createdAt: '2018-09-15T00:00:00.000Z',
+    lastMod: '2025-09-15T00:00:00.000Z'
+  },
+
+  {
+    
+    id:  1,
+    slug: 'sosito-website',
+    featured: false,
+    name: 'Sosito',
+    description: 'Multilingual product website for Sosito, a smartphone-based timekeeping and digital attendance system. The site presents how employees clock in with NFC on their own phones, how managers monitor attendance in real time, and how HR generates automated reports for payroll across multiple locations and industries.',
+    type: 'Product website',
+    responsiveness: '100%',
+    tags: ['HTML5', 'CSS3', 'PHP', 'SEO', 'Multilanguage (i18n)','Custom design'],
+     images: ['/images/sosito-website/1.jpg', '/images/sosito-website/2.jpg', '/images/sosito-website/3.jpg', '/images/sosito-website/4.jpg', '/images/sosito-website/5.jpg'],
+    externalUrl: 'https://sosito.ro/',
+     createdAt: '2022-09-15T00:00:00.000Z',
+    lastMod: '2023-09-15T00:00:00.000Z'
+  },
+  {
+    id: 39,
+    slug: 'zoniz-website',
+    featured: true,
+    name: 'Zoniz Website',
+    description: 'Marketing site for the Zoniz platform.',
+    type: 'Website',
+    responsiveness: '100%',
+    tags: ['HTML5', 'CSS3', 'JavaScript', 'Photoshop', 'Custom design'],
+    images: ['/images/zoniz-site/1.jpg', '/images/zoniz-site/2.jpg', '/images/zoniz-site/3.jpg', '/images/zoniz-site/4.jpg'],
+     createdAt: '2018-09-15T00:00:00.000Z',
+    lastMod: '2018-09-15T00:00:00.000Z',
+    externalUrl: 'https://www.zoniz.com',
+  },
+  {
   id: 17,
   slug: 'televarpio',
   featured: false,
@@ -87,6 +148,20 @@ export const projects: Project[] = [
   lastMod: '2018-09-15T00:00:00.000Z',
   externalUrl: 'https://www.tv.fo'
 },
+{
+    id: 2,
+    slug: 'crossa-website',
+    featured: false,
+    name: 'Crossa',
+    description: 'Responsive presentation website for CrossA, an administrative and collaboration platform designed for organizations with complex hierarchies. The website showcases modules such as membership management, communication, workflows, forms, payments, and statistics, while highlighting use cases across clusters, sports, volunteer organizations, research centers, and social associations.',
+    type: 'Product website',
+    responsiveness: '100%',
+    tags: ['CSS3', 'Less'],
+    images: ['/images/crossa-website/1.jpg', '/images/crossa-website/2.jpg', '/images/crossa-website/3.jpg', '/images/crossa-website/4.jpg'],
+    externalUrl: 'https://www.crossa.app/',
+     createdAt: '2021-09-15T00:00:00.000Z',
+    lastMod: '2021-09-15T00:00:00.000Z'
+  },
   {
     id: 5,
     slug: 'zoniz-tourism',
@@ -408,51 +483,7 @@ export const projects: Project[] = [
      createdAt: '2023-09-15T00:00:00.000Z',
     lastMod: '2023-09-15T00:00:00.000Z'
   },
-  {
-    id: 28,
-    slug: 'zoniz-cities',
-    featured: false,
-    name: 'Zoniz Cities',
-    description: 'Multi-city directory for Zoniz.',
-    type: 'Directory',
-    responsiveness: '100%',
-    tags: ['ReactJS', 'PHP', 'HTML5', 'Sass', 'SEO'],
-    images: ['/images/zoniz-cities-website/1.jpg', '/images/zoniz-cities-website/2.jpg', 
-      '/images/zoniz-cities-website/3.jpg', '/images/zoniz-cities-website/4.jpg'],
-    externalUrl: 'https://www.zoniz.com/cities/',
-     createdAt: '2022-09-15T00:00:00.000Z',
-    lastMod: '2022-09-15T00:00:00.000Z'
-  },
-  {
-    id: 29,
-    slug: 'zoniz-cms',
-    featured: false,
-    name: 'Zoniz CMS',
-    description: 'Zoniz Content Management System.',
-    type: 'CMS',
-    responsiveness: '100%',
-    tags: ['Google Web Toolkit', 'Less', 'CSS3', 'Email templates', 'Photoshop', 'Figma', 'Custom design'],
-    images: ['/images/zoniz-cms/1.jpg', '/images/zoniz-cms/2.jpg', 
-      '/images/zoniz-cms/3.jpg'],
-    externalUrl: 'https://app.zoniz.com/proximity/#login',
-     createdAt: '2018-09-15T00:00:00.000Z',
-    lastMod: '2018-09-15T00:00:00.000Z'
-  },
-  {
-    id: 30,
-    slug: 'sosito-cms',
-    featured: true,
-    name: 'Sosito CMS',
-    description: 'Sosito content management system (React).',
-    type: 'CMS',
-    responsiveness: '100%',
-    tags: ['ReactJS', 'Figma', 'Swagger (Open API)', 'REST APIs', 'Sass', 'Custom design',],
-    images: ['/images/sosito-cms/2.PNG', '/images/sosito-cms/1.PNG', 
-      '/images/sosito-cms/3.PNG', '/images/sosito-cms/4.PNG','/images/sosito-cms/5.PNG','/images/sosito-cms/6.PNG'], 
-    externalUrl: 'https://app.sosito.ro/',
-     createdAt: '2022-09-15T00:00:00.000Z',
-    lastMod: '2022-09-15T00:00:00.000Z'
-  },
+  
   {
     id: 31,
     slug: 'brombler',
@@ -468,20 +499,7 @@ export const projects: Project[] = [
      createdAt: '2023-09-15T00:00:00.000Z',
     lastMod: '2023-09-15T00:00:00.000Z'
   },
-  {
-    id: 32,
-    slug: 'zoniz-web-ordering',
-    featured: true,
-    name: 'Zoniz Web Ordering',
-    description: 'React-based web ordering live flow (demo).',
-    type: 'Web App',
-    responsiveness: '100%',
-    tags: ['ReactJS', 'Sass', 'REST APIs', 'Swagger (Open API)', 'Custom design'],
-     images: ['/images/zoniz-web-ordering-app/1.jpg', '/images/zoniz-web-ordering-app/2.jpg'],
-    externalUrl: 'https://demo.zoniz.com/anonorder/#/links/tables/demo_micro/B1',
-    createdAt: '2021-09-15T00:00:00.000Z',
-    lastMod: '2021-09-15T00:00:00.000Z'
-  },
+  
   {
     id: 33,
     slug: 'sosito-blog',
@@ -515,7 +533,7 @@ export const projects: Project[] = [
   {
     id: 35,
     slug: 'travel-website',
-    featured: true,
+    featured: false,
     name: 'Travel Website',
     description: 'A responsive travel landing page built with Bootstrap.',
     type: "Landing page",
@@ -568,20 +586,7 @@ export const projects: Project[] = [
     createdAt: '2018-09-15T00:00:00.000Z',
     lastMod: '2018-09-15T00:00:00.000Z'
   },
-  {
-    id: 39,
-    slug: 'zoniz-website',
-    featured: true,
-    name: 'Zoniz Website',
-    description: 'Marketing site for the Zoniz platform.',
-    type: 'Website',
-    responsiveness: '100%',
-    tags: ['HTML5', 'CSS3', 'JavaScript', 'Photoshop', 'Custom design'],
-    images: ['/images/zoniz-site/1.jpg', '/images/zoniz-site/2.jpg', '/images/zoniz-site/3.jpg', '/images/zoniz-site/4.jpg'],
-     createdAt: '2018-09-15T00:00:00.000Z',
-    lastMod: '2018-09-15T00:00:00.000Z',
-    externalUrl: 'https://www.zoniz.com',
-  },
+  
   {
     id: 40,
     slug: 'law-firm-landing',

@@ -16,7 +16,13 @@ export default function ProjectCard({ project }: { project: Project }) {
       {project.featured && (
         <span className="card__ribbon" aria-label="Featured">Featured</span>
       )}
-        <Image className="card__media" src={cover} alt={project.name} width={800} height={200} />
+        <Image 
+        className="card__media" 
+        src={cover} alt={project.name} 
+        width={800} 
+        height={200} 
+        draggable={false}
+        />
          {/* <p className="card__link">
           <span className="card__link__text">View project </span>
           <NextIcon className="icon" size={20}/>
