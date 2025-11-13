@@ -1,17 +1,24 @@
 import './styles/globals.scss';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
-import { Providers } from '@/store/Providers';
-import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
+import Nav from '@/components/navigation/Nav';
+import Footer from '@/components/layout/Footer';
 
-import PageLoader from '@/components/PageLoader';
-import { Suspense } from 'react';
-import Loading from '@/components/Loading';
 
 export const metadata: Metadata = {
-  title: 'Andrei Nemeti – Portfolio',
-  description: 'Freelance Front‑end Developer portfolio'
+   title: {
+    default: 'Andrei Nemeti – Frontend Developer',
+    template: '%s | Andrei Nemeti',
+  },
+  description: 'Freelance Front‑end Developer portfolio',
+   icons: {
+    icon: [
+      { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon/favicon.ico' }, // fallback
+    ],
+    apple: '/favicon/apple-icon.png',
+  },
 };
 
 const inter = Inter({
@@ -26,12 +33,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable}`}>
       <body>
-        <Providers>
-         
+      
           <Nav />
           {children}
            <Footer />
-        </Providers>
+       
       </body>
     </html>
   );

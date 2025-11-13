@@ -1,4 +1,5 @@
-import NotFoundClient from '@/components/NotFoundClient';
+import NotFoundClient from "@/components/feedback/NotFoundClient";
+
 
 export default function NotFound() {
   return (

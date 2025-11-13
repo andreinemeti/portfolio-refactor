@@ -4,7 +4,7 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
 import NextIcon from './icons/NextIcon';
-import MagneticItem from './MagneticItem';
+import MagneticItem from './fx/MagneticItem';
 
 type ServiceCardProps = {
   icon: ReactNode;

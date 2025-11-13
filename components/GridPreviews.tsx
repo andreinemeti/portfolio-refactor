@@ -2,7 +2,7 @@
 'use client';
 import { useEffect, useState, useCallback } from 'react';
 import Image from 'next/image';
-import MagneticItem from './MagneticItem';
+import MagneticItem from './fx/MagneticItem';
 
 type GridPreviewsProps = {
   images: string[];

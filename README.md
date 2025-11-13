@@ -1,10 +1,9 @@
-# Andrei Nemeti – Portfolio (Next.js 16/TS/Redux Toolkit)
+# Andrei Nemeti – Portfolio (Next.js 15/TS/Redux Toolkit)
 
 Refactor of the classic 2018 portfolio, keeping the original vibe while modernising the stack.
 
 ## Tech
 - Next.js App Router + TypeScript
-- Redux Toolkit (state + async thunks)
 - SCSS with BEM
 - Minimal Jest tests
 
@@ -27,6 +26,10 @@ npm run dev
 - Layout and colouring borrow heavily from the legacy site (dark, neon orange borders, card glow).
 - BEM naming: `.hero--home__title`, `.card__tag`, `.breadcrumbs__item`, etc.
 - Image slider is dependency free.
+
+
+## Test (jest)
+`npm test`
 
 
 ## Build

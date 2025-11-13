@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import MagneticItem from './MagneticItem';
+import MagneticItem from '../fx/MagneticItem';
+
 
 type Props = {
   title?: string;

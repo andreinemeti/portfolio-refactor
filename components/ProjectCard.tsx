@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import type { Project } from '@/lib/data/projects';
+import type { Project } from '@/lib/data/projects.query';
 import NextIcon from '@/components/icons/NextIcon';
 export default function ProjectCard({ project }: { project: Project }) {
 

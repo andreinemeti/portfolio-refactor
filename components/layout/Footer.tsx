@@ -3,8 +3,8 @@
 // TODO: FIX FOOTER ANIMATIONS - THEY SUCK
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { NAV_LINKS } from '../utils/constants';
-import ShatterTitle from './ShatterTitle';
+import { NAV_LINKS } from '../../utils/constants';
+import ShatterTitle from '../fx/ShatterTitle';
 
 export default function Footer() {
   const pathname = usePathname();

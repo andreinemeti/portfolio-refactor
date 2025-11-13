@@ -1,155 +1,61 @@
-'use client';
-import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
-import { useAppDispatch, useAppSelector } from '@/utils/hooks';
-import { fetchProjectBySlug, fetchProjects } from '@/store/projectsSlice';
-import Slider from '@/components/Slider';
-import Link from 'next/link';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { yearFromISO } from '@/utils/common';
-import LinkIcon from '@/components/icons/LinkIcon';
-import Loading from '@/components/Loading';
-import GridPreviews from '@/components/GridPreviews';
-import NotFoundClient from '@/components/NotFoundClient';
-import NextIcon from '@/components/icons/NextIcon';
-import CtaStrip from '@/components/CtaStrip';
-import FloatingTargetCursor from '@/components/FloatingTargetCursor';
-import MagneticItem from '@/components/MagneticItem';
-export default function ProjectPage() {
-  const params = useParams();
-  const slug = String(params.slug);
-  const dispatch = useAppDispatch();
-  const { current, list } = useAppSelector(s => s.projects);
-  
-  const [notFound, setNotFound] = useState(false);
+// app/project/[slug]/page.tsx
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { getProjectBySlug, getProjects } from '@/lib/data/projects.query';
+import ProjectDetailView from '@/views/project/ProjectDetailView';
 
-  useEffect(() => {
-    let cancelled = false;
+type PageProps = {
+  params: Promise<{ slug: string }>;
+};
 
-    dispatch(fetchProjectBySlug(slug) as any)
-      .catch(() => {
-        if (!cancelled) setNotFound(true);
-      });
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const project = await getProjectBySlug(slug);
 
-    return () => { cancelled = true; };
-  }, [dispatch, slug]);
-
-  useEffect(() => {
-    if (list.length === 0) {
-      dispatch(fetchProjects() as any);
-    }
-  }, [dispatch, list.length]);
-
-  if (notFound) {
-    return <NotFoundClient />;
-  }
-  if (!current) {
-    return <Loading />;
+  if (!project) {
+    return {
+      title: 'Project not found',
+      description: 'The requested project does not exist.',
+    };
   }
 
+  const baseTitle = `${project.name} – Frontend Project`;
+  const description =
+    project.description?.slice(0, 155) ??
+    `Case study for ${project.name}, a frontend project by Andrei.`;
 
-  const next = (() => {
-    if (!list.length || !current) return null;
-    const i = list.findIndex(p => p.slug === current.slug);
-    if (i === -1 || list.length < 2) return null;
-    return list[(i + 1) % list.length];
-  })();
+  return {
+    title: baseTitle,
+    description,
+    alternates: { canonical: `/project/${project.slug}` },
+    openGraph: {
+      title: baseTitle,
+      description,
+      url: `/project/${project.slug}`,
+      images:
+        project.images && project.images.length
+          ? [
+              {
+                url: project.images[0],
+                width: 1200,
+                height: 630,
+                alt: project.name,
+              },
+            ]
+          : undefined,
+    },
+  };
+}
 
-  const meta = [
-    { label: 'Project Type', value: (current as any).type },
-    { label: 'Responsiveness', value: (current as any).responsiveness },
-  ].filter(m => !!m.value) as { label: string; value: string }[];
+export default async function ProjectPage({ params }: PageProps) {
+  const { slug } = await params;
+  const project = await getProjectBySlug(slug);
+  if (!project) notFound();
 
+  const { projects } = await getProjects();
+  const idx = projects.findIndex((p) => p.slug === project.slug);
+  const next =
+    idx === -1 || projects.length < 2 ? null : projects[(idx + 1) % projects.length];
 
-  return (
-    <main>
-       <FloatingTargetCursor within=".previews-grid" activeSize={180} minWidth={768} ringText="OPEN • "  />
-      {/* HERO with slider */}
-      <section className="hero hero--project">
-        {/* Big featured ribbon */}
-        {current.featured && (
-          <span className="hero__ribbon" aria-label="Featured">Featured</span>
-        )}
-        <div className="hero__media">
-          <Slider
-            images={current.images}
-            showArrows={true}
-            showDots={true}
-            className="hero__slider"
-
-          />
-        </div>
-        <div className="hero__overlay">
-          <div className="hero__header">
-            <h1 className="hero__title">{current.name}</h1>
-
-          </div>
-        </div>
-      </section>
-
-      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Project' }, { label: current.name }]} />
-
-      {/* CONTENT GRID */}
-      <section className="container project-content">
-        <div className="project-content__main">
-          <h2 className="h2">Project description</h2>
-          <p className="lead">{current.description}</p>
-          <p className="lead">Built in: {yearFromISO(current.createdAt)}</p>
-
-          {/* Pills */}
-
-          {current.tags?.length > 0 && (
-            <div className="pill-list" aria-label="Technologies used">
-              {current.tags.map(t => (
-                 <MagneticItem key={t } radius={90} strength={0.22} tilt={3}>
-                <span key={t} className="pill">{t}</span>
-                </MagneticItem>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Sidebar meta cards (render only if there is meta) */}
-        {meta.length > 0 && (
-          <aside className="project-content__sidebar">
-            {meta.map(m => (
-              <div key={m.label} className="meta-card">
-                <div className="meta-card__label">{m.label}</div>
-                <div className="meta-card__value">{m.value}</div>
-              </div>
-            ))}
-          </aside>
-        )}
-      </section>
-
-      {current.images?.length > 0 && (
-        <div className="container previews-content">
-          <h2 className="h2">Previews</h2>
-          <GridPreviews images={current.images} />
-        </div>
-      )}
-
-      {current.externalUrl && (
-        <div className="container live-url-content">
-          <h2 className="h2">Live URL</h2>
-          <span className="pill">
-             <a className="link" href={current.externalUrl} target="_blank" rel="noopener noreferrer">
-            <LinkIcon className="icon" size={20} />
-            {current.externalUrl}</a>
-          </span>
-        </div>
-      )}
-
-      <CtaStrip
-        title="Ready to explore more?"
-        subtitle="Check out my next featured project and discover more."
-        rightSlot={next ? (
-          <Link className="btn btn--primary" href={`/project/${next.slug}`}>
-            <span className="btn__text">View next project</span>
-            <NextIcon className="icon" size={20} />
-          </Link>
-        ) : null}
-      />
-    </main>
-  );
+  return <ProjectDetailView project={project} next={next} />;
 }

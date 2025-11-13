@@ -3,8 +3,8 @@
 
 import Link from 'next/link';
 import { ReactNode } from 'react';
-import MagneticItem from './MagneticItem';
-import ShatterTitle from './ShatterTitle';
+import MagneticItem from '../fx/MagneticItem';
+import ShatterTitle from '../fx/ShatterTitle';
 
 type CtaStripProps = {
   title: string;              // main heading text
