@@ -1,4 +1,4 @@
-# Andrei Nemeti – Portfolio (Next.js 15/TS/Redux Toolkit)
+# Andrei Nemeti – Portfolio (Next.js 15)
 
 Refactor of the classic 2018 portfolio, keeping the original vibe while modernising the stack.
 
