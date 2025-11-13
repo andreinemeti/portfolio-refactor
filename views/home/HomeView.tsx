@@ -4,7 +4,7 @@
 
 import Link from 'next/link';
 import type { Project } from '@/lib/data/projects.query';
-import ProjectCard from '@/components/ProjectCard';
+import ProjectCard from '@/components/project/ProjectCard';
 import NextIcon from '@/components/icons/NextIcon';
 import FloatingTargetCursor from '@/components/fx/FloatingTargetCursor';
 import MagneticItem from '@/components/fx/MagneticItem';

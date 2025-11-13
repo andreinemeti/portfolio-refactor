@@ -1,10 +1,10 @@
-// components/ServiceCard.tsx
+// ServiceCard.tsx
 'use client';
 
 import Link from 'next/link';
 import { ReactNode } from 'react';
-import NextIcon from './icons/NextIcon';
-import MagneticItem from './fx/MagneticItem';
+import NextIcon from '../icons/NextIcon';
+import MagneticItem from '../fx/MagneticItem';
 
 type ServiceCardProps = {
   icon: ReactNode;

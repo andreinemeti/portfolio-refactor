@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { Breadcrumbs } from '@/components/navigation/Breadcrumbs';
 import NextIcon from '@/components/icons/NextIcon';
-import ServiceCard from '@/components/ServiceCard';
+import ServiceCard from '@/components/service/ServiceCard';
 import CtaStrip from '@/components/layout/CtaStrip';
 
 import UiIcon from '@/components/icons/UiIcon';

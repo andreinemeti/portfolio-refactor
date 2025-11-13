@@ -6,14 +6,16 @@ import Link from 'next/link';
 
 import type { Project } from '@/lib/data/projects.query';
 
-import ProjectCard from '@/components/ProjectCard';
+
 import { Breadcrumbs } from '@/components/navigation/Breadcrumbs';
 import FloatingTargetCursor from '@/components/fx/FloatingTargetCursor';
 import MagneticItem from '@/components/fx/MagneticItem';
 import ShatterTitle from '@/components/fx/ShatterTitle';
 import NextIcon from '@/components/icons/NextIcon';
 import HeroFX from '@/components/fx/HeroFX';
-import ProjectsSkeleton from '@/components/ProjectsSkeleton';
+import ProjectsSkeleton from '@/components/project/ProjectsSkeleton';
+import ProjectCard from '@/components/project/ProjectCard';
+
 
 const DEFAULT_PAGE_SIZE = 46;
 
@@ -27,6 +29,7 @@ export default function ProjectsListView({ projects, tags, pageSize }: Props) {
   // Filters UI
   const [showFilters, setShowFilters] = useState(false);
   const [selected, setSelected] = useState<string[]>([]);
+  const [searchTerm, setSearchTerm] = useState(''); // 🔍 NEW
 
   const toggleTag = useCallback((tag: string) => {
     setSelected((prev) =>
@@ -34,10 +37,12 @@ export default function ProjectsListView({ projects, tags, pageSize }: Props) {
     );
   }, []);
 
-  const clearFilters = useCallback(() => setSelected([]), []);
+  const clearFilters = useCallback(() => {
+    setSelected([]);
+    setSearchTerm('');
+  }, []);
 
   // For now we always have data on first render (SSR),
-  // but you might still want the skeleton pattern:
   const isLoading = false;
   const skeletonCount = isLoading
     ? pageSize ?? (projects.length || DEFAULT_PAGE_SIZE)
@@ -90,6 +95,50 @@ export default function ProjectsListView({ projects, tags, pageSize }: Props) {
     }
     return counts;
   }, [allTags, filtered.length, projects, selected, tagCounts]);
+
+  //  Autocomplete suggestions: tags starting with the typed letters
+ const searchSuggestions = useMemo(() => {
+  const term = searchTerm.trim().toLowerCase();
+  if (!term) return [];
+
+  return sortedTags.filter((tag) => {
+    if (!tag.toLowerCase().startsWith(term)) return false;
+
+    const active = selected.includes(tag);
+    const count =
+      visibleTagCounts[tag] ??
+      (selected.length === 0 ? tagCounts[tag] ?? 0 : 0);
+
+    const isDisabled = !active && selected.length > 0 && count === 0;
+
+    // mirror the same rule as the pills: don't show impossible combos
+    return !isDisabled;
+  });
+}, [searchTerm, sortedTags, selected, visibleTagCounts, tagCounts]);
+
+const handleSelectSuggestion = (tag: string) => {
+  setSelected((prev) => {
+    // already selected? do nothing
+    if (prev.includes(tag)) return prev;
+    // otherwise, add it
+    return [...prev, tag];
+  });
+  setSearchTerm(''); // close dropdown
+};
+
+const handleSearchKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (
+  e,
+) => {
+  if (e.key === 'Enter' && searchSuggestions[0]) {
+    e.preventDefault();
+    handleSelectSuggestion(searchSuggestions[0]);
+  }
+
+  if (e.key === 'Escape') {
+    e.preventDefault();
+    setSearchTerm(''); // clear input + hide dropdown
+  }
+};
 
   return (
     <main>
@@ -168,10 +217,59 @@ export default function ProjectsListView({ projects, tags, pageSize }: Props) {
               hidden={!showFilters}
               aria-hidden={!showFilters}
             >
+              
+
+              {/*  Search + autocomplete */}
+              <div className="filter-search ">
+                <label className="filter-search__label" htmlFor="tech-search">
+                  Search technology
+                </label>
+                <input
+                  id="tech-search"
+                  type="text"
+                  className="filter-search__input"
+                  placeholder="Type to search (e.g. React, Next.js, TypeScript)"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onKeyDown={handleSearchKeyDown}
+                  autoComplete="off"
+                />
+                {searchTerm.trim() && (
+                  <div className="filter-search__dropdown">
+                    {searchSuggestions.length > 0 ? (
+                      <ul className="filter-search__list" role="listbox">
+                        {searchSuggestions.map((tag) => {
+                          const active = selected.includes(tag);
+                          return (
+                            <li key={tag}>
+                              <button
+                                type="button"
+                                className={`filter-search__item ${
+                                  active ? 'filter-search__item--active' : ''
+                                }`}
+                                onClick={() => handleSelectSuggestion(tag)}
+                              >
+                                {tag}
+                                {active && (
+                                  <span className={`selected filter-search__pill-badge`}>
+                                    &nbsp;(selected)
+                                  </span>
+                                )}
+                              </button>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    ) : null}
+                  </div>
+                )}
+              </div>
+
               <div className="section-subtitle">
                 Select one or more technologies:
               </div>
 
+              {/* Tag pills */}
               <div
                 className="pill-list filter-pill-list"
                 role="listbox"

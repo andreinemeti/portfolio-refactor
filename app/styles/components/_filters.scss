@@ -3,3 +3,112 @@
     display: flex;
     justify-content:space-between;
 }
+
+.filter-search {
+    margin-bottom: 1rem;
+    position: relative;
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.15);
+    padding: 0.7rem 1rem;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+
+  &__label {
+    display: block;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+    color: #fff;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid #000;
+    background: #fff;
+    font-size: 0.9rem;
+    &::placeholder {
+        color:#8d8c8c;
+    }
+  }
+
+  &__dropdown {
+        position: absolute;
+    z-index: 10;
+    margin-top: 0.25rem;
+    background: var(--bg-elevated);
+    border-radius: 18.5px;
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    max-height: 260px;
+    overflow-y: auto;
+    
+    top: 0;
+    right:0;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0.25rem;
+    background: #ffffff;
+    & li {
+        margin-bottom:5px;
+        border-radius: 50px;
+        &:last-child {
+            margin-bottom:0;
+        }
+    }
+    & li:hover {
+        background:$accentColor;
+        & button {
+            color:#fff;
+        }
+
+        & button.filter-search__item--active {
+            color:#000;
+        }
+    }
+
+  }
+
+  &__item {
+    width: 100%;
+    text-align: left;
+    padding: 0.4rem 0.8rem;
+    background: transparent;
+    border: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius:50px;
+    &:hover {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    &--active {
+      font-weight: 600;
+      background:$accentColor;
+      
+    }
+  }
+
+  &__pill-badge {
+    font-size: 0.75rem;
+    opacity: 0.75;
+  }
+
+  &__empty {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+}

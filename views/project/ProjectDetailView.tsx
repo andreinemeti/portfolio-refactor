@@ -3,11 +3,11 @@ import Link from 'next/link';
 import type { Project } from '@/lib/data/projects.query';
 import { yearFromISO } from '@/utils/common';
 
-import Slider from '@/components/Slider';
+import Slider from '@/components/layout/Slider';
 import { Breadcrumbs } from '@/components/navigation/Breadcrumbs';
 import LinkIcon from '@/components/icons/LinkIcon';
 import NextIcon from '@/components/icons/NextIcon';
-import GridPreviews from '@/components/GridPreviews';
+import GridPreviews from '@/components/project/GridPreviews';
 import CtaStrip from '@/components/layout/CtaStrip';
 import FloatingTargetCursor from '@/components/fx/FloatingTargetCursor';
 import MagneticItem from '@/components/fx/MagneticItem';
