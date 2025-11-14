@@ -40,7 +40,6 @@ export default function ContactView() {
           <h2 className="h2 contact__title">
             <ShatterTitle
               as="span"
-              className="hero__subtitle"
               radius={150}
               maxOffset={20}
               maxRotate={12}

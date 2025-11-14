@@ -275,7 +275,7 @@ export default function HomeView({ projects, featured }: Props) {
         </div>
 
         <div className="flex-container">
-          <Link href={ROUTES.PROJECTS} className="btn btn--primary see-all">
+          <Link href={ROUTES.PROJECTS} className="btn btn--accent see-all">
             <span className="btn__text">See all projects</span>
             <span className="count">({count})</span>
            
