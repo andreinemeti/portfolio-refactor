@@ -2,6 +2,9 @@
 import { Breadcrumbs } from '@/components/navigation/Breadcrumbs';
 import HeroFX from '@/components/fx/HeroFX';
 import ShatterTitle from '@/components/fx/ShatterTitle';
+import MailIcon from '@/components/icons/MailIcon';
+import LinkedinIcon from '@/components/icons/LinkedInIcon';
+import GithubIcon from '@/components/icons/GitHubIcon';
 
 export default function ContactView() {
   return (
@@ -58,29 +61,61 @@ export default function ContactView() {
               maxRotate={12}
               popScale={1.07}
             >
-              I’m always happy to hear about new projects, ideas, and collaborations.
+              Feel free to reach out for collaborations, freelance work, or just
+              a friendly hello.
             </ShatterTitle>
           </p>
 
-          <div className="contact__methods">
-            <a
-              className="link contact__link"
-              href="mailto:andrein.webdesign@gmail.com"
-              aria-label="Email Andrei"
-            >
-              andrein.webdesign@gmail.com
-            </a>
+          <ul className="contact__list">
+            <li className="contact__item">
+              <div className="contact__icon-box">
+                <MailIcon className="icon" size={22} />
+              </div>
+              <div className="contact__details">
+                <span className="contact__label">Email</span>
+                <a
+                  className="contact__value"
+                  href="mailto:andrein.webdesign@gmail.com"
+                >
+                  andrein.webdesign@gmail.com
+                </a>
+              </div>
+            </li>
 
-            <a
-              className="link contact__link"
-              href="https://www.linkedin.com/in/andrei-marian-nemeti/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn profile"
-            >
-              LinkedIn
-            </a>
-          </div>
+            <li className="contact__item">
+              <div className="contact__icon-box">
+                <LinkedinIcon className="icon" size={22} />
+              </div>
+              <div className="contact__details">
+                <span className="contact__label">LinkedIn</span>
+                <a
+                  className="contact__value"
+                  href="https://www.linkedin.com/in/andrei-nemeti"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Andrei Nemeti
+                </a>
+              </div>
+            </li>
+
+            <li className="contact__item">
+              <div className="contact__icon-box">
+                <GithubIcon className="icon" size={22} />
+              </div>
+              <div className="contact__details">
+                <span className="contact__label">GitHub</span>
+                <a
+                  className="contact__value"
+                  href="https://github.com/andreinemeti"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  andreinemeti
+                </a>
+              </div>
+            </li>
+          </ul>
         </div>
       </section>
     </main>
