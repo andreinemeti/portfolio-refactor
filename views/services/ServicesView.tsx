@@ -12,6 +12,7 @@ import PerfIcon from '@/components/icons/PerfIcon';
 import MagneticItem from '@/components/fx/MagneticItem';
 import HeroFX from '@/components/fx/HeroFX';
 import ShatterTitle from '@/components/fx/ShatterTitle';
+import { NAV_LINKS, ROUTES } from '@/utils/constants';
 
 export default function ServicesView() {
   return (
@@ -78,7 +79,7 @@ export default function ServicesView() {
               'TypeScript + clean patterns',
               'Responsive & a11y-first',
             ]}
-            ctaHref="/contact"
+            ctaHref={ROUTES.CONTACT}
             ctaLabel="Discuss your build"
             className="service-card--accent"
           />
@@ -92,7 +93,7 @@ export default function ServicesView() {
               'Micro-interactions & motion',
               'Design systems & tokens',
             ]}
-            ctaHref="/projects"
+            ctaHref={ROUTES.PROJECTS}
             ctaLabel="See examples"
           />
 
@@ -105,7 +106,7 @@ export default function ServicesView() {
               'Core Web Vitals tuning',
               'Structured metadata',
             ]}
-            ctaHref="/contact"
+            ctaHref={ROUTES.CONTACT}
             ctaLabel="Improve your scores"
           />
         </div>
@@ -169,7 +170,7 @@ export default function ServicesView() {
         subtitle="Tell me about your project and timeline."
         href="/contact"
         rightSlot={
-          <Link className="btn btn--primary" href="/contact">
+          <Link className="btn btn--primary" href={ROUTES.CONTACT}>
             <span className="btn__text">Contact me</span>
             <NextIcon className="icon" size={20} />
           </Link>

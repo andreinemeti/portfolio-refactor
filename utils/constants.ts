@@ -1,6 +1,13 @@
+export const ROUTES = {
+  HOME: '/',
+  SERVICES: '/services',
+  PROJECTS: '/projects',
+  CONTACT: '/contact',
+} as const;
+
 export const NAV_LINKS = [
-  { label: 'Home', href: '/' },
-  { label: 'Services', href: '/services' },
-  { label: 'Projects', href: '/projects' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Home', href: ROUTES.HOME },
+  { label: 'Services', href: ROUTES.SERVICES },
+  { label: 'Projects', href: ROUTES.PROJECTS },
+  { label: 'Contact', href: ROUTES.CONTACT },
 ];

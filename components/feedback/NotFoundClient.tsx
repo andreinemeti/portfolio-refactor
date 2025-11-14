@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import MagneticItem from '../fx/MagneticItem';
+import { ROUTES } from '@/utils/constants';
 
 
 type Props = {
@@ -33,7 +34,7 @@ export default function NotFoundClient({
 
       <div className="nf__actions">
         <MagneticItem className=""  radius={90} strength={0.22} tilt={3}>
-        <Link href="/" className="btn btn--primary">Go Home</Link>
+        <Link href={ROUTES.HOME} className="btn btn--primary">Go Home</Link>
         </MagneticItem>
       </div>
     </div>

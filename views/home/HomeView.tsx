@@ -17,6 +17,7 @@ import ShatterTitle from '@/components/fx/ShatterTitle';
 import HeroFX from '@/components/fx/HeroFX';
 import CtaStrip from '@/components/layout/CtaStrip';
 import HighlightsStrip from '@/components/layout/HighlightsStrip';
+import { ROUTES } from '@/utils/constants';
 
 
 
@@ -63,12 +64,12 @@ export default function HomeView({ projects, featured }: Props) {
           <MagneticItem className="" radius={90} strength={0.22} tilt={3}>
 
 
-            <Link href="/services" className="btn btn--accent">
+            <Link href={ROUTES.PROJECTS} className="btn btn--accent">
               <span className="btn__text">View my work</span>
             </Link> </MagneticItem>
 
           <MagneticItem className="" radius={90} strength={0.22} tilt={3}>
-            <Link href="/contact" className="btn btn--primary">
+            <Link href={ROUTES.CONTACT} className="btn btn--primary">
               <span className="btn__text">Get in touch</span>
               <NextIcon className="icon" size={20} />
             </Link>
@@ -140,7 +141,7 @@ export default function HomeView({ projects, featured }: Props) {
         </div>
 
         <div className="flex-container">
-          <Link href="/projects" className="btn btn--primary see-all">
+          <Link href={ROUTES.PROJECTS} className="btn btn--primary see-all">
             <span className="btn__text">See all projects</span>
             <span className="count">({count})</span>
            
@@ -150,7 +151,7 @@ export default function HomeView({ projects, featured }: Props) {
 
       <CtaStrip
         title="Let’s build something great"
-        href="/contact"
+        href={ROUTES.CONTACT}
         rightSlot={
           <Link className="btn btn--primary" href="/contact">
             <span className="btn__text">Contact me</span>

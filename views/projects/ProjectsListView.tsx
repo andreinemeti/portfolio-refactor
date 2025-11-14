@@ -15,6 +15,7 @@ import NextIcon from '@/components/icons/NextIcon';
 import HeroFX from '@/components/fx/HeroFX';
 import ProjectsSkeleton from '@/components/project/ProjectsSkeleton';
 import ProjectCard from '@/components/project/ProjectCard';
+import { ROUTES } from '@/utils/constants';
 
 
 const DEFAULT_PAGE_SIZE = 46;
@@ -350,7 +351,7 @@ const handleSearchKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (
 
         {/* Footer link */}
         <div className="flex-container" style={{ marginTop: '1.25rem' }}>
-          <Link href="/" className="btn btn--primary see-all">
+          <Link href={ROUTES.HOME} className="btn btn--primary see-all">
             <span className="btn__text">Back home</span>
             <span className="count">({projects.length})</span>
             <NextIcon className="icon" size={20} />
