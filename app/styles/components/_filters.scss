@@ -1,14 +1,56 @@
-.filters-toggle-row {
-    margin-bottom: 0.5rem;
-    display: flex;
-    justify-content:center;
+.filters-container.filters-container--open {
+   
+    border-radius: 18.5px;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+}
 
-    & button {
-      margin-right:15px;
-      &:last-child {
-        margin-right:0;
-      }
+
+.filters-toggle-row {
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: center;
+
+  & button {
+    margin-right: 15px;
+
+    &:last-child {
+      margin-right: 0;
     }
+  }
+
+  // BEM element for the toggle button
+  &__toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    position: relative;
+    // keeps existing .btn styles from .btn / .btn--ghost
+  }
+
+  // Chevron indicator
+  &__toggle::before {
+    content: '';
+    width: 0.45rem;
+    height: 0.45rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg); // ▼
+    transform-origin: center;
+    transition: transform 150ms ease;
+    position: relative;
+    bottom: 3px;
+    margin-right:5px;
+  }
+
+  // When expanded, rotate to point up
+  &__toggle[aria-expanded='true']::before {
+    transform: rotate(-135deg); // ▲
+    bottom: -3px;
+  }
 }
 
 

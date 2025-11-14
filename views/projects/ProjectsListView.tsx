@@ -100,48 +100,48 @@ export default function ProjectsListView({ projects, tags, pageSize }: Props) {
   }, [allTags, filtered.length, projects, selected, tagCounts]);
 
   //  Autocomplete suggestions: tags starting with the typed letters
- const searchSuggestions = useMemo(() => {
-  const term = searchTerm.trim().toLowerCase();
-  if (!term) return [];
+  const searchSuggestions = useMemo(() => {
+    const term = searchTerm.trim().toLowerCase();
+    if (!term) return [];
 
-  return sortedTags.filter((tag) => {
-    if (!tag.toLowerCase().startsWith(term)) return false;
+    return sortedTags.filter((tag) => {
+      if (!tag.toLowerCase().startsWith(term)) return false;
 
-    const active = selected.includes(tag);
-    const count =
-      visibleTagCounts[tag] ??
-      (selected.length === 0 ? tagCounts[tag] ?? 0 : 0);
+      const active = selected.includes(tag);
+      const count =
+        visibleTagCounts[tag] ??
+        (selected.length === 0 ? tagCounts[tag] ?? 0 : 0);
 
-    const isDisabled = !active && selected.length > 0 && count === 0;
+      const isDisabled = !active && selected.length > 0 && count === 0;
 
-    // mirror the same rule as the pills: don't show impossible combos
-    return !isDisabled;
-  });
-}, [searchTerm, sortedTags, selected, visibleTagCounts, tagCounts]);
+      // mirror the same rule as the pills: don't show impossible combos
+      return !isDisabled;
+    });
+  }, [searchTerm, sortedTags, selected, visibleTagCounts, tagCounts]);
 
-const handleSelectSuggestion = (tag: string) => {
-  setSelected((prev) => {
-    // already selected? do nothing
-    if (prev.includes(tag)) return prev;
-    // otherwise, add it
-    return [...prev, tag];
-  });
-  setSearchTerm(''); // close dropdown
-};
+  const handleSelectSuggestion = (tag: string) => {
+    setSelected((prev) => {
+      // already selected? do nothing
+      if (prev.includes(tag)) return prev;
+      // otherwise, add it
+      return [...prev, tag];
+    });
+    setSearchTerm(''); // close dropdown
+  };
 
-const handleSearchKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (
-  e,
-) => {
-  if (e.key === 'Enter' && searchSuggestions[0]) {
-    e.preventDefault();
-    handleSelectSuggestion(searchSuggestions[0]);
-  }
+  const handleSearchKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (
+    e,
+  ) => {
+    if (e.key === 'Enter' && searchSuggestions[0]) {
+      e.preventDefault();
+      handleSelectSuggestion(searchSuggestions[0]);
+    }
 
-  if (e.key === 'Escape') {
-    e.preventDefault();
-    setSearchTerm(''); // clear input + hide dropdown
-  }
-};
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      setSearchTerm(''); // clear input + hide dropdown
+    }
+  };
 
   return (
     <main>
@@ -192,25 +192,34 @@ const handleSearchKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (
             </ShatterTitle>
           </h2>
         </div>
-                <p className="gradient-text">
-         Explore the full range of client work, experiments, and side projects I have shipped along the years. 
+        <p className="gradient-text">
+          Explore the full range of client work, experiments, and side projects I have shipped along the years.
 
         </p>
 
         {/* Filters */}
         {allTags.length > 0 && (
-          <>
+          <div
+  className={`filters-container ${
+    showFilters ? 'filters-container--open' : 'filters-container--collapsed'
+  }`}
+  
+>
             <div className="filters-toggle-row">
+
               <button
                 type="button"
-                className="btn btn--ghost"
+                className="btn btn--ghost filters-toggle-row__toggle"
                 onClick={() => setShowFilters((v) => !v)}
                 aria-expanded={showFilters}
                 aria-controls="project-filters"
               >
-                <span className="btn__text">Filters</span> <FilterIcon className="icon" size={20} />
-                {selected.length > 0 ? ` ( ${selected.length} selected)` : ''}
+                Filters <FilterIcon className="icon" size={20} />
+                {selected.length > 0 ? ` (${selected.length} selected)` : ''}
               </button>
+
+
+
 
               {selected.length > 0 && (
                 <button className="btn btn--primary" onClick={clearFilters}>
@@ -224,7 +233,7 @@ const handleSearchKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (
               hidden={!showFilters}
               aria-hidden={!showFilters}
             >
-              
+
 
               {/*  Search + autocomplete */}
               <div className="filter-search ">
@@ -251,9 +260,8 @@ const handleSearchKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (
                             <li key={tag}>
                               <button
                                 type="button"
-                                className={`filter-search__item ${
-                                  active ? 'filter-search__item--active' : ''
-                                }`}
+                                className={`filter-search__item ${active ? 'filter-search__item--active' : ''
+                                  }`}
                                 onClick={() => handleSelectSuggestion(tag)}
                               >
                                 {tag}
@@ -304,9 +312,8 @@ const handleSearchKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (
                       <button
                         type="button"
                         onClick={onClick}
-                        className={`pill pill--button ${
-                          active ? 'pill--active' : ''
-                        } ${isDisabled ? 'pill--disabled' : ''}`}
+                        className={`pill pill--button ${active ? 'pill--active' : ''
+                          } ${isDisabled ? 'pill--disabled' : ''}`}
                         aria-pressed={active}
                         aria-disabled={isDisabled}
                         disabled={isDisabled}
@@ -320,7 +327,7 @@ const handleSearchKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (
                 })}
               </div>
             </div>
-          </>
+          </div>
         )}
 
         {/* Grid */}
@@ -358,7 +365,7 @@ const handleSearchKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (
 
       </section>
 
-        <CtaStrip
+      <CtaStrip
         title="Let’s build something great"
         href={ROUTES.CONTACT}
         rightSlot={
