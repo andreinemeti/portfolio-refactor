@@ -6,17 +6,26 @@ import Link from 'next/link';
 import type { Project } from '@/lib/data/projects.query';
 import ProjectCard from '@/components/project/ProjectCard';
 import NextIcon from '@/components/icons/NextIcon';
+import RocketIcon from '@/components/icons/RocketIcon';
+import UsersIcon from '@/components/icons/UsersIcon';
+import CoffeeCupIcon from '@/components/icons/CoffeeCupIcon';
+import BadgeIcon from '@/components/icons/BadgeIcon';
+
 import FloatingTargetCursor from '@/components/fx/FloatingTargetCursor';
 import MagneticItem from '@/components/fx/MagneticItem';
 import ShatterTitle from '@/components/fx/ShatterTitle';
 import HeroFX from '@/components/fx/HeroFX';
 import CtaStrip from '@/components/layout/CtaStrip';
+import HighlightsStrip from '@/components/layout/HighlightsStrip';
+
+
 
 type Props = {
   projects: Project[];
   featured: Project[];
   tags: string[];
 };
+
 
 export default function HomeView({ projects, featured }: Props) {
   const count = projects.length;
@@ -48,7 +57,49 @@ export default function HomeView({ projects, featured }: Props) {
             Frontend Developer
           </ShatterTitle>
         </div>
+
+
+        <div className="hero__actions">
+          <MagneticItem className="" radius={90} strength={0.22} tilt={3}>
+
+
+            <Link href="/services" className="btn btn--accent">
+              <span className="btn__text">View my work</span>
+            </Link> </MagneticItem>
+
+          <MagneticItem className="" radius={90} strength={0.22} tilt={3}>
+            <Link href="/contact" className="btn btn--primary">
+              <span className="btn__text">Get in touch</span>
+              <NextIcon className="icon" size={20} />
+            </Link>
+          </MagneticItem>
+        </div>
       </section>
+
+       <HighlightsStrip
+        items={[
+          {
+            icon: <RocketIcon className="icon" size={50} />,
+            value: '50+',
+            label: 'Projects Completed',
+          },
+          {
+            icon: <UsersIcon className="icon" size={50} />,
+            value: '30+',
+            label: 'Happy Clients',
+          },
+          {
+            icon: <CoffeeCupIcon className="icon" size={50} />,
+            value: '1000+',
+            label: 'Cups of Coffee',
+          },
+          {
+            icon: <BadgeIcon className="icon" size={50} />,
+            value: '8+',
+            label: 'Years Experience',
+          },
+        ]}
+      />
 
       <FloatingTargetCursor within=".flex-container" activeSize={140} />
 
@@ -92,7 +143,7 @@ export default function HomeView({ projects, featured }: Props) {
           <Link href="/projects" className="btn btn--primary see-all">
             <span className="btn__text">See all projects</span>
             <span className="count">({count})</span>
-            <NextIcon className="icon" size={20} />
+           
           </Link>
         </div>
       </section>

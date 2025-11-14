@@ -4,6 +4,7 @@
   &--project,
   &--contact {
     min-height: 60vh;
+    padding-top:50px; //nav
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,7 +47,7 @@
       font-size: 1.7rem;
       margin-top: 1rem;
       margin-bottom: 0;
-      color: #ffffff;
+     
       font-weight: 600;
     }
   }
