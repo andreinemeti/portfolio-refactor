@@ -43,7 +43,7 @@
     z-index: 10;
     margin-top: 0.25rem;
     background: var(--bg-elevated);
-    border-radius: 18.5px;
+    border-radius: $cardRadius;
     border: 1px solid var(--border-subtle);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
     max-height: 260px;

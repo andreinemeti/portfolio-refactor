@@ -13,7 +13,6 @@
     width: min(100vw, 1200px);
     height: min(70vh, 760px);
     border-radius: 14px;
-   
     background: #000;
     box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
 }
@@ -22,7 +21,7 @@
     object-fit: contain;
     animation: lb-fade .25s ease;
     background:#fff;
-    border-radius:18.5px;
+    border-radius:$cardRadius;
 }
 
 @keyframes lb-fade {
