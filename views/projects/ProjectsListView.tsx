@@ -175,7 +175,7 @@ const handleSearchKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (
       <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Projects' }]} />
 
       {/* CONTENT */}
-      <section className="container">
+      <section className="container projects">
         <div className="section-header">
           <h2 className="h2 section-title">
             <ShatterTitle

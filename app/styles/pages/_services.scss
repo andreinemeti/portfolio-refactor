@@ -8,7 +8,7 @@
 
 .services__section {
     /* element */
-    padding-block: 2.5rem;
+    padding-block: 1.5rem;
 }
 
 .services__section-header {
@@ -31,6 +31,7 @@
 /* Responsive grid of service cards (element of services) */
 .services__grid {
     display: flex;
+    justify-content:center;
     flex-wrap:wrap;
   
 }
@@ -43,7 +44,7 @@
     padding: 1rem 1rem 1.1rem;
     display: grid;
     gap: .5rem;
-    min-height: 240px;
+    min-height: 222px;
     height:100%;
 }
 
@@ -80,6 +81,7 @@
 .process {
     counter-reset: step;
     display: flex;
+    justify-content:center;
     flex-wrap: wrap;
 
     margin: 1.25rem 0 0;

@@ -20,6 +20,7 @@
         width: 100%;
         margin: 15px 0;
         max-width:unset;
+        
     }
 
     .filter-search {
@@ -44,6 +45,7 @@
     .cta-strip .h2 {
         font-size: 1.2rem;
     }
+
 
 
     .section-header {
@@ -89,10 +91,14 @@
     .hero--contact .hero__subtitle {
         font-size: 1.2rem;
     }
+
+    
+    .gradient-text {
+    font-size: 1.5rem;
+    }
 }
 
 @media all and (max-width:480px) {
-
 
 
     .hero__ribbon {
@@ -131,6 +137,10 @@
 
         font-size: 13px;
 
+    }
+
+      .gradient-text {
+    font-size: 1.4rem;
     }
 }
 

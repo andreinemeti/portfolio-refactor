@@ -53,7 +53,8 @@ export default function ServicesView() {
       />
 
       {/* What I do */}
-      <section className="services__section container">
+        <div className="container services">
+            <section className="services__section">
         <header className="services__section-header">
           <h2 className="services__section-title h2">
             <ShatterTitle
@@ -79,9 +80,7 @@ export default function ServicesView() {
               'TypeScript + clean patterns',
               'Responsive & a11y-first',
             ]}
-            ctaHref={ROUTES.CONTACT}
-            ctaLabel="Discuss your build"
-            className="service-card--accent"
+        
           />
 
           <ServiceCard
@@ -93,8 +92,7 @@ export default function ServicesView() {
               'Micro-interactions & motion',
               'Design systems & tokens',
             ]}
-            ctaHref={ROUTES.PROJECTS}
-            ctaLabel="See examples"
+          
           />
 
           <ServiceCard
@@ -106,14 +104,13 @@ export default function ServicesView() {
               'Core Web Vitals tuning',
               'Structured metadata',
             ]}
-            ctaHref={ROUTES.CONTACT}
-            ctaLabel="Improve your scores"
+         
           />
         </div>
       </section>
 
       {/* Process */}
-      <section className="services__section container">
+      <section className="services__section">
         <header className="services__section-header">
           <h2 className="services__section-title h2">
             <ShatterTitle
@@ -164,6 +161,7 @@ export default function ServicesView() {
           </MagneticItem>
         </ol>
       </section>
+        </div>
 
       <CtaStrip
         title="Let’s build something great"

@@ -7,6 +7,16 @@ body {
     background: $bgColor;
 }
 
+
+::selection {
+  background: #facc6b; // selection background
+  color: #050509;      // selection text color
+}
+
+::-moz-selection {
+  background: #facc6b; 
+  color: #050509;
+}
 main {
     position:relative; 
 }
@@ -32,13 +42,15 @@ a {
 
 h2 {
     color: $accentColor;
-    font-size: 2em;
+    font-size: 3em;
 }
 
 h3 {
     margin: 0;
     font-size: 1.9em;
 }
+
+
 
 .link {
     text-decoration: underline;

@@ -2,8 +2,11 @@
 
 // Base
 @import './base/base';
+@import './base/mixins';
+@import './base/common';
 
 // Components
+
 @import './components/nav';
 @import './components/logo';
 @import './components/buttons';
@@ -20,6 +23,7 @@
 @import './components/tags';
 @import './components/filters';
 @import './components/stats-strip';
+@import './components/about';
 
 // Pages
 @import './pages/home';

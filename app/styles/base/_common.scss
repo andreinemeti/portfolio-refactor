@@ -1,0 +1,13 @@
+
+.container.about,
+.container.projects,
+.container.services,
+.container.stats-strip,
+.container.contact {
+    @include glass-panel;
+}
+
+.gradient-text {
+    @include gradient-text;
+}
+

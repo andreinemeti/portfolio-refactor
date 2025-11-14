@@ -13,8 +13,8 @@ type Props = {
 
 export default function HighlightsStrip({ items }: Props) {
   return (
-    <section className="stats-strip">
-      <div className="container stats-strip__inner">
+    <section className="container stats-strip">
+      <div className="stats-strip__inner">
         {items.map((item, index) => (
           <div className="stats-strip__item" key={index}>
             <div className="stats-strip__icon-wrap">
