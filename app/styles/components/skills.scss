@@ -1,7 +1,7 @@
 .skills {
-&__grid {
-  display:flex;
-  flex-wrap:wrap;
-  
-}
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }

@@ -85,22 +85,22 @@ export default function HomeView({ projects, featured }: Props) {
       <HighlightsStrip
         items={[
           {
-            icon: <RocketIcon className="icon" size={50} />,
+            icon: <RocketIcon className="icon" size={45} />,
             value: '50+',
             label: 'Projects Completed',
           },
           {
-            icon: <UsersIcon className="icon" size={50} />,
+            icon: <UsersIcon className="icon" size={45} />,
             value: '30+',
             label: 'Happy Clients',
           },
           {
-            icon: <CoffeeCupIcon className="icon" size={50} />,
+            icon: <CoffeeCupIcon className="icon" size={45} />,
             value: '1000+',
             label: 'Cups of Coffee',
           },
           {
-            icon: <BadgeIcon className="icon" size={50} />,
+            icon: <BadgeIcon className="icon" size={45} />,
             value: '8+',
             label: 'Years Experience',
           },
@@ -375,7 +375,7 @@ export default function HomeView({ projects, featured }: Props) {
               <img height="25" src="/images/fiverr.png"></img>
               <div className="testimonials__name">Fiverr client</div>
               <div className="testimonials__role">Founder</div>
-              <div className="testimonials__company">Startup Co.</div>
+              <div className="testimonials__company">Startup Founder</div>
             </div>
           </article>
           </MagneticItem>

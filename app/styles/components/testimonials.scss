@@ -26,7 +26,7 @@
 
   &__quote {
     font-size: 0.95rem;
-    color: rgba(231, 227, 227, 0.9);
+    
     font-style: italic;
     line-height: 1.6;
     margin-bottom: 1.25rem;
@@ -63,4 +63,29 @@
   .testimonials__grid {
     grid-template-columns: 1fr;
   }
+}
+
+
+
+.testimonials__card {
+  border-radius: 18px;
+  background: radial-gradient(circle at top left, #181820, #0b0b11);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 1.75rem 1.5rem 1.5rem;
+  transform-style: preserve-3d;
+}
+
+/* subtle highlight on the top edge (optional) */
+.testimonials__card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.06),
+    transparent 40%
+  );
+  pointer-events: none;
+  mix-blend-mode: screen;
 }
