@@ -1,0 +1,66 @@
+.testimonials {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.75rem;
+    margin-top: 2rem;
+  }
+
+  &__card {
+    background: #111015;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1.75rem 1.5rem 1.5rem;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  &__stars {
+    color: #fbbf24;
+    margin-bottom: 1rem;
+
+    span {
+      margin-right: 2px;
+      font-size: 1rem;
+    }
+  }
+
+  &__quote {
+    font-size: 0.95rem;
+    color: rgba(231, 227, 227, 0.9);
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  &__meta {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 1rem;
+  }
+
+  &__name {
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  &__role {
+    font-size: 0.85rem;
+    color: rgba(231, 227, 227, 0.75);
+  }
+
+  &__company {
+    font-size: 0.85rem;
+    color: #facc6b;
+  }
+}
+
+@media (max-width: 1024px) {
+  .testimonials__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .testimonials__grid {
+    grid-template-columns: 1fr;
+  }
+}

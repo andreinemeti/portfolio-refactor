@@ -7,7 +7,15 @@
     padding: 1.25rem;
    
     border-radius: $cardRadius;
-     background: linear-gradient(135deg, #f6b73c 0%, #ffb347 40%, #ff9f1c 75%, #f77f00 100%);
+    background: linear-gradient(135deg, #f6b73c 0%, #ffb347 40%, #ff9f1c 75%, #f77f00 100%);
+      background: linear-gradient(
+    120deg,
+    #f5f5f7 0%,
+    #facc6b 25%,
+    #ff9f3c 60%,
+    #ffd85b 100%
+  );
+  color: #050509;
     color: #041016;
     flex-wrap: wrap;
     margin:50px auto;

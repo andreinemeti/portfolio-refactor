@@ -691,7 +691,7 @@ export const projects: Project[] = [
     type: 'Showcase static template',
     responsiveness: '100%',
     tags: ['Bootstrap', 'jQuery'],
-    images: null,
+    images: ['/images/law-firm-website/1.jpg', '/images/law-firm-website/2.jpg', '/images/law-firm-website/3.jpg'],
      createdAt: '2018-09-15T00:00:00.000Z',
     lastMod: '2018-09-15T00:00:00.000Z',
     externalUrl: 'https://andreinemeti.github.io/LAW-FIRM/',
@@ -743,18 +743,4 @@ export const projects: Project[] = [
   },
   
 
-  {
-    id: 52,
-    slug: 'ai-no-js-landing',
-    featured: false,
-    name: 'Artificial Intelligence — No JS',
-    description: 'CSS-only concept page themed around AI.',
-    type: 'Showcase static template',
-    responsiveness: '100%',
-    tags: ['Bootstrap', 'HTML5', 'CSS3'],
-    images: null,
-     createdAt: '2018-09-15T00:00:00.000Z',
-    lastMod: '2018-09-15T00:00:00.000Z',
-    externalUrl: 'https://andreinemeti.github.io/Artificial-intelligence---no-JS/',
-  }
 ];

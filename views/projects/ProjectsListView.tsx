@@ -16,6 +16,7 @@ import HeroFX from '@/components/fx/HeroFX';
 import ProjectsSkeleton from '@/components/project/ProjectsSkeleton';
 import ProjectCard from '@/components/project/ProjectCard';
 import { ROUTES } from '@/utils/constants';
+import CtaStrip from '@/components/layout/CtaStrip';
 
 
 const DEFAULT_PAGE_SIZE = 46;
@@ -353,15 +354,19 @@ const handleSearchKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (
           </p>
         )}
 
-        {/* Footer link */}
-        <div className="flex-container" style={{ marginTop: '1.25rem' }}>
-          <Link href={ROUTES.HOME} className="btn btn--primary see-all">
-            <span className="btn__text">Back home</span>
-            <span className="count">({projects.length})</span>
+
+      </section>
+
+        <CtaStrip
+        title="Let’s build something great"
+        href={ROUTES.CONTACT}
+        rightSlot={
+          <Link className="btn btn--primary" href="/contact">
+            <span className="btn__text">Contact me</span>
             <NextIcon className="icon" size={20} />
           </Link>
-        </div>
-      </section>
+        }
+      />
     </main>
   );
 }

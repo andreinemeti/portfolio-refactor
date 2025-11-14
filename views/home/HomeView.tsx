@@ -82,7 +82,7 @@ export default function HomeView({ projects, featured }: Props) {
         </div>
       </section>
 
-       <HighlightsStrip
+      <HighlightsStrip
         items={[
           {
             icon: <RocketIcon className="icon" size={50} />,
@@ -107,28 +107,28 @@ export default function HomeView({ projects, featured }: Props) {
         ]}
       />
 
-       <section className="container about">
+      <section className="container about">
         <div className="section-header">
           <h2 className="h2 section-title">
 
-                  <ShatterTitle
-                          as="div"
-                         
-                          radius={150}
-                          maxOffset={20}
-                          maxRotate={12}
-                          popScale={1.07}
-                        >
-                          About Me
-                        </ShatterTitle>
+            <ShatterTitle
+              as="div"
 
-            
-            </h2>
+              radius={150}
+              maxOffset={20}
+              maxRotate={12}
+              popScale={1.07}
+            >
+              About Me
+            </ShatterTitle>
+
+
+          </h2>
         </div>
 
         <p className="about__intro gradient-text">
           I&apos;m a passionate frontend developer with 7+ years of experience
-          turning complex ideas into fast, delightful web applications. 
+          turning complex ideas into fast, delightful web applications.
         </p>
 
         <div className="services__grid">
@@ -159,28 +159,28 @@ export default function HomeView({ projects, featured }: Props) {
       <section className="container skills">
         <div className="section-header">
           <h2 className="h2 section-title">
-            
-               <ShatterTitle
-                          as="div"
-                         
-                          radius={150}
-                          maxOffset={20}
-                          maxRotate={12}
-                          popScale={1.07}
-                        >
-                          Skills &amp; Technologies
-                        </ShatterTitle>
 
-           </h2>
+            <ShatterTitle
+              as="div"
+
+              radius={150}
+              maxOffset={20}
+              maxRotate={12}
+              popScale={1.07}
+            >
+              Skills &amp; Technologies
+            </ShatterTitle>
+
+          </h2>
         </div>
-          <p className="gradient-text">
-              What I use to design, build, and ship reliable web applications.
-            </p>
+        <p className="gradient-text">
+          What I use to design, build, and ship reliable web applications.
+        </p>
 
         <div className="skills__grid">
           <ServiceCard
             icon={<WebDevelopmentIcon className="icon" size={32} />}
-            title="Frontend"
+            title="Web development"
             desc="Modern, component-driven interfaces with a focus on UX and accessibility."
             className="service-card--skills"
           >
@@ -189,12 +189,13 @@ export default function HomeView({ projects, featured }: Props) {
               <span className="pill">Next.js</span>
               <span className="pill">TypeScript</span>
               <span className="pill">PHP</span>
+              <span className="pill">HTML5</span>
               <span className="pill">Sass</span>
               <span className="pill">Less</span>
             </div>
           </ServiceCard>
 
-       
+
 
           <ServiceCard
             icon={<ToolsIcon className="icon" size={32} />}
@@ -202,7 +203,7 @@ export default function HomeView({ projects, featured }: Props) {
             desc="Productivity and design tools I use day to day."
             className="service-card--skills"
           >
-          
+
             <div className="pill-list">
               <span className="pill">Git</span>
               <span className="pill">Figma</span>
@@ -223,14 +224,14 @@ export default function HomeView({ projects, featured }: Props) {
               <span className="pill">SEO</span>
               <span className="pill">Testing</span>
               <span className="pill">Agile</span>
-              
+
             </div>
           </ServiceCard>
         </div>
       </section>
 
 
-      
+
 
       <FloatingTargetCursor within=".flex-container" activeSize={140} />
 
@@ -239,7 +240,7 @@ export default function HomeView({ projects, featured }: Props) {
           <h2 className="h2 section-title">
             <ShatterTitle
               as="div"
-        
+
               radius={150}
               maxOffset={20}
               maxRotate={12}
@@ -250,8 +251,8 @@ export default function HomeView({ projects, featured }: Props) {
           </h2>
         </div>
 
-            <p className="gradient-text">
-         A selection of real-world projects where I designed and built modern UI's.
+        <p className="gradient-text">
+          A selection of real-world projects where I designed and built modern UI's.
         </p>
 
         <div className="flex-container">
@@ -278,8 +279,106 @@ export default function HomeView({ projects, featured }: Props) {
           <Link href={ROUTES.PROJECTS} className="btn btn--accent see-all">
             <span className="btn__text">See all projects</span>
             <span className="count">({count})</span>
-           
+
           </Link>
+        </div>
+      </section>
+
+
+      <section className="container testimonials">
+        <div className="section-header">
+          <h2 className="h2 section-title">
+            <ShatterTitle
+              as="div"
+
+              radius={150}
+              maxOffset={20}
+              maxRotate={12}
+              popScale={1.07}
+            >
+              What People Say
+            </ShatterTitle>
+
+          </h2>
+        </div>
+
+         <p className="gradient-text">
+      Reviews from clients on Upwork, Fiverr and other long term collaborations.
+    </p>
+
+        <div className="testimonials__grid">
+
+          <MagneticItem className=""  radius={90} strength={0.22} tilt={3}>
+          <article className="testimonials__card">
+            <div className="testimonials__stars" aria-label="5 out of 5 stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+
+            <p className="testimonials__quote">
+              &quot;I&apos;m very satisfied! He proved to be very professional,
+              efficient, prompt etc. Communication turned to be very effective.
+              Even though I contact him with kind of difficult tasks he managed
+              to do them very quickly, answering all my questions in a couple of
+              minutes. I would like to recommend him and, once more, I&apos;m
+              hoping we will collaborate for further projects. Thanks, again!
+              Great job!&quot;
+            </p>
+
+            <div className="testimonials__meta">
+                <img height="25" src="/images/upwork.png"></img>
+              <div className="testimonials__name">Upwork Client</div>
+              <div className="testimonials__role">Web App Owner</div>
+              <div className="testimonials__company">Remote Collaboration</div>
+            </div>
+          </article>
+</MagneticItem>
+
+<MagneticItem className=""  radius={90} strength={0.22} tilt={3}>
+          <article className="testimonials__card">
+            <div className="testimonials__stars" aria-label="5 out of 5 stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+
+            <p className="testimonials__quote">
+              &quot;Andrei is a hidden gem on Upwork. He&apos;s one of the most
+              professional, skilled and helpful freelancers I&apos;ve ever worked
+              with. He created several custom pages for us in a matter of days
+              and they are perfect. He went above and beyond to ensure they were
+              set up properly. Highly recommended!&quot;
+            </p>
+
+            <div className="testimonials__meta">
+              <img height="25" src="/images/upwork.png"></img>
+              <div className="testimonials__name">Upwork Client</div>
+              <div className="testimonials__role">Marketing Manager</div>
+              <div className="testimonials__company">SaaS Company</div>
+            </div>
+          </article>
+
+          </MagneticItem>
+
+
+<MagneticItem className=""  radius={90} strength={0.22} tilt={3}>
+          <article className="testimonials__card">
+            <div className="testimonials__stars" aria-label="5 out of 5 stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+
+            <p className="testimonials__quote">
+              &quot;Andrei quickly understood our product and shipped a polished,
+              responsive interface in no time. His suggestions improved both UX
+              and performance, and communication throughout the project was
+              clear and proactive.&quot;
+            </p>
+
+            <div className="testimonials__meta">
+              <img height="25" src="/images/fiverr.png"></img>
+              <div className="testimonials__name">Fiverr client</div>
+              <div className="testimonials__role">Founder</div>
+              <div className="testimonials__company">Startup Co.</div>
+            </div>
+          </article>
+          </MagneticItem>
         </div>
       </section>
 
