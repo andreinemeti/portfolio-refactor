@@ -29,6 +29,7 @@
 
     .filter-search {
         flex-direction:column;
+        width:100%;
     }
 
 
@@ -89,6 +90,14 @@
     h2 {
         font-size: 1.8rem;
         text-align:center;
+    }
+
+
+    //project page
+    .project-content h2,
+    .previews-content h2,
+    .live-url-content h2 {
+        text-align:left;
     }
 
     .hero--home .hero__subtitle,

@@ -2,7 +2,16 @@
     margin-bottom: 0.5rem;
     display: flex;
     justify-content:center;
+
+    & button {
+      margin-right:15px;
+      &:last-child {
+        margin-right:0;
+      }
+    }
 }
+
+
 
 .filter-search {
     margin-bottom: 1rem;
@@ -10,14 +19,18 @@
     color: #fff;
     border-color: rgba(255, 255, 255, 0.15);
     padding: 0.7rem 1rem;
-    align-items: center;
-    justify-content: center;
-    display: inline-flex;
+    box-sizing:border-box;
+ 
     border-radius: 12px;
     text-decoration: none;
     font-weight: 700;
     border: 1px solid rgba(255, 255, 255, 0.15);
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto 1rem auto;
 
   &__label {
     display: block;
@@ -29,7 +42,7 @@
   &__input {
     width: 100%;
     padding: 0.5rem 0.75rem;
-    border-radius: 999px;
+    border-radius: 8px;
     border: 1px solid #000;
     background: #fff;
     font-size: 0.9rem;

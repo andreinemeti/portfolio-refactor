@@ -12,6 +12,7 @@ import FloatingTargetCursor from '@/components/fx/FloatingTargetCursor';
 import MagneticItem from '@/components/fx/MagneticItem';
 import ShatterTitle from '@/components/fx/ShatterTitle';
 import NextIcon from '@/components/icons/NextIcon';
+import FilterIcon from '@/components/icons/FilterIcon';
 import HeroFX from '@/components/fx/HeroFX';
 import ProjectsSkeleton from '@/components/project/ProjectsSkeleton';
 import ProjectCard from '@/components/project/ProjectCard';
@@ -207,12 +208,12 @@ const handleSearchKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (
                 aria-expanded={showFilters}
                 aria-controls="project-filters"
               >
-                Filters
-                {selected.length > 0 ? ` (${selected.length} selected)` : ''}
+                <span className="btn__text">Filters</span> <FilterIcon className="icon" size={20} />
+                {selected.length > 0 ? ` ( ${selected.length} selected)` : ''}
               </button>
 
               {selected.length > 0 && (
-                <button className="btn btn--ghost" onClick={clearFilters}>
+                <button className="btn btn--primary" onClick={clearFilters}>
                   Clear filters ({selected.length})
                 </button>
               )}
@@ -272,7 +273,7 @@ const handleSearchKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (
               </div>
 
               <div className="section-subtitle">
-                Select one or more technologies:
+                Or select one or more technologies:
               </div>
 
               {/* Tag pills */}

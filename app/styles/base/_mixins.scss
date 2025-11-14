@@ -26,6 +26,7 @@
     text-align: center;
     line-height: 1.35;
     color: #ffffff; // fallback for browsers without background-clip:text
+    font-weight:600;
 
     @supports (-webkit-background-clip: text) or (background-clip: text) {
       background-image: linear-gradient(

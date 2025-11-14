@@ -65,7 +65,7 @@ export default function ProjectDetailView({ project, next }: Props) {
 
       <section className="container project-content">
         <div className="project-content__main">
-          <h2 className="hero__subtitle">Project description</h2>
+          <h2 className="hero__subtitle">Description</h2>
           <p className="lead">{project.description}</p>
 
           {project.createdAt && (
