@@ -190,6 +190,10 @@ const handleSearchKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (
             </ShatterTitle>
           </h2>
         </div>
+                <p className="gradient-text">
+         Explore the full range of client work, experiments, and side projects I have shipped along the years. 
+
+        </p>
 
         {/* Filters */}
         {allTags.length > 0 && (

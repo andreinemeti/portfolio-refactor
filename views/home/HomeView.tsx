@@ -21,6 +21,8 @@ import HighlightsStrip from '@/components/layout/HighlightsStrip';
 import { ROUTES } from '@/utils/constants';
 import WebDevelopmentIcon from '@/components/icons/WebDevelopmentIcon';
 import PerformanceIcon from '@/components/icons/PerformanceIcon';
+import DevIcon from '@/components/icons/DevIcon';
+import ToolsIcon from '@/components/icons/ToolsIcon';
 
 
 
@@ -153,6 +155,83 @@ export default function HomeView({ projects, featured }: Props) {
         </div>
       </section>
 
+
+      <section className="container skills">
+        <div className="section-header">
+          <h2 className="h2 section-title">
+            
+               <ShatterTitle
+                          as="div"
+                         
+                          radius={150}
+                          maxOffset={20}
+                          maxRotate={12}
+                          popScale={1.07}
+                        >
+                          Skills &amp; Technologies
+                        </ShatterTitle>
+
+           </h2>
+        </div>
+          <p className="gradient-text">
+              What I use to design, build, and ship reliable web applications.
+            </p>
+
+        <div className="skills__grid">
+          <ServiceCard
+            icon={<WebDevelopmentIcon className="icon" size={32} />}
+            title="Frontend"
+            desc="Modern, component-driven interfaces with a focus on UX and accessibility."
+            className="service-card--skills"
+          >
+            <div className="pill-list">
+              <span className="pill">React.js</span>
+              <span className="pill">Next.js</span>
+              <span className="pill">TypeScript</span>
+              <span className="pill">PHP</span>
+              <span className="pill">Sass</span>
+              <span className="pill">Less</span>
+            </div>
+          </ServiceCard>
+
+       
+
+          <ServiceCard
+            icon={<ToolsIcon className="icon" size={32} />}
+            title="Tools"
+            desc="Productivity and design tools I use day to day."
+            className="service-card--skills"
+          >
+          
+            <div className="pill-list">
+              <span className="pill">Git</span>
+              <span className="pill">Figma</span>
+              <span className="pill">Photoshop</span>
+              <span className="pill">Webpack</span>
+              <span className="pill">Vite</span>
+            </div>
+          </ServiceCard>
+
+          <ServiceCard
+            icon={<BadgeIcon className="icon" size={32} />}
+            title="Practices"
+            desc="How I approach building, shipping, and improving products."
+            className="service-card--skills"
+          >
+            <div className="pill-list">
+              <span className="pill">Responsive Design</span>
+              <span className="pill">SEO</span>
+              <span className="pill">Testing</span>
+              <span className="pill">Agile</span>
+              
+            </div>
+          </ServiceCard>
+        </div>
+      </section>
+
+
+      
+
       <FloatingTargetCursor within=".flex-container" activeSize={140} />
 
       <section className="container projects">
@@ -160,7 +239,7 @@ export default function HomeView({ projects, featured }: Props) {
           <h2 className="h2 section-title">
             <ShatterTitle
               as="div"
-              className="hero__subtitle"
+        
               radius={150}
               maxOffset={20}
               maxRotate={12}

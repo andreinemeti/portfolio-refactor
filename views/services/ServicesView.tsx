@@ -59,7 +59,7 @@ export default function ServicesView() {
           <h2 className="services__section-title h2">
             <ShatterTitle
               as="div"
-              className="hero__subtitle"
+              className=""
               radius={150}
               maxOffset={20}
               maxRotate={12}
@@ -115,7 +115,7 @@ export default function ServicesView() {
           <h2 className="services__section-title h2">
             <ShatterTitle
               as="div"
-              className="hero__subtitle"
+              className=""
               radius={150}
               maxOffset={20}
               maxRotate={12}

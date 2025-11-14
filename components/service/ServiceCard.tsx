@@ -13,7 +13,8 @@ type ServiceCardProps = {
   features?: string[];
   ctaHref?: string;
   ctaLabel?: string;
-  className?: string; // allows modifiers like "service-card--highlight"
+  className?: string; 
+  children?: ReactNode;
 };
 
 export default function ServiceCard({
@@ -24,6 +25,7 @@ export default function ServiceCard({
   ctaHref,
   ctaLabel,
   className,
+  children,
 }: ServiceCardProps) {
   return (
     <MagneticItem className="card-container"  radius={90} strength={0.22} tilt={3}>
@@ -42,6 +44,8 @@ export default function ServiceCard({
           ))}
         </ul>
       )}
+
+      {children && <div className="service-card__extra">{children}</div>}
 
       {ctaHref && ctaLabel && (
         <div className="service-card__actions">
