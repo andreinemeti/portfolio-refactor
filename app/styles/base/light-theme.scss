@@ -38,7 +38,7 @@ body.light-mode {
     & .container.project-content,
     & .container.previews-content,
     & .container.live-url-content {
-        backdrop-filter: blur(10px);
+        
         margin-top: 3.5rem;
         padding: 20px;
         background: linear-gradient(to right, #f2f0f0, #ececec);
@@ -57,7 +57,9 @@ body.light-mode {
     & .project-content,
     & .contact__value,
     & .testimonials__name,
-    & .btn--ghost {
+    & .btn--ghost,
+    & .service-card__title,
+    & .process__title {
         color: #0e1a2b;
     }
 
@@ -107,7 +109,7 @@ body.light-mode {
     }
 
     & .footer-glass {
-            border-top: 1px solid rgb(212 212 212 / 78%);
+        border-top: 1px solid rgb(212 212 212 / 78%);
     }
 
 
@@ -121,11 +123,20 @@ body.light-mode {
     }
 
     & .nav__link.is-active{
-            box-shadow: none;
+        box-shadow: none;
     }
 
     & .nav__link.is-active:hover {
         background:#0a0a0b;
+    }
+
+    & .slider__arrow {
+        background: rgb(92 92 92 / 90%);
+        box-shadow: 0 0 0px #0000, 0 0 0px #000, 0px 8px 12px 0px #0000000a, 0px 6px 8px 0px #0000000f, 0px 2px 4px 0px #00000014, 0px 0px 2px 0px rgb(0 0 0 / 10%);
+    }
+
+    & .cta-strip {
+            background: linear-gradient(120deg, #facc6b 0%, #facc6b 25%, #ff9f3c 60%, #ffd85b 100%);
     }
 
 }
