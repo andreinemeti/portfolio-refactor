@@ -28,7 +28,7 @@ export default function ProjectDetailView({ project, next }: Props) {
     <main>
       <FloatingTargetCursor
         within=".previews-grid"
-        activeSize={180}
+        activeSize={140}
         minWidth={768}
         ringText="OPEN • "
       />
