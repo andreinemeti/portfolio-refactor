@@ -11,6 +11,7 @@ import GridPreviews from '@/components/project/GridPreviews';
 import CtaStrip from '@/components/layout/CtaStrip';
 import FloatingTargetCursor from '@/components/fx/FloatingTargetCursor';
 import MagneticItem from '@/components/fx/MagneticItem';
+import HeroFX from '@/components/fx/HeroFX';
 
 type Props = {
   project: Project;
@@ -33,6 +34,7 @@ export default function ProjectDetailView({ project, next }: Props) {
       />
 
       <section className="hero hero--project hero--project_single">
+        <HeroFX />
         {project.featured && (
           <span className="hero__ribbon" aria-label="Featured">
             Featured

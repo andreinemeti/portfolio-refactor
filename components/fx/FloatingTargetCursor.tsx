@@ -5,7 +5,7 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { useEffect, useMemo, useState } from 'react';
 
 type Props = {
- activeAttr?: string;
+  activeAttr?: string;
   size?: number;
   activeSize?: number;
   within?: string;
@@ -33,33 +33,60 @@ export default function FloatingTargetCursor({
   const sy = useSpring(y, { stiffness: 600, damping: 40, mass: 0.6 });
 
   const [diameter, setDiameter] = useState(size);
-  const [active, setActive] = useState(false);     // <-- only true over a card
+  const [active, setActive] = useState(false);
   const [images, setImages] = useState<string[]>([]);
   const ring = useMemo(() => new Array(20).fill(ringText).join(''), [ringText]);
   const [enabled, setEnabled] = useState(false);
-   useEffect(() => {
+
+  // 🔹 Detect light/dark based on body.light-mode
+  const [isLight, setIsLight] = useState(false);
+
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+
+    const updateThemeFlag = () => {
+      setIsLight(document.body.classList.contains('light-mode'));
+    };
+
+    updateThemeFlag();
+
+    // Watch body class changes so the cursor updates when theme changes
+    const observer = new MutationObserver((mutations) => {
+      for (const m of mutations) {
+        if (m.type === 'attributes' && m.attributeName === 'class') {
+          updateThemeFlag();
+        }
+      }
+    });
+
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
     const check = () => {
       const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-      const widthOK = typeof minWidth === 'number' ? window.innerWidth >= minWidth : true;
-      setEnabled(disableOnCoarsePointer ? (fine && widthOK) : widthOK);
+      const widthOK =
+        typeof minWidth === 'number' ? window.innerWidth >= minWidth : true;
+      setEnabled(disableOnCoarsePointer ? fine && widthOK : widthOK);
     };
     check();
     window.addEventListener('resize', check);
     return () => window.removeEventListener('resize', check);
   }, [disableOnCoarsePointer, minWidth]);
 
-  // Respect prefers-reduced-motion as well (optional)
   useEffect(() => {
     const m = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (m.matches) setEnabled(false);
   }, []);
 
-  
-
   useEffect(() => {
-    const area: HTMLElement | Document = within
-      ? (document.querySelector(within) as HTMLElement | null) ?? document
-      : document;
+    const area: HTMLElement | Document =
+      within ? (document.querySelector(within) as HTMLElement | null) ?? document : document;
 
     const onMove = (e: PointerEvent) => {
       x.set(e.clientX);
@@ -77,7 +104,7 @@ export default function FloatingTargetCursor({
         const viaClosest = tgt.closest?.(activeAttr);
         if (viaClosest) return viaClosest;
       }
-      // composedPath fallback (text nodes / SVG)
+      // composedPath fallback
       // @ts-ignore
       const path: EventTarget[] = evt.composedPath?.() ?? [];
       for (const n of path) {
@@ -93,7 +120,10 @@ export default function FloatingTargetCursor({
       setDiameter(activeSize);
 
       const raw = el.getAttribute('data-cursor-images') ?? '';
-      const imgs = raw.split(/[\|,]/).map(s => s.trim()).filter(Boolean);
+      const imgs = raw
+        .split(/[\|,]/)
+        .map((s) => s.trim())
+        .filter(Boolean);
       setImages(imgs);
     };
 
@@ -119,17 +149,27 @@ export default function FloatingTargetCursor({
     };
   }, [activeAttr, within, x, y, size, activeSize]);
 
-  // cycle images while active
   const [idx, setIdx] = useState(0);
   useEffect(() => {
     if (!active || images.length === 0) return;
-    const id = setInterval(() => setIdx(i => (i + 1) % images.length), 1200);
+    const id = setInterval(() => setIdx((i) => (i + 1) % images.length), 1200);
     return () => clearInterval(id);
   }, [active, images.length]);
 
   const currentImage = active && images.length ? images[idx] : undefined;
 
-  if (!enabled) return null; // <-- do not render the cursor at all on mobile
+  if (!enabled) return null;
+
+  //  Theme-aware colors
+  const ringBorderColor = isLight
+    ? 'rgba(0, 0, 0, 0.85)'
+    : 'rgba(255, 255, 255, 0.95)';
+
+  const donutFill = isLight ? '#000000' : '#ffffff';
+  const donutStroke = isLight ? 'rgba(0,0,0,0.08)' : 'rgba(0,0,0,0.35)';
+
+  const textFill = isLight ? '#ffffff' : '#000000';
+  const textStroke = isLight ? '#000000' : '#ffffff';
 
   return (
     <motion.div
@@ -158,8 +198,12 @@ export default function FloatingTargetCursor({
           src={currentImage}
           alt=""
           style={{
-            position: 'absolute', inset: 0, width: '100%', height: '100%',
-            objectFit: 'cover', borderRadius: '9999px'
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            borderRadius: '9999px',
           }}
           initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -170,59 +214,85 @@ export default function FloatingTargetCursor({
       {/* border ring */}
       <div
         style={{
-          position: 'absolute', inset: 0, borderRadius: '9999px',
-          border: '2px solid rgba(255, 255, 255, 0.95)',
-          boxShadow: '0 0 0 1px rgba(0,0,0,0.35) inset',
-          
-          mixBlendMode: 'difference',
+          position: 'absolute',
+          inset: 0,
+          borderRadius: '9999px',
+          border: `2px solid ${ringBorderColor}`,
+          boxShadow: `0 0 0 1px ${donutStroke} inset`,
+          mixBlendMode: isLight ? 'normal' : 'difference',
         }}
       />
 
-  {/* rotating SEE MORE ring – solid white donut, no gaps */}
-<motion.svg
-  viewBox="0 0 100 100"
-  style={{ position: 'absolute', inset: 0, transformOrigin: '50% 50%' }}
-  animate={{ rotate: 360 }}
-  transition={{ repeat: Infinity, ease: 'linear', duration: ringDuration }}
->
-  {/*
-    Tune these numbers if you change font size.
-    rOuter close to 49 fills to the edge; rInner sets thickness.
-  */}
-  <defs>
-    <mask id="ring-mask-tight">
-      <rect x="0" y="0" width="100" height="100" fill="black" />
-      <circle cx="50" cy="50" r="49" fill="white" />   {/* outer edge: almost the SVG edge */}
-      <circle cx="50" cy="50" r="33" fill="black" />   {/* inner hole: controls thickness */}
-    </mask>
+      {/* rotating SEE MORE ring */}
+      <motion.svg
+        viewBox="0 0 100 100"
+        style={{ position: 'absolute', inset: 0, transformOrigin: '50% 50%' }}
+        animate={{ rotate: 360 }}
+        transition={{ repeat: Infinity, ease: 'linear', duration: ringDuration }}
+      >
+        <defs>
+          <mask id="ring-mask-tight">
+            <rect x="0" y="0" width="100" height="100" fill="black" />
+            <circle cx="50" cy="50" r="49" fill="white" />
+            <circle cx="50" cy="50" r="33" fill="black" />
+          </mask>
 
-    {/* text path at the midpoint between rOuter and rInner */}
-    <path id="ring-path-tight" d="
-      M 50,50
-      m -41,0
-      a 41,41 0 1,1 82,0
-      a 41,41 0 1,1 -82,0
-    " />
-  </defs>
+          <path
+            id="ring-path-tight"
+            d="
+              M 50,50
+              m -41,0
+              a 41,41 0 1,1 82,0
+              a 41,41 0 1,1 -82,0
+            "
+          />
+        </defs>
 
-  {/* solid white donut fills to the circle edge */}
-  <rect x="0" y="0" width="100" height="100" fill="white" mask="url(#ring-mask-tight)" />
+        {/* donut background */}
+        <rect
+          x="0"
+          y="0"
+          width="100"
+          height="100"
+          fill={donutFill}
+          mask="url(#ring-mask-tight)"
+        />
 
-  {/* Optional faint outline of the donut (very subtle) */}
-  <circle cx="50" cy="50" r="49" fill="none" stroke="black" strokeOpacity="0.06" strokeWidth="0.6" />
-  <circle cx="50" cy="50" r="33" fill="none" stroke="black" strokeOpacity="0.06" strokeWidth="0.6" />
+        {/* subtle outlines */}
+        <circle
+          cx="50"
+          cy="50"
+          r="49"
+          fill="none"
+          stroke={donutStroke}
+          strokeWidth="0.6"
+        />
+        <circle
+          cx="50"
+          cy="50"
+          r="33"
+          fill="none"
+          stroke={donutStroke}
+          strokeWidth="0.6"
+        />
 
-  {/* Black text on top, with a small white stroke to kill any micro-gaps on retina */}
-  <text
-    fill="black"
-    stroke="white"
-    strokeWidth={0.8}                 // increase to 1.0–1.4 if you still see a hairline gap
-    style={{ fontSize: 8, fontWeight: 800, letterSpacing: 1, paintOrder: 'stroke' }}
-  >
-    <textPath href="#ring-path-tight" startOffset="0%">{ring}</textPath>
-  </text>
-</motion.svg>
-
+        {/* text */}
+        <text
+          fill={textFill}
+          stroke={textStroke}
+          strokeWidth={0.8}
+          style={{
+            fontSize: 8,
+            fontWeight: 800,
+            letterSpacing: 1,
+            paintOrder: 'stroke',
+          }}
+        >
+          <textPath href="#ring-path-tight" startOffset="0%">
+            {ring}
+          </textPath>
+        </text>
+      </motion.svg>
     </motion.div>
   );
 }
