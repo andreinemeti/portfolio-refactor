@@ -160,7 +160,7 @@ export default function FloatingTargetCursor({
 
   if (!enabled) return null;
 
-  //  Theme-aware colors
+  
   const ringBorderColor = isLight
     ? 'rgba(0, 0, 0, 0.85)'
     : 'rgba(255, 255, 255, 0.95)';

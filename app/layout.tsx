@@ -29,9 +29,9 @@ const inter = Inter({
 
 export type Theme = 'light' | 'dark';
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const cookieStore = cookies();
-  const cookieTheme = cookieStore.get('portfolio-theme')?.value as Theme | undefined;
+  const cookieTheme = (await cookieStore).get('portfolio-theme')?.value as Theme | undefined;
   const initialTheme: Theme =
     cookieTheme === 'light' || cookieTheme === 'dark' ? cookieTheme : 'dark';
 

@@ -278,11 +278,13 @@ export default function HomeView({ projects, featured }: Props) {
         </div>
 
         <div className="flex-container">
+          <MagneticItem radius={90} strength={0.22} tilt={3}>
           <Link href={ROUTES.PROJECTS} className="btn btn--accent see-all">
             <span className="btn__text">See all projects</span>
             <span className="count">({count})</span>
 
           </Link>
+          </MagneticItem>
         </div>
       </section>
 

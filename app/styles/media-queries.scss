@@ -79,7 +79,12 @@
         height: 150px;
     }
 
+    .hero--home {
+        padding-top: 90px; //because of the two buttons with flex-column props and the absolute nav 
+    }
+
     .hero--home,
+    .hero--services,
     .hero--project,
     .hero--contact {
         background-attachment: scroll;
@@ -89,6 +94,7 @@
 
 
     .hero--home .hero__title,
+    .hero--services .hero__title,
     .hero--project .hero__title,
     .hero--contact .hero__title,
     h2 {
@@ -110,6 +116,7 @@
     }
 
     .hero--home .hero__subtitle,
+    .hero--services .hero__subtitle,
     .hero--project .hero__subtitle,
     .hero--contact .hero__subtitle {
         font-size: 1.2rem;
