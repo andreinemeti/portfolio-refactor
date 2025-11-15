@@ -38,8 +38,8 @@ export const projects: Project[] = [
     type: 'CMS',
     responsiveness: '100%',
     tags: ['ReactJS', 'Figma', 'Swagger (Open API)', 'REST APIs', 'Sass', 'Custom design',],
-    images: ['/images/sosito-cms/2.PNG', '/images/sosito-cms/1.PNG', 
-      '/images/sosito-cms/3.PNG', '/images/sosito-cms/4.PNG','/images/sosito-cms/5.PNG','/images/sosito-cms/6.PNG'], 
+    images: ['/images/sosito-cms/2.png', '/images/sosito-cms/1.png', 
+      '/images/sosito-cms/3.png', '/images/sosito-cms/4.png','/images/sosito-cms/5.PNG','/images/sosito-cms/6.png'], 
     externalUrl: 'https://app.sosito.ro/',
      createdAt: '2022-09-15T00:00:00.000Z',
     lastMod: '2022-09-15T00:00:00.000Z'
