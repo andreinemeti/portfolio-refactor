@@ -367,6 +367,7 @@ export default function ProjectsListView({ projects, tags, pageSize }: Props) {
 
       <CtaStrip
         title="Let’s build something great"
+        subtitle="Tell me about your project and timeline."
         href={ROUTES.CONTACT}
         rightSlot={
           <Link className="btn btn--primary" href="/contact">

@@ -19,8 +19,6 @@
     .hero__header {
       text-align: center;
       position: relative;
-      max-width: 500px;
-      width: 85%;
       margin: 0 auto;
       background: rgba(0, 0, 0, 0.84);
       border-radius: $cardRadius;
@@ -30,7 +28,7 @@
       backdrop-filter: blur(10px);
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
       background: linear-gradient(180deg, #ffffff00, #00000096);
-          border: 1px solid rgb(255 255 255 / 40%);
+      border: 1px solid #b1b1b1;
       box-shadow:
         0 8px 40px rgba(0, 0, 0, 0.35);
 
@@ -72,6 +70,16 @@
   position: relative;
   min-height: 60vh;
   overflow: hidden;
+  &.hero--project_single {
+    & .hero__header {
+    background: linear-gradient(120deg, #f5f5f7 0%, #eaeaea 25%, #d2d2d2 60%, #bfbfbf 100%);
+    //  background: linear-gradient(120deg, #f5f5f7 0%, #facc6b 25%, #ff9f3c 60%, #ffd85b 100%);     
+        & h1 {
+               color: #404344;
+        }
+      }
+  }
+  
 }
 
 .hero--project .hero__media {
@@ -110,6 +118,7 @@
   pointer-events:none;
   padding: 0;
   box-sizing: border-box;
+  max-width: calc(100% - 112px);
 }
 
 .hero__title {

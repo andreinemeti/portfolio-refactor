@@ -210,6 +210,7 @@ export default function HomeView({ projects, featured }: Props) {
               <span className="pill">Photoshop</span>
               <span className="pill">Webpack</span>
               <span className="pill">Vite</span>
+              <span className="pill">Gulp</span>
             </div>
           </ServiceCard>
 
@@ -221,8 +222,9 @@ export default function HomeView({ projects, featured }: Props) {
           >
             <div className="pill-list">
               <span className="pill">Responsive Design</span>
+              <span className="pill">Accesibility (a11y)</span>
               <span className="pill">SEO</span>
-              <span className="pill">Testing</span>
+              <span className="pill">Testing (Jest, Cypress)</span>
               <span className="pill">Agile</span>
 
             </div>
@@ -384,6 +386,7 @@ export default function HomeView({ projects, featured }: Props) {
 
       <CtaStrip
         title="Let’s build something great"
+        subtitle="Tell me about your project and timeline."
         href={ROUTES.CONTACT}
         rightSlot={
           <Link className="btn btn--primary" href="/contact">

@@ -48,7 +48,7 @@
     }
 
     .cta-strip .h2 {
-        font-size: 1.2rem;
+       
     }
 
 
@@ -74,18 +74,18 @@
         min-height: 45vh;
     }
 
-    .hero--home .hero__header,
-    .hero--project .hero__header,
-    .hero--contact .hero__header {
-        max-width: 60%;
 
-    }
 
     .hero--home .hero__title,
     .hero--project .hero__title,
     .hero--contact .hero__title,
     h2 {
         font-size: 1.8rem;
+        
+    }
+
+    //homepage 
+    .section-title {
         text-align:center;
     }
 
@@ -103,6 +103,10 @@
         font-size: 1.2rem;
     }
 
+    .hero__actions {
+        flex-direction:column;
+    }
+
     
     .gradient-text {
     font-size: 1.5rem;
@@ -111,6 +115,9 @@
 
 @media all and (max-width:480px) {
 
+    .btn {
+        font-size:18px;
+    }
 
     .hero__ribbon {
         width: 220px;

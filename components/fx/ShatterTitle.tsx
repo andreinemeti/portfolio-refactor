@@ -137,7 +137,7 @@ useEffect(() => {
           willChange: 'transform',
           perspective: 800,
           letterSpacing: '0.01em',
-          textAlign:'center'
+          
         }}
       >
       {tokens.map((ch, i) => {

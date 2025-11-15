@@ -32,7 +32,7 @@ export default function ProjectDetailView({ project, next }: Props) {
         ringText="OPEN • "
       />
 
-      <section className="hero hero--project">
+      <section className="hero hero--project hero--project_single">
         {project.featured && (
           <span className="hero__ribbon" aria-label="Featured">
             Featured
