@@ -25,15 +25,14 @@
       background: rgba(0, 0, 0, 0.84);
       border-radius: $cardRadius;
       padding: 20px;
+      box-sizing: border-box;
       border: 2px solid $accentColor;
-
-
       backdrop-filter: blur(10px);
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: linear-gradient(180deg, #ffffff00, #00000096);
+          border: 1px solid rgb(255 255 255 / 40%);
       box-shadow:
-        0 8px 40px rgba(0, 0, 0, 0.35),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        0 8px 40px rgba(0, 0, 0, 0.35);
 
     }
 
@@ -101,16 +100,16 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(to top, rgba(10, 10, 11, .65) 0%, rgba(10, 10, 11, .25) 40%, rgba(10, 10, 11, 0) 70%);
+  background: linear-gradient(to top, rgba(10, 10, 11, 0.65) 0%, rgb(10 10 11 / 0%) 40%, rgba(10, 10, 11, 0) 70%);
 }
 
 .hero--project .hero__overlay {
   position: relative;
   z-index: 1;
   height: 100%;
-  display: grid;
-  align-items: end;
-  padding: 2.25rem 1rem;
+  pointer-events:none;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .hero__title {
@@ -150,7 +149,7 @@
     inset 0 0 0 1px rgba(0, 0, 0, .18);
   border: 1px solid rgba(255, 255, 255, .18);
 
-  /* Optional subtle shine */
+ 
   &::after {
     content: '';
     position: absolute;
