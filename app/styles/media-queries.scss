@@ -20,11 +20,23 @@
 }
 
 @media all and (max-width:768px) {
+
+    .filters-toggle-row {
+        flex-direction:column;
+    }
+
+    .filters-toggle-row button {
+        font-size:13px;
+        margin-bottom:15px;
+        margin:0 15px 15px 15px!important;
+
+    }
+
     .card-container {
         width: 100%;
         margin: 15px 0;
         max-width:unset;
-        
+       
     }
 
     .filter-search {
@@ -115,9 +127,7 @@
 
 @media all and (max-width:480px) {
 
-    .btn {
-        font-size:18px;
-    }
+   
 
     .hero__ribbon {
         width: 220px;

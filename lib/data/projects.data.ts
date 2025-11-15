@@ -68,7 +68,7 @@ export const projects: Project[] = [
     description: 'A multi-city tourism directory powering official city portals such as Šibenik, Cluj-Napoca, and Turda. The platform helps visitors discover restaurants, events, attractions, and local information through a clean, mobile-optimized interface. Built with ReactJS, PHP, and SEO-friendly routing, it delivers fast navigation, AI automated multilingual support, dynamic content rendering, and dedicated detail pages enhanced with maps, galleries, and accessibility features, such as text to speech.',
     type: 'Directory',
     responsiveness: '100%',
-    tags: ['ReactJS', 'PHP', 'HTML5', 'Sass', 'SEO', 'Custom Design'],
+    tags: ['ReactJS', 'PHP', 'HTML5', 'Sass', 'SEO', 'Custom design'],
     images: ['/images/zoniz-cities-website/1.jpg', '/images/zoniz-cities-website/2.jpg', 
       '/images/zoniz-cities-website/3.jpg', '/images/zoniz-cities-website/4.jpg'],
     externalUrl: 'https://www.zoniz.com/cities/',

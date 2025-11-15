@@ -86,12 +86,12 @@ export default function HomeView({ projects, featured }: Props) {
         items={[
           {
             icon: <RocketIcon className="icon" size={45} />,
-            value: '50+',
+            value: '40+',
             label: 'Projects Completed',
           },
           {
             icon: <UsersIcon className="icon" size={45} />,
-            value: '30+',
+            value: '20+',
             label: 'Happy Clients',
           },
           {
