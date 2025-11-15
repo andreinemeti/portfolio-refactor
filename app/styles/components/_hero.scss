@@ -1,6 +1,7 @@
 .hero {
 
   &--home,
+  &--services,
   &--project,
   &--contact {
     min-height: 60vh;
@@ -66,21 +67,15 @@
 }
 
 /* Project hero with slider as background */
-.hero--project {
-  position: relative;
-  min-height: 60vh;
-  overflow: hidden;
-  &.hero--project_single {
+.hero--project_single {
     & .hero__header {
     background: linear-gradient(120deg, #f5f5f7 0%, #eaeaea 25%, #d2d2d2 60%, #bfbfbf 100%);
     //  background: linear-gradient(120deg, #f5f5f7 0%, #facc6b 25%, #ff9f3c 60%, #ffd85b 100%);     
         & h1 {
-               color: #404344;
+          color: #404344;
         }
       }
   }
-  
-}
 
 .hero--project .hero__media {
   position: absolute;
@@ -102,7 +97,7 @@
   height: 100%;
   object-fit: cover;
 }
-
+.hero--services::after,
 .hero--project::after {
   content: '';
   position: absolute;

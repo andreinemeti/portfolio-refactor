@@ -5,9 +5,7 @@
     z-index: 10;
     margin: 3rem auto 1.5rem;
     padding: 10px 14px;
-    background: var(--glass-bg);
-    backdrop-filter: saturate(180%) blur(16px);
-    -webkit-backdrop-filter: saturate(180%) blur(16px);
+   
     max-width: min(92vw, 980px);
     color: #fff;
     border-radius: 0;
@@ -22,7 +20,7 @@
   gap: 8px;
   list-style: none;
   padding: 0;
-  margin: 0 0 15px;
+ 
 }
 
 .footer-glass__link {
@@ -71,4 +69,28 @@
   .footer-glass__copy {
     font-size: 0.7rem;
   }
+}
+
+
+
+.footer-glass__theme {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.footer-glass__theme-label {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.footer-glass__theme-select {
+  padding: 0.3rem 1.6rem 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: #15151c;
+  color: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
 }

@@ -18,7 +18,7 @@ export default function ServicesView() {
   return (
     <main className="services">
       {/* Hero */}
-      <section className="hero hero--project hero--services services__hero">
+      <section className="hero hero--services">
         <HeroFX />
         <div className="hero__header">
           <ShatterTitle

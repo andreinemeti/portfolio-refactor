@@ -1,18 +1,12 @@
-/* ===== Services page (BLOCK) ===== */
-.services {}
 
-.services__hero {
-    /* element of services */
-    /* inherits .hero styles; extra tweaks if needed */
-}
 
 .services__section {
-    /* element */
+   
     padding-block: 1.5rem;
 }
 
 .services__section-header {
-    /* element */
+   
     display: flex;
     align-items: baseline;
     justify-content: center;
@@ -21,14 +15,14 @@
 }
 
 .services__section-title {
-    /* element */
+   
     margin: 0;
     display: inline-flex;
     align-items: baseline;
     gap: .5rem;
 }
 
-/* Responsive grid of service cards (element of services) */
+
 .services__grid {
     display: flex;
     justify-content:center;
@@ -36,7 +30,7 @@
   
 }
 
-/* ===== Service card (BLOCK) ===== */
+
 .service-card {
     border-radius: 16px;
     background: rgba(255, 255, 255, .04);
